@@ -102,6 +102,16 @@ namespace ClinicSystem
                 initialFocuse = false;
             }
         }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Do you want to exit", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                Application.Exit();
+
+            }  
+         }
     }
 }
         

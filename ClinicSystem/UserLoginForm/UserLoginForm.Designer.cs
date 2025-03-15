@@ -128,6 +128,7 @@
             this.Exit.TabStop = false;
             this.Exit.Text = "EXIT";
             this.Exit.UseVisualStyleBackColor = false;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // doctorB
             // 
