@@ -13,18 +13,14 @@ namespace ClinicSystem
     public partial class DoctorViewPatient : Form
     {
         private List<Appointment> patientAppointments;
-
-        private DoctorPatientSchedule schedules;
         private DoctorDatabase db = new DoctorDatabase();
         private DataGridViewRow lastSelectedRow = null;
         private DataTable dt;
         private Doctor dr;
 
-    
-
         private int limitCharacter = 200;
-        private int detailId;
-        private TimeSpan duration;
+        private List<Appointment> filtered = new List<Appointment>();
+        private Appointment selectedAppointment;
         public DoctorViewPatient(Doctor dr)
         {
             this.dr = dr;
@@ -115,6 +111,9 @@ namespace ClinicSystem
 
         private void clear()
         {
+            comboStart.Items.Clear();
+            comboEnd.Items.Clear();
+            comboOpNo.Items.Clear();
             comboOperations.Items.Clear();
             tbPatientId.Text = "";
             RoomNo.Text = "";
@@ -145,60 +144,58 @@ namespace ClinicSystem
                 if (pa.Patient.Patientid == pas.Patient.Patientid)
                 {
                     filtered.Add(pas);
-                    comboOperations.Items.Add(pas.Operation.OperationName);
+                    comboOpNo.Items.Add(pas.AppointmentDetailNo);
                 }
             }
         }
-        private List<Appointment> filtered = new List<Appointment>();
-        private Appointment selectedAppointment;
 
         private void comboOperations_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboOperations.SelectedIndex == -1)
-            {
-                tbStartTime.Text = "";
-                tbEndTime.Text = "";
-                detailId = 0;
-                return;
-            }
+            if (comboOpNo.SelectedIndex == -1) return;
+            if (comboOperations.SelectedIndex == -1) return;
             string operationName = comboOperations.SelectedItem.ToString();
+            int appointmentDetailNo = int.Parse(comboOpNo.SelectedItem.ToString());
             foreach (Appointment app in filtered)
             {
-                if (app.Operation.OperationName.Equals(operationName))
+                if (app.AppointmentDetailNo == appointmentDetailNo && app.Operation.OperationName.Equals(operationName))
                 {
-   
                     datePickerSchedule.Value = app.DateSchedule;
-                    duration = app.Operation.Duration;
-                    detailId = app.AppointmentDetailNo;
                     tbDiagnosis.Text = app.Diagnosis;
-                    TimeSpan startTime = app.StartTime;
-                    if (startTime.TotalHours >= 24)
-                    {
-                        startTime = TimeSpan.FromHours(startTime.TotalHours % 24);
-                        origStartTime = startTime;
-                    }
-                    DateTime starTimeD = DateTime.Today.Add(startTime);
-                    string ampmStart = startTime.Hours >= 12 ? "PM" : "AM";
-                    comboStart.SelectedItem = ampmStart;
-                    string formattedStartTime = starTimeD.ToString(@"hh\:mm\:ss tt");
-                    tbStartTime.Text = formattedStartTime.Split(' ')[0];
-
-                    TimeSpan endTime = app.EndTime;
-                    if (endTime.TotalHours >= 24)
-                    {
-                        endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
-                        origEndTime = endTime;
-                    }
-                    DateTime endDateTime = DateTime.Today.Add(endTime);
-                    string ampmEnd = endTime.Hours >= 12 ? "PM" : "AM";
-                    comboEnd.SelectedItem = ampmEnd;
-                    string formattedEndTime = endDateTime.ToString(@"hh\:mm\:ss tt");
-                    tbEndTime.Text = formattedEndTime.Split(' ')[0];
-
-                    selectedAppointment = app;
+                    calculateStartEndTime(app);
+                    break;
                 }
             }
-            
+        }
+
+        private void calculateStartEndTime(Appointment app)
+        {
+            TimeSpan startTime = app.StartTime;
+            DateTime startDateTime = DateTime.Today.Add(startTime);
+            string formatStartTime = startDateTime.ToString("hh:mm:ss tt");
+            tbStartTime.Text = formatStartTime.Split(' ')[0];
+            string ampmStart = startTime.Hours >= 12 ? "PM" : "AM";
+            comboStart.SelectedItem = ampmStart;
+
+            TimeSpan endTime = app.EndTime;
+            DateTime endDateTime = DateTime.Today.Add(endTime);
+            string formatEndTime = endDateTime.ToString("hh:mm:ss tt");
+            tbEndTime.Text = formatEndTime.Split(' ')[0];
+            string ampmEnd = endTime.Hours >= 12 ? "PM" : "AM";
+            comboEnd.SelectedItem = ampmEnd;
+        }
+
+        private void comboOpNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboOpNo.SelectedIndex == -1) return;
+            int appointmentDetailNo = int.Parse(comboOpNo.SelectedItem.ToString());
+            foreach (Appointment app in filtered)
+            {
+                if (app.AppointmentDetailNo == appointmentDetailNo)
+                {
+                    selectedAppointment = app;
+                    comboOperations.Items.Add(app.Operation.OperationName);
+                }
+            }
         }
 
         private void searchPatient_TextChanged(object sender, EventArgs e)
@@ -252,157 +249,99 @@ namespace ClinicSystem
 
         private bool isInputValid()
         {
-            if (comboOperations.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select operation.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            //if (comboOperations.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Please select operation.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
 
-            if (string.IsNullOrWhiteSpace(tbStartTime.Text) ||
-               string.IsNullOrWhiteSpace(tbEndTime.Text))
-            {
-                MessageBox.Show("Please fill up all fields", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            //if (string.IsNullOrWhiteSpace(tbStartTime.Text) ||
+            //   string.IsNullOrWhiteSpace(tbEndTime.Text))
+            //{
+            //    MessageBox.Show("Please fill up all fields", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
 
-            DateTime selectedDate = datePickerSchedule.Value.Date;
+            //DateTime selectedDate = datePickerSchedule.Value.Date;
 
-            TimeSpan startTime;
-            if (!TimeSpan.TryParseExact(tbStartTime.Text, @"hh\:mm\:ss", null, out startTime))
-            {
-                MessageBox.Show("Invalid Time, Please enter HH:MM:SS.", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            //TimeSpan startTime;
+            //if (!TimeSpan.TryParseExact(tbStartTime.Text, @"hh\:mm\:ss", null, out startTime))
+            //{
+            //    MessageBox.Show("Invalid Time, Please enter hh:mm:ss (00:00:00) - (11:59:99)", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
 
-            DateTime currentDateTime = DateTime.Now;
-            DateTime selectedStartDateTime = selectedDate.Add(startTime);
-            if (selectedStartDateTime < currentDateTime)
-            {
-                MessageBox.Show("Time is already past", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            //DateTime currentDateTime = DateTime.Now;
+            //DateTime selectedStartDateTime = selectedDate.Add(startTime);
+            //if (selectedStartDateTime < currentDateTime)
+            //{
+            //    MessageBox.Show("Time is already past", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
 
-            
-            Appointment schedule = new Appointment(dr, selectedDate, startTime, TimeSpan.Parse(tbEndTime.Text));
-            bool isScheduleAvailable = db.isScheduleAvailable(schedule);
-            
+            //TimeSpan endTime = startTime + duration;
+            //if (endTime.TotalHours >= 24)
+            //{
+            //    endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
+            //}
 
-            if (schedule.DateSchedule == selectedAppointment.DateSchedule &&
-                  startTime == selectedAppointment.StartTime &&
-                  !isScheduleAvailable)
-            {
-                if (!string.IsNullOrWhiteSpace(tbDiagnosis.Text) &&
-                    !tbDiagnosis.Text.Equals(selectedAppointment.Diagnosis, StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;  
-                }
-                else
-                {
-                    MessageBox.Show("Schedule is not available", "Schedule Conflict1", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false; 
-                }
-            }
+            //Appointment schedule = new Appointment(dr, selectedDate, startTime, TimeSpan.Parse(tbEndTime.Text));
+            //bool isScheduleAvailable = db.isScheduleAvailable(schedule);
+
+            //if (!isScheduleAvailable)
+            //{
+            //    isScheduleAvailable = db.isScheduleAvailable2(schedule);
+            //    if (!isScheduleAvailable)
+            //    {
+            //        Appointment updatedSchedule = new Appointment(selectedDate, startTime, endTime,
+            //            selectedAppointment.Patient, selectedAppointment.Operation, selectedAppointment.RoomNo, tbDiagnosis.Text, detailId);
+            //        bool x = db.updateSchedule(updatedSchedule);
+            //        if (x)
+            //        {
+            //            MessageBox.Show("Appointment Updated", "Appointment Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            return false;
+            //        }
+            //    }
+            //}
+            //if (schedule.DateSchedule == selectedAppointment.DateSchedule &&
+            //      startTime == selectedAppointment.StartTime &&
+            //      !isScheduleAvailable)
+            //{
+            //    if (!string.IsNullOrWhiteSpace(tbDiagnosis.Text) &&
+            //        !tbDiagnosis.Text.Equals(selectedAppointment.Diagnosis, StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        return true;  
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Schedule is not available", "Schedule Conflict1", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        return false; 
+            //    }
+            //}
 
 
 
 
-            if (!isScheduleAvailable)
-            {
-                MessageBox.Show("Schedule is not available", "Schedule Conflict1", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            //if (!isScheduleAvailable)
+            //{
+            //    MessageBox.Show("Schedule is not available", "Schedule Conflict1", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
 
 
             return true;
         }
-
-        private void calculateEndTime()
-        {
-            DateTime startTime;
-            if (comboStart.SelectedIndex == -1) return;
-            string ampm = comboStart.SelectedItem.ToString();
-            string timeInput = tbStartTime.Text + " " + ampm;
-            if (DateTime.TryParseExact(timeInput, @"hh\:mm\:ss tt", null, DateTimeStyles.None, out startTime))
-            {
-
-                if (tbStartTime.Text.Equals("12:00:00"))
-                {
-                    MessageBox.Show("Invalid Date 12HRS (00:00:00) - (11:59:00)", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (duration == null) return;
-                TimeSpan startTimeSpan = startTime.TimeOfDay;
-                origStartTime = startTimeSpan;
-                TimeSpan endTime = startTimeSpan + duration;
-                if (endTime.TotalHours >= 24)
-                {
-                    endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
-                    origEndTime = endTime;
-                }
-                DateTime endDateTime = DateTime.Today.Add(endTime);
-                string formattedEndTime = endDateTime.ToString(@"hh\:mm\:ss tt");
-                tbEndTime.Text = formattedEndTime.Split(' ')[0];
-                string ampmEnd = endTime.Hours >= 12 ? "PM" : "AM";
-                comboEnd.SelectedItem = ampmEnd;
-            }
-        }
-
-        private void tbStartTime_TextChanged(object sender, EventArgs e)
-        {
-            calculateEndTime();
-        }
-        private TimeSpan origStartTime;
-        private TimeSpan origEndTime;
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            bool validInput = isInputValid();
-            if (!validInput) return;
-            
-            DialogResult output = MessageBox.Show("Are you sure you want to update?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (output != DialogResult.Yes) return;
-            
-            TimeSpan startTime;
-            if (!TimeSpan.TryParseExact(origStartTime.ToString(), @"hh\:mm\:ss", null, out startTime))
-            {
-                MessageBox.Show("INVALID TIME Please enter HH:MM:SS", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (int.Parse(tbStartTime.Text.Split(':')[0]) > 12)
-            {
-                MessageBox.Show("ENTER 12HRS FORMAT", "Invalid Timevv", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (tbStartTime.Text.Equals("12:00:00"))
-            {
-                MessageBox.Show("Invalid Date 12HRS (00:00:00) - (11:59:00)");
-                return;
-            }
-            TimeSpan endTime = startTime + duration;
-            if (endTime.TotalHours >= 24)
-            {
-                endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
-
-            }
-
-            MessageBox.Show(startTime + "     " + endTime);
-            string diagnosis = tbDiagnosis.Text;
-            DateTime scheduleDate = datePickerSchedule.Value.Date;
-            string operationName = comboOperations.SelectedIndex.ToString();
-            Appointment updatedSchedule = new Appointment(scheduleDate, startTime, endTime,
-                selectedAppointment.Patient, selectedAppointment.Operation, selectedAppointment.RoomNo, diagnosis, detailId);
+            Appointment updatedSchedule = new Appointment(selectedAppointment.DateSchedule, selectedAppointment.StartTime, selectedAppointment.EndTime,
+                selectedAppointment.Patient, selectedAppointment.Operation, selectedAppointment.RoomNo, tbDiagnosis.Text, selectedAppointment.AppointmentDetailNo);
             bool success = db.updateSchedule(updatedSchedule);
             if (success)
             {
                 patientAppointments = db.getPatients(dr.DoctorID);
                 MessageBox.Show("Appointment Updated", "Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
 
-        private void comboStart_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            calculateEndTime();
-        }
+        }      
     }
 }

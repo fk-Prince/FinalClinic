@@ -95,7 +95,6 @@ namespace ClinicSystem.Appointments
         {
             calculateEndTime();
         }
-
         private void calculateEndTime()
         {
             DateTime startTime;
@@ -143,18 +142,13 @@ namespace ClinicSystem.Appointments
             TimeSpan startTime;
             if (!TimeSpan.TryParseExact(origStartTime.ToString(), @"hh\:mm\:ss", null, out startTime))
             {
-                MessageBox.Show("INVALID TIME Please enter HH:MM:SS", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (int.Parse(StartTime.Text.Split(':')[0]) > 12)
-            {
-                MessageBox.Show("ENTER 12HRS FORMAT", "Invalid Timev", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid time, Please enter valid time(hh:mm:ss).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (StartTime.Text.Equals("12:00:00"))
+            if (int.Parse(StartTime.Text.Split(':')[0]) >= 12)
             {
-                MessageBox.Show("Invalid Date 12HRS (00:00:00) - (11:59:00)");
+                MessageBox.Show("Enter 12 hours format (00:00:00) - (11:59:00).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -180,7 +174,7 @@ namespace ClinicSystem.Appointments
             bool isScheduleAvailable = db.isScheduleAvailable(schedule);
             if (!isScheduleAvailable)
             {
-                MessageBox.Show("Schedule is not available", "Schedule Conflict1", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Schedule conflicts with the doctor schedule.", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -189,7 +183,7 @@ namespace ClinicSystem.Appointments
                 if (sc.Patient.Patientid == selectedPatient.Patientid && sc.DateSchedule.Date == selectedDate.Date &&
                     (startTime < sc.EndTime && endTime > sc.StartTime))
                 {
-                    MessageBox.Show("Schedule conflicts with the patient's schedule", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Schedule conflicts with the your schedule.", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -202,7 +196,7 @@ namespace ClinicSystem.Appointments
                 if (sc.Doctor.DoctorID == selectedDoctor.DoctorID && sc.DateSchedule.Date == selectedDate.Date &&
                     (startTime < sc.EndTime && endTime > sc.StartTime))
                 {
-                    MessageBox.Show("Schedule is not available", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Schedule conflicts with the doctor schedule.", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -245,14 +239,8 @@ namespace ClinicSystem.Appointments
         private void displayOperationAdded(Appointment schedule)
         {
             string fullname = schedule.Doctor.DoctorLastName + ", " + schedule.Doctor.DoctorFirstName + " " + schedule.Doctor.DoctorMiddleName;
-            //string displayText = "Operation Name: " + selectedOperation.OperationName + Environment.NewLine +
-            //         "Doctor Assigned: " + fullname + Environment.NewLine +
-            //         "Date Schedule: " + schedule.DateSchedule.ToString("yyyy-MM-dd") + Environment.NewLine +
-            //         "StartTime: " + schedule.DateSchedule.Add(schedule.StartTime).ToString(@"hh\:mm\:ss tt") + Environment.NewLine +
-            //         "EndTime: " + schedule.DateSchedule.Add(schedule.EndTime).ToString(@"hh\:mm\:ss tt") + Environment.NewLine +
-            //         "------------------------------------------------------------------------------------------------------------" + Environment.NewLine;
             string displayText = $"Operation Name:  {selectedOperation.OperationName}  {Environment.NewLine}"  +
-                                 $"Doctor Assigned: {fullname}  {Environment.NewLine}" +
+                                 $"Doctor Assigned: {fullname}  {Environment.NewLine}" +  
                                  $"Date Schedule: {schedule.DateSchedule.ToString("yyyy-MM-dd")} {Environment.NewLine}" +
                                  $"StartTime: {StartTime.Text} {comboStart.SelectedItem.ToString()}{Environment.NewLine}" +
                                  $"EndTime:  {EndTime.Text} {comboEnd.SelectedItem.ToString()}{Environment.NewLine}" +
@@ -317,6 +305,8 @@ namespace ClinicSystem.Appointments
             }
             string opNumber = db.getPatientOperationNo();
             PatientAppointmentNo.Text = opNumber;
+            comboStart.Items.Clear(); 
+            comboEnd.Items.Clear();
             comboStart.Items.Add("AM");
             comboStart.Items.Add("PM");
             comboStart.SelectedIndex = 0;
@@ -352,7 +342,7 @@ namespace ClinicSystem.Appointments
                 tbListOperation.Text += t;
             }
 
-            if (temporaryStorage.Count > 0)
+            if (temporaryStorage.Count >= 0)
             {
                 Appointment lastSchedule = temporaryStorage.Last();
                 temporaryStorage.Remove(lastSchedule);

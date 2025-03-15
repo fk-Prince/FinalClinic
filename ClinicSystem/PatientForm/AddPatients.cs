@@ -22,12 +22,18 @@ namespace ClinicSystem
             Gender.Items.Add("Female");
             int id = db.getPatientId();
             lastPatientID.Text = id.ToString();
+            roomSettings();
+        }
+
+        public void roomSettings()
+        {
+            comboRoom.Items.Clear();
             rooms = db.getRoomNo();
             foreach (string room in rooms)
             {
                 comboRoom.Items.Add(room);
             }
-            if (rooms.Count > 0) comboRoom.SelectedIndex = 0; 
+            if (rooms.Count > 0) comboRoom.SelectedIndex = 0;
         }
 
         private void BirthDate_Value(object sender, EventArgs e)
@@ -108,7 +114,7 @@ namespace ClinicSystem
                 return;
             }
 
-            if (ageInt > 120 || ageInt < 0)
+            if (ageInt > 120 || ageInt <= 0)
             {
                 MessageBox.Show("Invalid Age", "Invalid Age", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -138,6 +144,7 @@ namespace ClinicSystem
                 BirthDate.Value = DateTime.Now;
                 int id = db.getPatientId();
                 lastPatientID.Text = id.ToString();
+                roomSettings();
             }
         }
     }

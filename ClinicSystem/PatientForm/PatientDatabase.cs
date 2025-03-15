@@ -205,7 +205,6 @@ namespace ClinicSystem
         {
             try
             {
-                //int op = getDoctorOperationId(schedule.Doctor, selectedOperation);
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
                 string query = "SELECT patientappointment_tbl.* " +
@@ -213,7 +212,7 @@ namespace ClinicSystem
                              "JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId " +
                              "WHERE doctor_operation_mm_tbl.DoctorID = @DoctorID " +
                              "AND patientappointment_tbl.DateSchedule = @DateSchedule " +
-                             "AND (patientappointment_tbl.StartTime < @EndTime AND patientappointment_tbl.EndTime > @StartTime)";
+                             "AND (patientappointment_tbl.StartTime < @EndTime OR patientappointment_tbl.EndTime > @StartTime)";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@DoctorID", schedule.Doctor.DoctorID);
                 command.Parameters.AddWithValue("@DateSchedule", schedule.DateSchedule.ToString("yyyy-MM-dd"));

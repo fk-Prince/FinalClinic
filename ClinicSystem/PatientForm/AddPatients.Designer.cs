@@ -541,14 +541,14 @@
             this.label7.TabIndex = 10000;
             this.label7.Text = "Age";
             // 
-            // AddPatient
+            // AddPatients
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1037, 598);
             this.Controls.Add(this.mainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AddPatient";
+            this.Name = "AddPatients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddPatient";
             this.mainPanel.ResumeLayout(false);
