@@ -113,6 +113,11 @@ namespace ClinicSystem.Appointments
 
             if (origStartTime == null || origEndTime == null) return;
 
+            if (selectedAppointment.Schedule.DateSchedule == dateSchedulePicker.Value && selectedAppointment.Schedule.StartTime == origStartTime && selectedAppointment.Schedule.EndTime == origEndTime)
+            {
+                return;
+            }
+
             Appointment app = new Appointment(selectedAppointment.Schedule.Operation,
                 selectedAppointment.Schedule.Doctor,
                 dateSchedulePicker.Value,
@@ -123,11 +128,15 @@ namespace ClinicSystem.Appointments
             bool available = db.isAvailable(app);
             if (available)
             {
-                MessageBox.Show("UPDATED");
+                bool updated = db.UpdateSchedule(app);
+                if (updated)
+                {
+                    MessageBox.Show("Appointment is updated.", "Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
             }
             else
             {
-                MessageBox.Show("NOT AVAILABLe");
+                MessageBox.Show("This schdule conflict other schedule.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

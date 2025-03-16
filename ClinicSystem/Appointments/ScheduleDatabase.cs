@@ -195,8 +195,7 @@ namespace ClinicSystem.Appointments
                             "AND patientappointment_tbl.DateSchedule = @DateSchedule " +
                             "AND (patientappointment_tbl.StartTime < @EndTime OR patientappointment_tbl.EndTime > @StartTime) " +
                             "AND AppointmentDetailNo != @AppointmentDetailNo";
-                MySqlCommand command = new MySqlCommand(query, conn);
-                MessageBox.Show(app.DateSchedule.ToString("yyyy-MM-dd") + "    " + app.StartTime);
+                MySqlCommand command = new MySqlCommand(query, conn);             
                 command.Parameters.AddWithValue("@DoctorID", app.Doctor.DoctorID);
                 command.Parameters.AddWithValue("@DateSchedule", app.DateSchedule.ToString("yyyy-MM-dd"));
                 command.Parameters.AddWithValue("@EndTime", app.EndTime);
@@ -212,5 +211,30 @@ namespace ClinicSystem.Appointments
             }
             return true;
         }
+
+        public bool UpdateSchedule(Appointment app)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(driver);
+                conn.Open();
+                string query = @"UPDATE patientAppointment_tbl 
+                                 SET `DateSchedule` = @DateSchedule, `StartTime` = @StartTime, `EndTime` = @EndTime 
+                                WHERE AppointmentDetailNo = @AppointmentDetailNo";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@AppointmentDetailNo", app.AppointmentDetailNo);
+                command.Parameters.AddWithValue("@DateSchedule", app.DateSchedule);
+                command.Parameters.AddWithValue("@StartTime", app.StartTime);
+                command.Parameters.AddWithValue("@EndTime", app.EndTime);
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error from updateSchedule() DB" + ex.Message);
+            }
+            return false;
+        
+         }
     }
 }
