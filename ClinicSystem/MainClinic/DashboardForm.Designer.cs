@@ -282,12 +282,12 @@
             this.chartAge.BorderlineColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "chart";
             this.chartAge.ChartAreas.Add(chartArea1);
-            this.chartAge.Location = new System.Drawing.Point(343, 152);
+            this.chartAge.Location = new System.Drawing.Point(310, 146);
             this.chartAge.Name = "chartAge";
             series1.ChartArea = "chart";
             series1.Name = "Age";
             this.chartAge.Series.Add(series1);
-            this.chartAge.Size = new System.Drawing.Size(737, 241);
+            this.chartAge.Size = new System.Drawing.Size(748, 258);
             this.chartAge.TabIndex = 3;
             this.chartAge.Text = "chart1";
             title1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;

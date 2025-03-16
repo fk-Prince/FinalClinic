@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using ClinicSystem.Doctors;
 using ClinicSystem.MainClinic;
 using ClinicSystem.Rooms;
 using ClinicSystem.UserLoginForm;
@@ -45,12 +46,6 @@ namespace ClinicSystem
         }
 
 
-        private void AddPatientS_Click_1(object sender, EventArgs e)
-        {
-            FormPatient patientForm = new FormPatient(staff);
-            LoadForm(patientForm);
-        }
-
         private void mouseClicked(object sender, MouseEventArgs e)
         {
             Button btn = sender as Button;
@@ -63,6 +58,15 @@ namespace ClinicSystem
                 lastButtonClicked = btn;
             }
         }
+
+
+
+        private void AddPatientS_Click_1(object sender, EventArgs e)
+        {
+            FormPatient patientForm = new FormPatient(staff);
+            LoadForm(patientForm);
+        }
+
 
         private void appointmentButton_Click(object sender, EventArgs e)
         {
@@ -104,6 +108,12 @@ namespace ClinicSystem
         {
             DateTime currentTime = DateTime.Now;
             Clock.Text = currentTime.ToString("hh:mm:ss tt");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DoctorMainForm doc = new DoctorMainForm(staff);
+            LoadForm(doc);
         }
     }
 }

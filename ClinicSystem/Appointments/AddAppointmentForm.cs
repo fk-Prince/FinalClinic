@@ -34,7 +34,7 @@ namespace ClinicSystem.Appointments
             foreach (Patient patient in patientList)
             {
                 comboPatientID.Items.Add(patient.Patientid);
-            }
+            }  
         }
 
         private void operationSettings()
