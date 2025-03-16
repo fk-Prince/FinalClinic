@@ -72,8 +72,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbPatId = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.totalPatient = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -107,7 +105,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 95);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1013, 491);
+            this.tabControl1.Size = new System.Drawing.Size(1056, 491);
             this.tabControl1.TabIndex = 8;
             // 
             // PatientList
@@ -116,7 +114,7 @@
             this.PatientList.Location = new System.Drawing.Point(4, 29);
             this.PatientList.Name = "PatientList";
             this.PatientList.Padding = new System.Windows.Forms.Padding(3);
-            this.PatientList.Size = new System.Drawing.Size(1005, 458);
+            this.PatientList.Size = new System.Drawing.Size(1048, 458);
             this.PatientList.TabIndex = 0;
             this.PatientList.Text = "Patient List";
             this.PatientList.UseVisualStyleBackColor = true;
@@ -136,7 +134,7 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 30;
             this.dataGridView.RowTemplate.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(999, 452);
+            this.dataGridView.Size = new System.Drawing.Size(1042, 452);
             this.dataGridView.TabIndex = 0;
             // 
             // PatientDetails
@@ -159,7 +157,7 @@
             this.PatientDetails.Location = new System.Drawing.Point(4, 29);
             this.PatientDetails.Name = "PatientDetails";
             this.PatientDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.PatientDetails.Size = new System.Drawing.Size(1005, 458);
+            this.PatientDetails.Size = new System.Drawing.Size(1048, 458);
             this.PatientDetails.TabIndex = 1;
             this.PatientDetails.Text = "Patient Details";
             // 
@@ -168,7 +166,7 @@
             this.panel14.Controls.Add(this.tbBill);
             this.panel14.Controls.Add(this.label15);
             this.panel14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel14.Location = new System.Drawing.Point(620, 16);
+            this.panel14.Location = new System.Drawing.Point(667, 16);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(350, 35);
             this.panel14.TabIndex = 8;
@@ -198,7 +196,7 @@
             this.panel13.Controls.Add(this.tbDoctorDiagnosis);
             this.panel13.Controls.Add(this.label14);
             this.panel13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel13.Location = new System.Drawing.Point(550, 317);
+            this.panel13.Location = new System.Drawing.Point(597, 317);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(420, 122);
             this.panel13.TabIndex = 8;
@@ -229,7 +227,7 @@
             this.panel9.Controls.Add(this.comboDoctorAssigned);
             this.panel9.Controls.Add(this.label10);
             this.panel9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel9.Location = new System.Drawing.Point(550, 264);
+            this.panel9.Location = new System.Drawing.Point(600, 264);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(417, 35);
             this.panel9.TabIndex = 5;
@@ -376,7 +374,7 @@
             this.panel7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel7.Location = new System.Drawing.Point(22, 162);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(945, 35);
+            this.panel7.Size = new System.Drawing.Size(995, 35);
             this.panel7.TabIndex = 4;
             // 
             // tbAddress
@@ -402,7 +400,7 @@
             this.panel6.Controls.Add(this.tbGender);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(794, 112);
+            this.panel6.Location = new System.Drawing.Point(844, 112);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(173, 35);
             this.panel6.TabIndex = 3;
@@ -431,7 +429,7 @@
             this.panel5.Controls.Add(this.tbAge);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(594, 112);
+            this.panel5.Location = new System.Drawing.Point(641, 112);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(173, 35);
             this.panel5.TabIndex = 2;
@@ -489,7 +487,7 @@
             this.panel3.Controls.Add(this.comboOperation);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(550, 220);
+            this.panel3.Location = new System.Drawing.Point(600, 220);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(417, 35);
             this.panel3.TabIndex = 2;
@@ -544,26 +542,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "PatientID";
             // 
-            // totalPatient
-            // 
-            this.totalPatient.AutoSize = true;
-            this.totalPatient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPatient.Location = new System.Drawing.Point(880, 32);
-            this.totalPatient.Name = "totalPatient";
-            this.totalPatient.Size = new System.Drawing.Size(19, 21);
-            this.totalPatient.TabIndex = 7;
-            this.totalPatient.Text = "...";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(754, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 21);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Total Patients:";
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
@@ -606,10 +584,8 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1037, 598);
+            this.ClientSize = new System.Drawing.Size(1080, 598);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.totalPatient);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ViewPatientForm";
@@ -648,7 +624,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -697,8 +672,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox tbPatId;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label totalPatient;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;

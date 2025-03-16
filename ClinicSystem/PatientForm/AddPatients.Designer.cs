@@ -94,12 +94,11 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1037, 598);
+            this.mainPanel.Size = new System.Drawing.Size(1080, 598);
             this.mainPanel.TabIndex = 10040;
             // 
             // personaldetail
             // 
-            this.personaldetail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.personaldetail.Controls.Add(this.panel2);
             this.personaldetail.Controls.Add(this.panel1);
             this.personaldetail.Controls.Add(this.panel3);
@@ -112,9 +111,10 @@
             this.personaldetail.Controls.Add(this.panel4);
             this.personaldetail.Controls.Add(this.panel17);
             this.personaldetail.Controls.Add(this.panel8);
-            this.personaldetail.Location = new System.Drawing.Point(3, 3);
+            this.personaldetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.personaldetail.Location = new System.Drawing.Point(0, 0);
             this.personaldetail.Name = "personaldetail";
-            this.personaldetail.Size = new System.Drawing.Size(1034, 595);
+            this.personaldetail.Size = new System.Drawing.Size(1080, 598);
             this.personaldetail.TabIndex = 10060;
             // 
             // panel2
@@ -124,7 +124,7 @@
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(51, 82);
+            this.panel2.Location = new System.Drawing.Point(74, 84);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(176, 44);
             this.panel2.TabIndex = 10061;
@@ -173,7 +173,7 @@
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(51, 161);
+            this.panel1.Location = new System.Drawing.Point(74, 163);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 41);
             this.panel1.TabIndex = 10060;
@@ -212,7 +212,7 @@
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(51, 236);
+            this.panel3.Location = new System.Drawing.Point(74, 238);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(290, 37);
             this.panel3.TabIndex = 10050;
@@ -251,7 +251,7 @@
             this.panel6.Controls.Add(this.textBox9);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(50, 309);
+            this.panel6.Location = new System.Drawing.Point(73, 311);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(638, 37);
             this.panel6.TabIndex = 10053;
@@ -299,7 +299,7 @@
             this.panel5.Controls.Add(this.textBox7);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(713, 236);
+            this.panel5.Location = new System.Drawing.Point(736, 238);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(290, 37);
             this.panel5.TabIndex = 10054;
@@ -338,7 +338,7 @@
             this.panel9.Controls.Add(this.textBox13);
             this.panel9.Controls.Add(this.label8);
             this.panel9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel9.Location = new System.Drawing.Point(840, 309);
+            this.panel9.Location = new System.Drawing.Point(863, 311);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(162, 37);
             this.panel9.TabIndex = 10051;
@@ -378,7 +378,7 @@
             this.panel7.Controls.Add(this.textBox11);
             this.panel7.Controls.Add(this.label6);
             this.panel7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel7.Location = new System.Drawing.Point(51, 383);
+            this.panel7.Location = new System.Drawing.Point(74, 385);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(466, 37);
             this.panel7.TabIndex = 10055;
@@ -415,7 +415,7 @@
             this.button3.BackColor = System.Drawing.Color.DarkGray;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(667, 519);
+            this.button3.Location = new System.Drawing.Point(689, 513);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(337, 50);
             this.button3.TabIndex = 10058;
@@ -430,7 +430,7 @@
             this.panel4.Controls.Add(this.textBox5);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(399, 236);
+            this.panel4.Location = new System.Drawing.Point(422, 238);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(290, 37);
             this.panel4.TabIndex = 10052;
@@ -469,7 +469,7 @@
             this.panel17.Controls.Add(this.textBox20);
             this.panel17.Controls.Add(this.label15);
             this.panel17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel17.Location = new System.Drawing.Point(658, 383);
+            this.panel17.Location = new System.Drawing.Point(681, 385);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(344, 37);
             this.panel17.TabIndex = 10057;
@@ -508,7 +508,7 @@
             this.panel8.Controls.Add(this.textBox10);
             this.panel8.Controls.Add(this.label7);
             this.panel8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel8.Location = new System.Drawing.Point(712, 309);
+            this.panel8.Location = new System.Drawing.Point(735, 311);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(105, 37);
             this.panel8.TabIndex = 10056;
@@ -545,7 +545,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1037, 598);
+            this.ClientSize = new System.Drawing.Size(1080, 598);
             this.Controls.Add(this.mainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddPatients";

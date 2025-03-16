@@ -63,5 +63,12 @@ namespace ClinicSystem
             RescheduleForm add = new RescheduleForm(staff);
             LoadForm(add);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginUserForm user = new LoginUserForm();
+            user.Show();
+        }
     }
 }

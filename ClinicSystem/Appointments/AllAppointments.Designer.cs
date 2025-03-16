@@ -60,7 +60,7 @@
             this.panel1.Controls.Add(this.weekRadio);
             this.panel1.Location = new System.Drawing.Point(21, 79);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(991, 46);
+            this.panel1.Size = new System.Drawing.Size(1024, 46);
             this.panel1.TabIndex = 4;
             // 
             // radioToday
@@ -135,14 +135,14 @@
             this.flowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowPanel.Location = new System.Drawing.Point(21, 154);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(991, 429);
+            this.flowPanel.Size = new System.Drawing.Size(1024, 429);
             this.flowPanel.TabIndex = 3;
             // 
             // AllAppointments
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1034, 595);
+            this.ClientSize = new System.Drawing.Size(1057, 595);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowPanel);

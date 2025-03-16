@@ -52,8 +52,8 @@
             this.comboAppointment = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
             this.doctorL = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -74,7 +74,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(185, 3);
+            this.panel1.Location = new System.Drawing.Point(192, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(667, 584);
             this.panel1.TabIndex = 0;
@@ -300,10 +300,18 @@
             this.panel8.Controls.Add(this.doctorL);
             this.panel8.Controls.Add(this.label8);
             this.panel8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel8.Location = new System.Drawing.Point(185, 155);
+            this.panel8.Location = new System.Drawing.Point(192, 152);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(535, 36);
             this.panel8.TabIndex = 10085;
+            // 
+            // doctorL
+            // 
+            this.doctorL.AutoSize = true;
+            this.doctorL.Location = new System.Drawing.Point(117, 8);
+            this.doctorL.Name = "doctorL";
+            this.doctorL.Size = new System.Drawing.Size(0, 20);
+            this.doctorL.TabIndex = 2;
             // 
             // label8
             // 
@@ -314,19 +322,11 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Doctor Name";
             // 
-            // doctorL
-            // 
-            this.doctorL.AutoSize = true;
-            this.doctorL.Location = new System.Drawing.Point(117, 8);
-            this.doctorL.Name = "doctorL";
-            this.doctorL.Size = new System.Drawing.Size(0, 20);
-            this.doctorL.TabIndex = 2;
-            // 
             // RescheduleForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1037, 591);
+            this.ClientSize = new System.Drawing.Size(1057, 591);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

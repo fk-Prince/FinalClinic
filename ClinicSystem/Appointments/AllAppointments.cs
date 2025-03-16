@@ -45,7 +45,7 @@ namespace ClinicSystem.Appointments
                     panel.Size = new Size(300, 310);
                     panel.BackColor = Color.FromArgb(153, 180, 209);
                     panel.BorderStyle = BorderStyle.FixedSingle;
-                    panel.Margin = new Padding(13, 10, 10, 10);
+                    panel.Margin = new Padding(15, 10, 10, 10);
                     panel.Padding = new Padding(10, 10, 10, 10);
 
                     Label label = createLabel("Room No", pa.Roomno.ToString(), 10, 10);

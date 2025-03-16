@@ -33,7 +33,7 @@ namespace ClinicSystem
                 panel.Size = new Size( 300,250);
                 panel.Location = new Point(50, 100);
                 panel.BorderStyle = BorderStyle.FixedSingle;
-                panel.Margin = new Padding(25, 10, 10, 10);
+                panel.Margin = new Padding(30, 10, 10, 10);
                 panel.BackColor = Color.FromArgb(153, 180, 209);
 
                 Label label = createLabel("Operation Code", operation.OperationCode, 10, 0);
@@ -309,6 +309,13 @@ namespace ClinicSystem
             {
                 e.Handled = true;
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginUserForm user = new LoginUserForm();
+            user.Show();
         }
     }
 }
