@@ -57,5 +57,11 @@ namespace ClinicSystem
             AddAppointmentForm add = new AddAppointmentForm(staff);
             LoadForm(add);
         }
+
+        private void rescheduleB_Click(object sender, EventArgs e)
+        {
+            RescheduleForm add = new RescheduleForm(staff);
+            LoadForm(add);
+        }
     }
 }

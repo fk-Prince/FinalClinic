@@ -48,7 +48,7 @@ namespace DoctorClinic
                           reader.GetString("description"),
                           reader.GetDouble("price"),
                           reader.GetTimeSpan("duration")
-                      );
+                    );
 
                     DateTime date = reader.GetDateTime("DateSchedule");
                     TimeSpan startTime = reader.GetTimeSpan("StartTime");
@@ -61,7 +61,7 @@ namespace DoctorClinic
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("xd");
+                MessageBox.Show("Error from getPatients() DB" + ex.Message);
             }
             return appointments;
         }
@@ -83,7 +83,7 @@ namespace DoctorClinic
             }
             catch (MySqlException ex)
             {
-
+                MessageBox.Show("Error from updateSchedule() DB" + ex.Message);
             }
             return false;
         }

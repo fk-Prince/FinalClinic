@@ -101,9 +101,9 @@
             this.allSchedule.AutoSize = true;
             this.allSchedule.Location = new System.Drawing.Point(356, 15);
             this.allSchedule.Name = "allSchedule";
-            this.allSchedule.Size = new System.Drawing.Size(89, 17);
+            this.allSchedule.Size = new System.Drawing.Size(103, 17);
             this.allSchedule.TabIndex = 2;
-            this.allSchedule.Text = "All Schedules";
+            this.allSchedule.Text = "All Appointments";
             this.allSchedule.UseVisualStyleBackColor = true;
             this.allSchedule.CheckedChanged += new System.EventHandler(this.allSchedule_CheckedChanged);
             // 

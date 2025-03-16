@@ -175,7 +175,17 @@ namespace ClinicSystem.Appointments
 
         private void allSchedule_CheckedChanged(object sender, EventArgs e)
         {
-            displaySchedules(patientAppointments, "");
+            DateTime dateNow = DateTime.Now;
+            List<DoctorOperation> filtered = new List<DoctorOperation>();
+
+            foreach (DoctorOperation pa in patientAppointments)
+            {
+                if (pa.Schedule.DateSchedule >= dateNow)
+                {
+                    filtered.Add(pa);
+                }
+            }
+            displaySchedules(filtered, "");
         }
 
         private void selection_CheckedChanged(object sender, EventArgs e)

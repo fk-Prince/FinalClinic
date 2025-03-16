@@ -218,6 +218,12 @@ namespace ClinicSystem
             }
             price = double.Parse(price.ToString("F2"));
 
+            if (price >= 1000000000)
+            {
+                MessageBox.Show("Price is too big.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             TimeSpan duration;
             if (!TimeSpan.TryParseExact(opDuration.Text, @"hh\:mm\:ss", null, out duration))
             {
@@ -231,7 +237,7 @@ namespace ClinicSystem
                 return;
             }
 
-            bool success = db.insert(staff.StaffId, new Operation(opCode, opName, DateTime.Now, opDescription, price, duration));
+            bool success = db.insert(staff.StaffId, new Operation(opCode.ToUpper(), Capitalize(opName), DateTime.Now, opDescription, price, duration));
             if (success)
             {
                 MessageBox.Show("Operation Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -242,6 +248,14 @@ namespace ClinicSystem
                 MessageBox.Show("Operation Failed to Add");
             }
         }
+        public string Capitalize(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return name;
+
+            return char.ToUpper(name[0]) + name.Substring(1).ToLower();
+        }
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -269,11 +283,31 @@ namespace ClinicSystem
             if (!string.IsNullOrWhiteSpace(opPrice.Text))
             {
                 bool op = double.TryParse(opPrice.Text, out double price);
+                if (op)
+                {
+                   op = double.Parse(opPrice.Text) <= 1000000000;
+                }
                 picturePrice.Image = op ? Properties.Resources.check : Properties.Resources.error;
             }
             else
             {
                 picturePrice.Image = null;
+            }
+        }
+
+        private void TextOnly(object sender, KeyPressEventArgs e)
+        {
+             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+             {
+                e.Handled = true;
+             }
+        }
+
+        private void NumberOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
             }
         }
     }

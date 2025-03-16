@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.addAppointmentB = new System.Windows.Forms.Button();
             this.allAppointmentB = new System.Windows.Forms.Button();
+            this.rescheduleB = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // appointmentPanel
@@ -75,11 +76,25 @@
             this.allAppointmentB.Click += new System.EventHandler(this.allAppointmentB_Click);
             this.allAppointmentB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
             // 
+            // rescheduleB
+            // 
+            this.rescheduleB.BackColor = System.Drawing.Color.White;
+            this.rescheduleB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rescheduleB.Location = new System.Drawing.Point(425, 12);
+            this.rescheduleB.Name = "rescheduleB";
+            this.rescheduleB.Size = new System.Drawing.Size(170, 42);
+            this.rescheduleB.TabIndex = 10069;
+            this.rescheduleB.Text = "Re-Schedule";
+            this.rescheduleB.UseVisualStyleBackColor = false;
+            this.rescheduleB.Click += new System.EventHandler(this.rescheduleB_Click);
+            this.rescheduleB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
+            // 
             // AppointmentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1061, 684);
+            this.Controls.Add(this.rescheduleB);
             this.Controls.Add(this.appointmentPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.addAppointmentB);
@@ -97,5 +112,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button addAppointmentB;
         private System.Windows.Forms.Button allAppointmentB;
+        private System.Windows.Forms.Button rescheduleB;
     }
 }

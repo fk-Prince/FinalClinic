@@ -73,12 +73,14 @@ namespace ClinicSystem.Appointments
                             reader.GetDouble("price"),
                             reader.GetTimeSpan("duration")
                         );
+                    int appointmentdetailno = reader.GetInt32("AppointmentDetailNo");
                     Appointment schedule = new Appointment(
                         operation,
                         doctor,
                         reader.GetDateTime("DateSchedule"),
                         reader.GetTimeSpan("StartTime"),
-                        reader.GetTimeSpan("EndTime")
+                        reader.GetTimeSpan("EndTime"),
+                        appointmentdetailno
                      );
 
                     int roomno = reader.GetInt32("Roomno");
@@ -176,6 +178,39 @@ namespace ClinicSystem.Appointments
             }
 
             return list;
+        }
+
+
+        public bool isAvailable(Appointment app)
+        {
+
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(driver);
+                conn.Open();
+                string query = "SELECT patientappointment_tbl.* " +
+                            "FROM patientappointment_tbl " +
+                            "JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId " +
+                            "WHERE doctor_operation_mm_tbl.DoctorID = @DoctorID " +
+                            "AND patientappointment_tbl.DateSchedule = @DateSchedule " +
+                            "AND (patientappointment_tbl.StartTime < @EndTime OR patientappointment_tbl.EndTime > @StartTime) " +
+                            "AND AppointmentDetailNo != @AppointmentDetailNo";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MessageBox.Show(app.DateSchedule.ToString("yyyy-MM-dd") + "    " + app.StartTime);
+                command.Parameters.AddWithValue("@DoctorID", app.Doctor.DoctorID);
+                command.Parameters.AddWithValue("@DateSchedule", app.DateSchedule.ToString("yyyy-MM-dd"));
+                command.Parameters.AddWithValue("@EndTime", app.EndTime);
+                command.Parameters.AddWithValue("@StartTime", app.StartTime);
+                command.Parameters.AddWithValue("@AppointmentDetailNo", app.AppointmentDetailNo);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                return !reader.HasRows;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("error on get isAvailable() db" + ex.Message);
+            }
+            return true;
         }
     }
 }

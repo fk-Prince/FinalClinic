@@ -36,6 +36,7 @@
             this.SearchBar = new System.Windows.Forms.TextBox();
             this.flowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.addOperationPanel = new System.Windows.Forms.Panel();
+            this.picturePrice = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureDuration = new System.Windows.Forms.PictureBox();
             this.pictureName = new System.Windows.Forms.PictureBox();
@@ -60,10 +61,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.opCode = new System.Windows.Forms.TextBox();
-            this.picturePrice = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.addOperationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCode)).BeginInit();
@@ -73,7 +74,6 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picturePrice)).BeginInit();
             this.SuspendLayout();
             // 
             // operationFlowPanel
@@ -165,6 +165,14 @@
             this.addOperationPanel.Size = new System.Drawing.Size(457, 525);
             this.addOperationPanel.TabIndex = 4;
             this.addOperationPanel.Visible = false;
+            // 
+            // picturePrice
+            // 
+            this.picturePrice.Location = new System.Drawing.Point(430, 206);
+            this.picturePrice.Name = "picturePrice";
+            this.picturePrice.Size = new System.Drawing.Size(16, 16);
+            this.picturePrice.TabIndex = 12;
+            this.picturePrice.TabStop = false;
             // 
             // button3
             // 
@@ -341,6 +349,7 @@
             this.opPrice.Size = new System.Drawing.Size(203, 20);
             this.opPrice.TabIndex = 0;
             this.opPrice.TextChanged += new System.EventHandler(this.opPrice_TextChanged);
+            this.opPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
             // 
             // panel4
             // 
@@ -370,6 +379,7 @@
             this.opName.Size = new System.Drawing.Size(203, 20);
             this.opName.TabIndex = 0;
             this.opName.TextChanged += new System.EventHandler(this.opName_TextChanged);
+            this.opName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextOnly);
             // 
             // panel3
             // 
@@ -398,14 +408,6 @@
             this.opCode.TabIndex = 0;
             this.opCode.TextChanged += new System.EventHandler(this.opCode_TextChanged);
             // 
-            // picturePrice
-            // 
-            this.picturePrice.Location = new System.Drawing.Point(430, 206);
-            this.picturePrice.Name = "picturePrice";
-            this.picturePrice.Size = new System.Drawing.Size(16, 16);
-            this.picturePrice.TabIndex = 12;
-            this.picturePrice.TabStop = false;
-            // 
             // OperationForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -425,6 +427,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.addOperationPanel.ResumeLayout(false);
             this.addOperationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCode)).EndInit();
@@ -440,7 +443,6 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picturePrice)).EndInit();
             this.ResumeLayout(false);
 
         }

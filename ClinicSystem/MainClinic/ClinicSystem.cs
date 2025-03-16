@@ -21,6 +21,7 @@ namespace ClinicSystem
             LoadForm(dashboard);
 
             lastButtonClicked = DashboardS;
+            lastButtonClicked.ForeColor = Color.White;
         }
 
 

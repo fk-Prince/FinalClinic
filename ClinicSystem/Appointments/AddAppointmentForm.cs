@@ -20,12 +20,8 @@ namespace ClinicSystem.Appointments
         private List<Appointment> patientSchedules = new List<Appointment>();
         private List<DoctorOperation> docOp = new List<DoctorOperation>();
         private Stack<string> text = new Stack<string>();
-     /*   text.Clear();
-            temporaryStorage.Clear();
-            patientSchedules.Clear();
-            docOp.Clear();
-            comboPatientID.Items.Clear();
-            comboOperation.Items.Clear();*/
+
+
         private Operation selectedOperation;
         private Doctor selectedDoctor;
         private Patient selectedPatient;
@@ -127,7 +123,7 @@ namespace ClinicSystem.Appointments
                 comboEnd.SelectedItem = ampmEnd;
             } 
         }
-         
+
         private TimeSpan origStartTime;
         private TimeSpan origEndTime;
 
@@ -149,6 +145,12 @@ namespace ClinicSystem.Appointments
             if (int.Parse(StartTime.Text.Split(':')[0]) >= 12)
             {
                 MessageBox.Show("Enter 12 hours format (00:00:00) - (11:59:00).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (int.Parse(StartTime.Text.Split(':')[1]) >= 60 || int.Parse(StartTime.Text.Split(':')[2]) >= 60)
+            {
+                MessageBox.Show("Minutes and seconds must be between 00 and 59.", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -240,11 +242,20 @@ namespace ClinicSystem.Appointments
         {
             string fullname = schedule.Doctor.DoctorLastName + ", " + schedule.Doctor.DoctorFirstName + " " + schedule.Doctor.DoctorMiddleName;
             string displayText = $"Operation Name:  {selectedOperation.OperationName}  {Environment.NewLine}"  +
-                                 $"Doctor Assigned: {fullname}  {Environment.NewLine}" +  
+                                 $"Operation Bill:  {selectedOperation.Price.ToString("F2")}  {Environment.NewLine}" +
+                                 $"Doctor Assigned: Dr.{fullname}  {Environment.NewLine}" +  
                                  $"Date Schedule: {schedule.DateSchedule.ToString("yyyy-MM-dd")} {Environment.NewLine}" +
                                  $"StartTime: {StartTime.Text} {comboStart.SelectedItem.ToString()}{Environment.NewLine}" +
                                  $"EndTime:  {EndTime.Text} {comboEnd.SelectedItem.ToString()}{Environment.NewLine}" +
                                  "------------------------------------------------------------------------------------------------------------" + Environment.NewLine;
+
+            //string displayText = $"Operation Name:                              {selectedOperation.OperationName}  {Environment.NewLine}" +
+            //                     $"Operation Bill:                              {selectedOperation.Price.ToString("F2")}  {Environment.NewLine}" +
+            //                     $"Doctor Assigned:                             Dr. {fullname}  {Environment.NewLine}" +
+            //                     $"Date Schedule:                               {schedule.DateSchedule.ToString("yyyy-MM-dd")} {Environment.NewLine}" +
+            //                     $"StartTime:                                   {StartTime.Text} {comboStart.SelectedItem.ToString()}{Environment.NewLine}" +
+            //                     $"EndTime:                                     {EndTime.Text} {comboEnd.SelectedItem.ToString()}{Environment.NewLine}" +
+            //                     "------------------------------------------------------------------------------------------------------------" + Environment.NewLine;
             tbListOperation.Text += displayText;
             text.Push(displayText);
         }

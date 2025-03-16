@@ -126,7 +126,7 @@ namespace ClinicSystem
                 return;
             }
 
-            Patient patient = new Patient(fname, mname, lname, address, ageInt, gender, bday, contact);
+            Patient patient = new Patient(Capitalize(fname), Capitalize(mname), Capitalize(lname), address, ageInt, gender, bday, contact);
 
             bool success = db.insertPatient(staff.StaffId, patient, comboRoom.SelectedItem.ToString());
 
@@ -146,6 +146,14 @@ namespace ClinicSystem
                 lastPatientID.Text = id.ToString();
                 roomSettings();
             }
+        }
+
+        public string Capitalize(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return name;
+
+            return char.ToUpper(name[0]) + name.Substring(1).ToLower();
         }
     }
 }

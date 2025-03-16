@@ -29,7 +29,17 @@ namespace ClinicSystem
             this.startTime = startTime;
             this.endTime = endTime;
         }
-            
+
+        public Appointment(Operation operation, Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int appointmentDetailId)
+        {
+            this.doctor = doctor;
+            this.operation = operation;
+            this.dateSchedule = dateSchedule;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.appointmentDetailNo = appointmentDetailId;
+        }
+
         public Appointment( Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime)
         {
             this.doctor = doctor;
@@ -55,7 +65,7 @@ namespace ClinicSystem
             this.operation = operation;
             this.roomno = roomno;
             this.diagnosis = diagnosis;
-            this.appointmentDetailNo = appointmentDetailId;
+            appointmentDetailNo = appointmentDetailId;
         }
 
         public Doctor Doctor { get => doctor; }
