@@ -18,7 +18,7 @@ namespace ClinicSystem
             InitializeComponent();
             Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
             Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
-            DashboardForm dashboard = new DashboardForm(staff);
+            DashboardForm dashboard = new DashboardForm(staff,this);
             LoadForm(dashboard);
 
             lastButtonClicked = DashboardS;
@@ -95,7 +95,7 @@ namespace ClinicSystem
 
         private void dashboardClicked(object sender, EventArgs e)
         {
-            DashboardForm dashboard = new DashboardForm(staff);
+            DashboardForm dashboard = new DashboardForm(staff, this);
             LoadForm(dashboard);
         }
 

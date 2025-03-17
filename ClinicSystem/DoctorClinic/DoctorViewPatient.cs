@@ -50,7 +50,7 @@ namespace ClinicSystem
             foreach (Appointment pa in patientAppointments)
             {
                 bool duplicate = false;
-                foreach (DataRow row in dt.Rows)
+                  foreach (DataRow row in dt.Rows)
                 {
                     if (Convert.ToInt32(row["PatientID"]) == pa.Patient.Patientid)
                     {
@@ -258,6 +258,7 @@ namespace ClinicSystem
                 MessageBox.Show("Appointment Updated", "Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-        }      
+        }
+
     }
 }

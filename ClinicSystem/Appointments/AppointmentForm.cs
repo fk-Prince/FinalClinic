@@ -66,7 +66,7 @@ namespace ClinicSystem
 
         private void label3_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             LoginUserForm user = new LoginUserForm();
             user.Show();
         }

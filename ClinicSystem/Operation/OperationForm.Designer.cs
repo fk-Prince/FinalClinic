@@ -61,7 +61,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.opCode = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.addOperationPanel.SuspendLayout();
@@ -409,25 +408,11 @@
             this.opCode.TabIndex = 0;
             this.opCode.TextChanged += new System.EventHandler(this.opCode_TextChanged);
             // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1057, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 25);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "X";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // OperationForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1080, 684);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.addOperationPanel);
             this.Controls.Add(this.flowLayout);
             this.Controls.Add(this.panel1);
@@ -459,7 +444,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -498,6 +482,5 @@
         private System.Windows.Forms.PictureBox pictureDuration;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox picturePrice;
-        private System.Windows.Forms.Label label7;
     }
 }

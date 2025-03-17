@@ -33,7 +33,6 @@
             this.addAppointmentB = new System.Windows.Forms.Button();
             this.allAppointmentB = new System.Windows.Forms.Button();
             this.rescheduleB = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // appointmentPanel
@@ -90,26 +89,11 @@
             this.rescheduleB.Click += new System.EventHandler(this.rescheduleB_Click);
             this.rescheduleB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(1057, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 25);
-            this.label3.TabIndex = 10070;
-            this.label3.Text = "X";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
             // AppointmentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1080, 684);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.rescheduleB);
             this.Controls.Add(this.appointmentPanel);
             this.Controls.Add(this.panel1);
@@ -119,7 +103,6 @@
             this.Name = "AppointmentForm";
             this.Text = "ab";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -130,6 +113,5 @@
         private System.Windows.Forms.Button addAppointmentB;
         private System.Windows.Forms.Button allAppointmentB;
         private System.Windows.Forms.Button rescheduleB;
-        private System.Windows.Forms.Label label3;
     }
 }

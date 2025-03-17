@@ -11,21 +11,19 @@ namespace ClinicSystem.MainClinic
         private ClinicDatabase db = new ClinicDatabase();
         private List<int> ageList;
         private int patientTotal = 0;
-        private static int patientCount = 0;
-        private static int doctorCount = 0;
+        private int patientCount = 0;
+        private int doctorCount = 0;
         private int doctorTotal = 0;
-        public DashboardForm(Staff staff)
+        private Form f;
+        public DashboardForm(Staff staff, Form f)
         {
+            this.f = f;
             InitializeComponent();
             Username.Text = staff.Username;
             patientTotal = db.TotalPatientLastMonth();
             ageList = db.getPatients();
             doctorTotal = db.getDoctor();
-
-            if (patientCount >= patientTotal) totalPatient.Text = patientCount.ToString();
-            if (doctorCount >= doctorTotal) totalDoctors.Text = doctorCount.ToString();
-            
-
+           
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -65,6 +63,13 @@ namespace ClinicSystem.MainClinic
             }
             totalDoctors.Text = doctorCount.ToString();
             doctorCount++;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            f.Hide();
+            LoginUserForm user = new LoginUserForm();
+            user.Show();
         }
     }
 }

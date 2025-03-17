@@ -57,12 +57,5 @@ namespace ClinicSystem
             ViewPatientForm addPatientForm = new ViewPatientForm(staff);
             loadForm(addPatientForm);
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            LoginUserForm user = new LoginUserForm();
-            user.Show();
-        }
     }
 }
