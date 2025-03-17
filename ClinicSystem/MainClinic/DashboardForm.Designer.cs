@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,7 +49,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.lastMonthTimer = new System.Windows.Forms.Timer(this.components);
-            this.chartAge = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.totalDoctors = new System.Windows.Forms.TextBox();
@@ -71,7 +66,6 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartAge)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -276,29 +270,6 @@
             this.lastMonthTimer.Interval = 200;
             this.lastMonthTimer.Tick += new System.EventHandler(this.lastMonthTimer_Tick);
             // 
-            // chartAge
-            // 
-            this.chartAge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.chartAge.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "chart";
-            this.chartAge.ChartAreas.Add(chartArea1);
-            this.chartAge.Location = new System.Drawing.Point(310, 146);
-            this.chartAge.Name = "chartAge";
-            series1.ChartArea = "chart";
-            series1.Name = "Age";
-            this.chartAge.Series.Add(series1);
-            this.chartAge.Size = new System.Drawing.Size(748, 258);
-            this.chartAge.TabIndex = 3;
-            this.chartAge.Text = "chart1";
-            title1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            title1.Name = "Patients";
-            title1.Text = "Total Patients";
-            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title2.Name = "Title1";
-            title2.Text = "Age Ranges";
-            this.chartAge.Titles.Add(title1);
-            this.chartAge.Titles.Add(title2);
-            // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
@@ -395,7 +366,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(1080, 684);
             this.Controls.Add(this.panel8);
-            this.Controls.Add(this.chartAge);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -416,7 +386,6 @@
             this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartAge)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -446,7 +415,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer lastMonthTimer;
         private System.Windows.Forms.TextBox lastMonthTotal;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartAge;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox totalPatient;
         private System.Windows.Forms.Panel panel7;
