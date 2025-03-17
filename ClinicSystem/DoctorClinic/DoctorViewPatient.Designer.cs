@@ -271,9 +271,6 @@
             this.comboEnd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEnd.Enabled = false;
             this.comboEnd.FormattingEnabled = true;
-            this.comboEnd.Items.AddRange(new object[] {
-            "AM",
-            "PM"});
             this.comboEnd.Location = new System.Drawing.Point(294, 5);
             this.comboEnd.Name = "comboEnd";
             this.comboEnd.Size = new System.Drawing.Size(60, 25);
@@ -313,9 +310,6 @@
             this.comboStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboStart.Enabled = false;
             this.comboStart.FormattingEnabled = true;
-            this.comboStart.Items.AddRange(new object[] {
-            "AM",
-            "PM"});
             this.comboStart.Location = new System.Drawing.Point(294, 4);
             this.comboStart.Name = "comboStart";
             this.comboStart.Size = new System.Drawing.Size(60, 25);

@@ -66,24 +66,25 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.updateAppointmentB);
             this.panel1.Controls.Add(this.panel7);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(192, 3);
+            this.panel1.Location = new System.Drawing.Point(192, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(667, 584);
+            this.panel1.Size = new System.Drawing.Size(667, 606);
             this.panel1.TabIndex = 0;
             // 
             // updateAppointmentB
             // 
             this.updateAppointmentB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.updateAppointmentB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateAppointmentB.Location = new System.Drawing.Point(194, 473);
+            this.updateAppointmentB.Location = new System.Drawing.Point(194, 482);
             this.updateAppointmentB.Name = "updateAppointmentB";
             this.updateAppointmentB.Size = new System.Drawing.Size(284, 53);
             this.updateAppointmentB.TabIndex = 10088;
@@ -96,7 +97,7 @@
             this.panel7.Controls.Add(this.tbOname);
             this.panel7.Controls.Add(this.label7);
             this.panel7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel7.Location = new System.Drawing.Point(66, 256);
+            this.panel7.Location = new System.Drawing.Point(66, 265);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(535, 36);
             this.panel7.TabIndex = 10085;
@@ -124,7 +125,7 @@
             this.panel6.Controls.Add(this.tbEnd);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(66, 382);
+            this.panel6.Location = new System.Drawing.Point(66, 391);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(535, 36);
             this.panel6.TabIndex = 10087;
@@ -167,7 +168,7 @@
             this.panel5.Controls.Add(this.tbStart);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(66, 340);
+            this.panel5.Location = new System.Drawing.Point(66, 349);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(535, 36);
             this.panel5.TabIndex = 10086;
@@ -208,7 +209,7 @@
             this.panel4.Controls.Add(this.dateSchedulePicker);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(66, 298);
+            this.panel4.Location = new System.Drawing.Point(66, 307);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(535, 36);
             this.panel4.TabIndex = 10085;
@@ -234,7 +235,7 @@
             this.panel3.Controls.Add(this.tbPname);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(66, 214);
+            this.panel3.Location = new System.Drawing.Point(66, 223);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(535, 36);
             this.panel3.TabIndex = 10084;
@@ -261,7 +262,7 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.comboAppointment);
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(0, 110);
+            this.panel2.Location = new System.Drawing.Point(0, 107);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(239, 36);
             this.panel2.TabIndex = 10083;
@@ -300,7 +301,7 @@
             this.panel8.Controls.Add(this.doctorL);
             this.panel8.Controls.Add(this.label8);
             this.panel8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel8.Location = new System.Drawing.Point(192, 152);
+            this.panel8.Location = new System.Drawing.Point(0, 149);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(535, 36);
             this.panel8.TabIndex = 10085;
@@ -326,8 +327,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1057, 591);
-            this.Controls.Add(this.panel8);
+            this.ClientSize = new System.Drawing.Size(1080, 619);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RescheduleForm";

@@ -117,15 +117,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1057, 591);
+            this.panel1.Size = new System.Drawing.Size(1080, 619);
             this.panel1.TabIndex = 0;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Silver;
-            this.panel6.Location = new System.Drawing.Point(0, 166);
+            this.panel6.Location = new System.Drawing.Point(0, 182);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1057, 2);
+            this.panel6.Size = new System.Drawing.Size(1080, 2);
             this.panel6.TabIndex = 10082;
             // 
             // panel5
@@ -135,7 +135,7 @@
             this.panel5.Controls.Add(this.lName);
             this.panel5.Controls.Add(this.textBox6);
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(725, 118);
+            this.panel5.Location = new System.Drawing.Point(737, 132);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(310, 34);
             this.panel5.TabIndex = 10077;
@@ -176,7 +176,7 @@
             this.panel4.Controls.Add(this.mName);
             this.panel4.Controls.Add(this.textBox4);
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(382, 118);
+            this.panel4.Location = new System.Drawing.Point(394, 132);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(310, 34);
             this.panel4.TabIndex = 10076;
@@ -217,7 +217,7 @@
             this.panel2.Controls.Add(this.fName);
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(36, 118);
+            this.panel2.Location = new System.Drawing.Point(48, 132);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(310, 34);
             this.panel2.TabIndex = 10075;
@@ -258,7 +258,7 @@
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(36, 67);
+            this.panel3.Location = new System.Drawing.Point(48, 81);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(163, 34);
             this.panel3.TabIndex = 10074;
@@ -311,7 +311,7 @@
             this.panel11.Controls.Add(this.textBox14);
             this.panel11.Controls.Add(this.label10);
             this.panel11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel11.Location = new System.Drawing.Point(36, 290);
+            this.panel11.Location = new System.Drawing.Point(48, 304);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(374, 34);
             this.panel11.TabIndex = 10075;
@@ -353,7 +353,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.button1.Location = new System.Drawing.Point(794, 529);
+            this.button1.Location = new System.Drawing.Point(806, 543);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(224, 45);
             this.button1.TabIndex = 10080;
@@ -369,7 +369,7 @@
             this.panel12.Controls.Add(this.panel15);
             this.panel12.Controls.Add(this.panel14);
             this.panel12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel12.Location = new System.Drawing.Point(36, 362);
+            this.panel12.Location = new System.Drawing.Point(48, 376);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(374, 190);
             this.panel12.TabIndex = 10076;
@@ -515,7 +515,7 @@
             this.panel19.Controls.Add(this.textBox18);
             this.panel19.Controls.Add(this.label17);
             this.panel19.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.panel19.Location = new System.Drawing.Point(688, 479);
+            this.panel19.Location = new System.Drawing.Point(700, 493);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(330, 44);
             this.panel19.TabIndex = 10072;
@@ -555,7 +555,7 @@
             this.panel10.Controls.Add(this.textBox15);
             this.panel10.Controls.Add(this.label9);
             this.panel10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel10.Location = new System.Drawing.Point(36, 250);
+            this.panel10.Location = new System.Drawing.Point(48, 264);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(374, 34);
             this.panel10.TabIndex = 10073;
@@ -598,7 +598,7 @@
             this.RemoveStack.FlatAppearance.BorderSize = 0;
             this.RemoveStack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveStack.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.RemoveStack.Location = new System.Drawing.Point(495, 216);
+            this.RemoveStack.Location = new System.Drawing.Point(507, 230);
             this.RemoveStack.Name = "RemoveStack";
             this.RemoveStack.Size = new System.Drawing.Size(24, 24);
             this.RemoveStack.TabIndex = 10079;
@@ -612,7 +612,7 @@
             this.Add.FlatAppearance.BorderSize = 0;
             this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Add.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Add.Location = new System.Drawing.Point(465, 216);
+            this.Add.Location = new System.Drawing.Point(477, 230);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(24, 24);
             this.Add.TabIndex = 10077;
@@ -623,7 +623,7 @@
             // 
             this.tbListOperation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbListOperation.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tbListOperation.Location = new System.Drawing.Point(462, 246);
+            this.tbListOperation.Location = new System.Drawing.Point(474, 260);
             this.tbListOperation.Multiline = true;
             this.tbListOperation.Name = "tbListOperation";
             this.tbListOperation.ReadOnly = true;
@@ -638,7 +638,7 @@
             this.panel18.Controls.Add(this.textBox21);
             this.panel18.Controls.Add(this.label16);
             this.panel18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel18.Location = new System.Drawing.Point(36, 185);
+            this.panel18.Location = new System.Drawing.Point(48, 199);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(374, 34);
             this.panel18.TabIndex = 10074;
@@ -674,7 +674,7 @@
             // AddAppointmentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1057, 591);
+            this.ClientSize = new System.Drawing.Size(1080, 619);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddAppointmentForm";

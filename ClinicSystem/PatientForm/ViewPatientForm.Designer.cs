@@ -76,6 +76,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel15 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.PatientList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -95,6 +96,7 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel15.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -102,10 +104,10 @@
             this.tabControl1.Controls.Add(this.PatientList);
             this.tabControl1.Controls.Add(this.PatientDetails);
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(12, 95);
+            this.tabControl1.Location = new System.Drawing.Point(12, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1056, 491);
+            this.tabControl1.Size = new System.Drawing.Size(1056, 541);
             this.tabControl1.TabIndex = 8;
             // 
             // PatientList
@@ -114,7 +116,7 @@
             this.PatientList.Location = new System.Drawing.Point(4, 29);
             this.PatientList.Name = "PatientList";
             this.PatientList.Padding = new System.Windows.Forms.Padding(3);
-            this.PatientList.Size = new System.Drawing.Size(1048, 458);
+            this.PatientList.Size = new System.Drawing.Size(1048, 508);
             this.PatientList.TabIndex = 0;
             this.PatientList.Text = "Patient List";
             this.PatientList.UseVisualStyleBackColor = true;
@@ -134,7 +136,7 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 30;
             this.dataGridView.RowTemplate.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(1042, 452);
+            this.dataGridView.Size = new System.Drawing.Size(1042, 502);
             this.dataGridView.TabIndex = 0;
             // 
             // PatientDetails
@@ -580,12 +582,20 @@
             this.textBox1.Size = new System.Drawing.Size(175, 24);
             this.textBox1.TabIndex = 0;
             // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.tabControl1);
+            this.panel15.Location = new System.Drawing.Point(0, 99);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(1080, 557);
+            this.panel15.TabIndex = 9;
+            // 
             // ViewPatientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1080, 598);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(1080, 655);
+            this.Controls.Add(this.panel15);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ViewPatientForm";
@@ -623,6 +633,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel15.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -676,5 +687,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel15;
     }
 }

@@ -9,11 +9,13 @@ namespace ClinicSystem
 {
     public partial class LoginUserForm : Form
     {
+        private static LoginUserForm instance;
         public LoginUserForm()
         {
             InitializeComponent();
-            SetPlaceholder(Username, "Username");
-            SetPlaceholder(Password, "Password");
+            SetPlaceholder(Username, "Username...");
+            SetPlaceholder(Password, "Password...");
+            instance = this;
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
@@ -21,6 +23,11 @@ namespace ClinicSystem
 
         private const int EM_SETCUEBANNER = 0x1501;
 
+
+        public static LoginUserForm getInstance()
+        {
+            return instance;
+        }
         private void SetPlaceholder(TextBox textBox, string placeholder)
         {
             SendMessage(textBox.Handle, EM_SETCUEBANNER, 0, placeholder);
@@ -80,16 +87,15 @@ namespace ClinicSystem
 
         private void doctorB_Click(object sender, EventArgs e)
         {
-           Hide();
-           DoctorClinics doctorLoginForm = new DoctorClinics(
-                    new Doctor(101, "aeyc", "aeyc", "aeyc", 54, "0928", DateTime.Now, "Male", "ROXAS AVENUE"));
-           doctorLoginForm.Show();
-
+            DoctorLogin docl = DoctorLogin.GetInstance();
+            docl.Show(); 
         }
 
         private void checkPassword_CheckedChanged_1(object sender, EventArgs e)
         {
             Password.UseSystemPasswordChar = !Password.UseSystemPasswordChar;
+            SetPlaceholder(Username, "Username...");
+            SetPlaceholder(Password, "Password...");
         }
 
         private bool initialFocuse = true;

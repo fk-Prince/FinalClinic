@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.mainpanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Date = new System.Windows.Forms.Label();
             this.Clock = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.AddPatientS = new System.Windows.Forms.Button();
             this.DashboardS = new System.Windows.Forms.Button();
+            this.mainpanel = new System.Windows.Forms.Panel();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
             this.hoursTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
@@ -61,17 +61,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1300, 720);
             this.panel1.TabIndex = 1;
-            // 
-            // mainpanel
-            // 
-            this.mainpanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainpanel.AutoSize = true;
-            this.mainpanel.Location = new System.Drawing.Point(219, 0);
-            this.mainpanel.Name = "mainpanel";
-            this.mainpanel.Size = new System.Drawing.Size(1080, 719);
-            this.mainpanel.TabIndex = 3;
             // 
             // panel2
             // 
@@ -132,6 +121,7 @@
             this.button8.TabStop = false;
             this.button8.Text = "Clinic History";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             this.button8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
             // 
             // appointmentButton
@@ -212,6 +202,17 @@
             this.DashboardS.UseVisualStyleBackColor = false;
             this.DashboardS.Click += new System.EventHandler(this.dashboardClicked);
             this.DashboardS.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
+            // 
+            // mainpanel
+            // 
+            this.mainpanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainpanel.AutoSize = true;
+            this.mainpanel.Location = new System.Drawing.Point(219, 0);
+            this.mainpanel.Name = "mainpanel";
+            this.mainpanel.Size = new System.Drawing.Size(1080, 719);
+            this.mainpanel.TabIndex = 3;
             // 
             // dateTimer
             // 

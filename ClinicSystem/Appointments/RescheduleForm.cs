@@ -71,17 +71,36 @@ namespace ClinicSystem.Appointments
 
                 DateTime date = selectedAppointment.Schedule.DateSchedule;
                 DateTime startDateTime = date.Add(selectedAppointment.Schedule.StartTime);
-                string formatStart = startDateTime.ToString("hh:mm:ss tt");
+                string formatStart;
+                //if (startDateTime.ToString("HH:mm:ss") == "00:00:00")
+                //{
+                //    formatStart = "00:00:00 AM";
+                //}
+                //else
+                //{
+                //    formatStart = startDateTime.ToString("hh:mm:ss tt");
+                //}
+                formatStart = startDateTime.ToString("hh:mm:ss tt");
                 string[] ampmStart = formatStart.Split(' ');
                 tbStart.Text = ampmStart[0];
                 comboStart.SelectedItem = ampmStart[1];
 
              
                 DateTime endDateTime = date.Add(selectedAppointment.Schedule.EndTime);
-                string formatEnd = endDateTime.ToString("hh:mm:ss tt");
+
+                //if (endDateTime.ToString("HH:mm:ss") == "00:00:00")
+                //{
+                //    formatEnd = "00:00:00 AM";
+                //}
+                //else
+                //{
+                //    formatEnd = endDateTime.ToString("hh:mm:ss tt");
+                //}
+                string formatEnd = endDateTime.ToString("HH:mm:ss");
                 string[] ampmEnd = formatEnd.Split(' ');
                 tbEnd.Text = ampmEnd[0];
                 comboEnd.SelectedItem = ampmEnd[1];
+               
             }
         }
 
@@ -158,9 +177,9 @@ namespace ClinicSystem.Appointments
                 TimeSpan startTimeSpan = startTime.TimeOfDay;
                 origStartTime = startTimeSpan;
                 TimeSpan endTime = startTimeSpan + selectedAppointment.Schedule.Operation.Duration;
+                origEndTime = endTime;
                 if (endTime.TotalHours >= 24)
-                {
-                    origEndTime = endTime;
+                {    
                     endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
                 }
                 DateTime endDateTime = DateTime.Today.Add(endTime);

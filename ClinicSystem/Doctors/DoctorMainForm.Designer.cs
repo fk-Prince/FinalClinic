@@ -44,9 +44,9 @@
             // 
             // doctorpanel
             // 
-            this.doctorpanel.Location = new System.Drawing.Point(12, 97);
+            this.doctorpanel.Location = new System.Drawing.Point(0, 67);
             this.doctorpanel.Name = "doctorpanel";
-            this.doctorpanel.Size = new System.Drawing.Size(1056, 598);
+            this.doctorpanel.Size = new System.Drawing.Size(1080, 651);
             this.doctorpanel.TabIndex = 106;
             // 
             // addDoctorB
@@ -76,7 +76,7 @@
             // DoctorMainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1080, 719);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.doctorpanel);

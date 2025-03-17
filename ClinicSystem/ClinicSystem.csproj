@@ -125,6 +125,12 @@
       <DependentUpon>RescheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Appointments\ScheduleDatabase.cs" />
+    <Compile Include="ClinicHistory\ClinicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClinicHistory\ClinicForm.Designer.cs">
+      <DependentUpon>ClinicForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoctorClinic\DoctorClinic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,12 @@
     <Compile Include="Rooms\RoomsForm.Designer.cs">
       <DependentUpon>RoomsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserLoginForm\DoctorLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserLoginForm\DoctorLogin.Designer.cs">
+      <DependentUpon>DoctorLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserLoginForm\Staff.cs" />
     <Compile Include="UserLoginForm\UserLoginForm.cs">
       <SubType>Form</SubType>
@@ -233,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Appointments\RescheduleForm.resx">
       <DependentUpon>RescheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClinicHistory\ClinicForm.resx">
+      <DependentUpon>ClinicForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DoctorClinic\DoctorClinic.resx">
       <DependentUpon>DoctorClinic.cs</DependentUpon>
@@ -279,6 +294,9 @@
     </Compile>
     <EmbeddedResource Include="Rooms\RoomsForm.resx">
       <DependentUpon>RoomsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserLoginForm\DoctorLogin.resx">
+      <DependentUpon>DoctorLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserLoginForm\UserLoginForm.resx">
       <DependentUpon>UserLoginForm.cs</DependentUpon>
@@ -329,6 +347,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo85.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

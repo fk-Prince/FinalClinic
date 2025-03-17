@@ -42,6 +42,11 @@ namespace ClinicSystem
 
             datePickerSchedule.Value = DateTimePicker.MinimumDateTime;
             datePickerBDay.Value = DateTimePicker.MinimumDateTime;
+
+            comboStart.Items.Add("AM");
+            comboStart.Items.Add("PM");
+            comboEnd.Items.Add("AM");
+            comboEnd.Items.Add("PM");
         }
 
         private void addRows(List<Appointment> patientAppointments)
@@ -126,6 +131,11 @@ namespace ClinicSystem
             datePickerBDay.Value = DateTimePicker.MinimumDateTime;
             tbStartTime.Text = "";
             tbEndTime.Text = "";
+
+            comboStart.Items.Add("AM");
+            comboStart.Items.Add("PM");
+            comboEnd.Items.Add("AM");
+            comboEnd.Items.Add("PM");
         }
 
         private void patientDetails(Appointment pa)
@@ -171,16 +181,34 @@ namespace ClinicSystem
         {
             TimeSpan startTime = app.StartTime;
             DateTime startDateTime = DateTime.Today.Add(startTime);
+            //string formatStartTime;
+            //if (startDateTime.ToString("HH:mm:ss") == "00:00:00")
+            //{
+            //    formatStartTime = "00:00:00 AM";
+            //}
+            //else
+            //{
+            //    formatStartTime = startDateTime.ToString("hh:mm:ss tt");
+            //}
             string formatStartTime = startDateTime.ToString("hh:mm:ss tt");
             tbStartTime.Text = formatStartTime.Split(' ')[0];
-            string ampmStart = startTime.Hours >= 12 ? "PM" : "AM";
+            string ampmStart = formatStartTime.Split(' ')[1];
             comboStart.SelectedItem = ampmStart;
 
             TimeSpan endTime = app.EndTime;
             DateTime endDateTime = DateTime.Today.Add(endTime);
+            //string formatEndTime;
+            //if (endDateTime.ToString("HH:mm:ss") == "00:00:00")
+            //{
+            //    formatEndTime = "00:00:00 AM";
+            //}
+            //else
+            //{
+            //    formatEndTime = endDateTime.ToString("hh:mm:ss tt");
+            //}
             string formatEndTime = endDateTime.ToString("hh:mm:ss tt");
             tbEndTime.Text = formatEndTime.Split(' ')[0];
-            string ampmEnd = endTime.Hours >= 12 ? "PM" : "AM";
+            string ampmEnd = formatEndTime.Split(' ')[1];
             comboEnd.SelectedItem = ampmEnd;
         }
 

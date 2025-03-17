@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using ClinicSystem.ClinicHistory;
 using ClinicSystem.Doctors;
 using ClinicSystem.MainClinic;
 using ClinicSystem.Rooms;
@@ -114,6 +115,12 @@ namespace ClinicSystem
         {
             DoctorMainForm doc = new DoctorMainForm(staff);
             LoadForm(doc);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ClinicForm clinic = new ClinicForm(staff);
+            LoadForm(clinic);
         }
     }
 }

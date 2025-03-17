@@ -62,9 +62,9 @@
             // 
             // patientPanel
             // 
-            this.patientPanel.Location = new System.Drawing.Point(12, 74);
+            this.patientPanel.Location = new System.Drawing.Point(0, 66);
             this.patientPanel.Name = "patientPanel";
-            this.patientPanel.Size = new System.Drawing.Size(1056, 598);
+            this.patientPanel.Size = new System.Drawing.Size(1080, 655);
             this.patientPanel.TabIndex = 2;
             // 
             // panel1
@@ -78,8 +78,8 @@
             // FormPatient
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1080, 684);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ClientSize = new System.Drawing.Size(1080, 719);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.patientPanel);
             this.Controls.Add(this.button2);

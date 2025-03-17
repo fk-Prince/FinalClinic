@@ -63,7 +63,7 @@ namespace ClinicSystem.Appointments
                             reader.GetDateTime("datehired"),
                             reader.GetString("gender"),
                             reader.GetString("address")
-                        );
+                        );  
 
                     Operation operation = new Operation(
                              reader.GetString("OperationCode"),
