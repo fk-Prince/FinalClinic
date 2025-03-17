@@ -18,6 +18,7 @@
 --
 -- Table structure for table `clinichistory_tbl`
 --
+
 CREATE DATABASE db_clinic;
 USE db_clinic;
 
@@ -42,7 +43,6 @@ CREATE TABLE `clinichistory_tbl` (
 
 LOCK TABLES `clinichistory_tbl` WRITE;
 /*!40000 ALTER TABLE `clinichistory_tbl` DISABLE KEYS */;
-INSERT INTO `clinichistory_tbl` VALUES (NULL,'2025-03-15',9,401);
 /*!40000 ALTER TABLE `clinichistory_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `doctor_operation_mm_tbl` (
   KEY `fk_doctor_operation_mm_tbl_operation_tbl1` (`operationCode`),
   CONSTRAINT `fk_doctor_operation_mm_tbl_doctor_tbl1` FOREIGN KEY (`doctorId`) REFERENCES `doctor_tbl` (`DoctorId`) ON UPDATE CASCADE,
   CONSTRAINT `fk_doctor_operation_mm_tbl_operation_tbl1` FOREIGN KEY (`operationCode`) REFERENCES `operation_tbl` (`operationCode`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `doctor_operation_mm_tbl` (
 
 LOCK TABLES `doctor_operation_mm_tbl` WRITE;
 /*!40000 ALTER TABLE `doctor_operation_mm_tbl` DISABLE KEYS */;
-INSERT INTO `doctor_operation_mm_tbl` VALUES (2,'GE4',100),(3,'BE5',100),(1,'BE5',101),(4,'GE4',101);
+INSERT INTO `doctor_operation_mm_tbl` VALUES (6,'BE5',101),(9,'GE4',101),(7,'BE5',102),(8,'EC5',102);
 /*!40000 ALTER TABLE `doctor_operation_mm_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +102,7 @@ CREATE TABLE `doctor_tbl` (
 
 LOCK TABLES `doctor_tbl` WRITE;
 /*!40000 ALTER TABLE `doctor_tbl` DISABLE KEYS */;
-INSERT INTO `doctor_tbl` VALUES (100,'aeyc','aeyc','aeyc',54,'1234','2012-12-12','male','sadbas'),(101,'prince','prince','avas',43,'4444','2022-12-12','male','dasd');
+INSERT INTO `doctor_tbl` VALUES (101,'Prince','Iba','Sestoso',22,'0977','2024-12-12','Male','Roxas'),(102,'John','Doe','Doe',50,'1111','2015-05-30','Male','US');
 /*!40000 ALTER TABLE `doctor_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `patient_tbl` (
   `birthdate` date NOT NULL,
   `contactnumber` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`patientId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,6 @@ CREATE TABLE `patient_tbl` (
 
 LOCK TABLES `patient_tbl` WRITE;
 /*!40000 ALTER TABLE `patient_tbl` DISABLE KEYS */;
-INSERT INTO `patient_tbl` VALUES (9,'vasd','vdsa','dvsa','vdasvdsa',4,'Male','2021-03-15',NULL);
 /*!40000 ALTER TABLE `patient_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +184,7 @@ CREATE TABLE `patientappointment_tbl` (
   KEY `fk_idx` (`patientOperationNo`),
   CONSTRAINT `fk` FOREIGN KEY (`patientOperationNo`) REFERENCES `patientoperationdetails_tbl` (`PatientOperationNo`),
   CONSTRAINT `fk_PatientAppointment_tbl_doctor_operation_mm_tbl1` FOREIGN KEY (`doctorOperationID`) REFERENCES `doctor_operation_mm_tbl` (`doctorOperationID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,7 +210,7 @@ CREATE TABLE `patientoperationdetails_tbl` (
   PRIMARY KEY (`PatientOperationNo`,`patientId`),
   KEY `foreignkey_idx` (`patientId`),
   CONSTRAINT `foreignkey` FOREIGN KEY (`patientId`) REFERENCES `patient_tbl` (`patientId`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +242,7 @@ CREATE TABLE `rooms_tbl` (
 
 LOCK TABLES `rooms_tbl` WRITE;
 /*!40000 ALTER TABLE `rooms_tbl` DISABLE KEYS */;
-INSERT INTO `rooms_tbl` VALUES (401,'Occupied'),(402,'Not Occupied'),(403,'Not Occupied'),(404,'Not Occupied'),(405,'Not Occupied'),(406,'Not Occupied'),(407,'Not Occupied'),(408,'Not Occupied'),(409,'Not Occupied'),(410,'Not Occupied');
+INSERT INTO `rooms_tbl` VALUES (401,'Not Occupied'),(402,'Not Occupied'),(403,'Not Occupied'),(404,'Not Occupied'),(405,'Not Occupied'),(406,'Not Occupied'),(407,'Not Occupied'),(408,'Not Occupied'),(409,'Not Occupied'),(410,'Not Occupied');
 /*!40000 ALTER TABLE `rooms_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,7 +300,6 @@ CREATE TABLE `staffpatient_mm_tbl` (
 
 LOCK TABLES `staffpatient_mm_tbl` WRITE;
 /*!40000 ALTER TABLE `staffpatient_mm_tbl` DISABLE KEYS */;
-INSERT INTO `staffpatient_mm_tbl` VALUES (1,9);
 /*!40000 ALTER TABLE `staffpatient_mm_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -314,4 +312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-15 21:15:42
+-- Dump completed on 2025-03-17 20:47:27
