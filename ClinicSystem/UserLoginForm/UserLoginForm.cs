@@ -91,12 +91,7 @@ namespace ClinicSystem
             docl.Show(); 
         }
 
-        private void checkPassword_CheckedChanged_1(object sender, EventArgs e)
-        {
-            Password.UseSystemPasswordChar = !Password.UseSystemPasswordChar;
-            SetPlaceholder(Username, "Username...");
-            SetPlaceholder(Password, "Password...");
-        }
+      
 
         private bool initialFocuse = true;
 
@@ -118,6 +113,14 @@ namespace ClinicSystem
 
             }  
          }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Password.UseSystemPasswordChar = !Password.UseSystemPasswordChar;
+            passwordToggle.Image = Password.UseSystemPasswordChar ? Properties.Resources.shows : Properties.Resources.hide;
+            SetPlaceholder(Username, "Username...");
+            SetPlaceholder(Password, "Password...");
+        }
     }
 }
         

@@ -24,7 +24,7 @@ namespace ClinicSystem.Appointments
         {
             InitializeComponent();
             List< DoctorOperation> filter = db.getAppointments();
-
+            updateAppointmentB.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, updateAppointmentB.Width, updateAppointmentB.Height, 20, 20));
             DateTime currentDate = DateTime.Now;
             foreach (DoctorOperation f in filter)
             {  

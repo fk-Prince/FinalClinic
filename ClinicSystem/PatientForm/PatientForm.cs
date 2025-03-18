@@ -16,20 +16,19 @@ namespace ClinicSystem
             InitializeComponent();
             lastClickedButton = addPatient;
             AddPatients addPatientForm = new AddPatients(staff);
-            loadForm(addPatientForm);
-
+            loadForm(addPatientForm);   
         }
 
         private void loadForm(Form f)
         {
-            if (patientPanel.Controls.Count > 0)
+            if (panel2.Controls.Count > 0)
             {
-                patientPanel.Controls.Clear();
+                panel2.Controls.Clear();
             }
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
-            patientPanel.Controls.Add(f);
-            patientPanel.Tag = f;
+            panel2.Controls.Add(f);
+            panel2.Tag = f;
             f.Show();
         }
 
@@ -42,7 +41,7 @@ namespace ClinicSystem
                 btn.ForeColor = Color.White;
                 lastClickedButton.BackColor = Color.FromArgb(255, 255, 255);
                 lastClickedButton.ForeColor = Color.Black;
-                lastClickedButton = btn;
+                lastClickedButton = btn;    
             }
         }
 

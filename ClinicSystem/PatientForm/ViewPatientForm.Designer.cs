@@ -159,7 +159,7 @@
             this.PatientDetails.Location = new System.Drawing.Point(4, 29);
             this.PatientDetails.Name = "PatientDetails";
             this.PatientDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.PatientDetails.Size = new System.Drawing.Size(1048, 458);
+            this.PatientDetails.Size = new System.Drawing.Size(1048, 508);
             this.PatientDetails.TabIndex = 1;
             this.PatientDetails.Text = "Patient Details";
             // 
@@ -593,7 +593,7 @@
             // ViewPatientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(1080, 655);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.panel1);

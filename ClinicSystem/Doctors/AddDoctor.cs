@@ -15,6 +15,7 @@ namespace ClinicSystem.Doctors
         public AddDoctor(UserLoginForm.Staff staff)
         {
             InitializeComponent();
+            button3.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 50, 50));
         }
     }
 }

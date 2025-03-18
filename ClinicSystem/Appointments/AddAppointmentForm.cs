@@ -35,6 +35,7 @@ namespace ClinicSystem.Appointments
             {
                 comboPatientID.Items.Add(patient.Patientid);
             }  
+            button1.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 20, 20));
         }
 
         private void operationSettings()

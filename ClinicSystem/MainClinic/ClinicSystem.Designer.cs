@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.Date = new System.Windows.Forms.Label();
             this.Clock = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -64,7 +65,8 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(136)))), ((int)(((byte)(152)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.Date);
             this.panel2.Controls.Add(this.Clock);
             this.panel2.Controls.Add(this.panel3);
@@ -74,6 +76,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(220, 718);
             this.panel2.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(78)))), ((int)(((byte)(120)))));
+            this.panel4.Location = new System.Drawing.Point(218, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(2, 718);
+            this.panel4.TabIndex = 3;
             // 
             // Date
             // 
@@ -106,17 +116,19 @@
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.AddPatientS);
             this.panel3.Controls.Add(this.DashboardS);
-            this.panel3.Location = new System.Drawing.Point(20, 119);
+            this.panel3.Location = new System.Drawing.Point(0, 143);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(180, 394);
+            this.panel3.Size = new System.Drawing.Size(218, 344);
             this.panel3.TabIndex = 0;
             // 
             // button8
             // 
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(19, 312);
+            this.button8.Image = global::ClinicSystem.Properties.Resources.clinicrecord;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Location = new System.Drawing.Point(6, 288);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(139, 46);
+            this.button8.Size = new System.Drawing.Size(206, 46);
             this.button8.TabIndex = 10000;
             this.button8.TabStop = false;
             this.button8.Text = "Clinic History";
@@ -127,9 +139,11 @@
             // appointmentButton
             // 
             this.appointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.appointmentButton.Location = new System.Drawing.Point(19, 266);
+            this.appointmentButton.Image = global::ClinicSystem.Properties.Resources.appointment;
+            this.appointmentButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.appointmentButton.Location = new System.Drawing.Point(6, 242);
             this.appointmentButton.Name = "appointmentButton";
-            this.appointmentButton.Size = new System.Drawing.Size(139, 46);
+            this.appointmentButton.Size = new System.Drawing.Size(206, 46);
             this.appointmentButton.TabIndex = 10000;
             this.appointmentButton.TabStop = false;
             this.appointmentButton.Text = "Appointments";
@@ -140,9 +154,11 @@
             // button6
             // 
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(19, 220);
+            this.button6.Image = global::ClinicSystem.Properties.Resources.rooms;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(6, 196);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(139, 46);
+            this.button6.Size = new System.Drawing.Size(206, 46);
             this.button6.TabIndex = 10000;
             this.button6.TabStop = false;
             this.button6.Text = "Rooms";
@@ -153,9 +169,11 @@
             // button5
             // 
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(19, 174);
+            this.button5.Image = global::ClinicSystem.Properties.Resources.doctor2;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(6, 150);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(139, 46);
+            this.button5.Size = new System.Drawing.Size(206, 46);
             this.button5.TabIndex = 10000;
             this.button5.TabStop = false;
             this.button5.Text = "Doctors";
@@ -166,9 +184,11 @@
             // button4
             // 
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(19, 128);
+            this.button4.Image = global::ClinicSystem.Properties.Resources.operation;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(6, 104);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(139, 46);
+            this.button4.Size = new System.Drawing.Size(206, 46);
             this.button4.TabIndex = 10000;
             this.button4.TabStop = false;
             this.button4.Text = "Operations";
@@ -179,9 +199,11 @@
             // AddPatientS
             // 
             this.AddPatientS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddPatientS.Location = new System.Drawing.Point(19, 82);
+            this.AddPatientS.Image = global::ClinicSystem.Properties.Resources.patient;
+            this.AddPatientS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddPatientS.Location = new System.Drawing.Point(6, 58);
             this.AddPatientS.Name = "AddPatientS";
-            this.AddPatientS.Size = new System.Drawing.Size(139, 46);
+            this.AddPatientS.Size = new System.Drawing.Size(206, 46);
             this.AddPatientS.TabIndex = 10000;
             this.AddPatientS.TabStop = false;
             this.AddPatientS.Text = "Patient";
@@ -191,11 +213,14 @@
             // 
             // DashboardS
             // 
-            this.DashboardS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(136)))), ((int)(((byte)(152)))));
+            this.DashboardS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
+            this.DashboardS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.DashboardS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DashboardS.Location = new System.Drawing.Point(19, 36);
+            this.DashboardS.Image = global::ClinicSystem.Properties.Resources.dashboard;
+            this.DashboardS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DashboardS.Location = new System.Drawing.Point(6, 12);
             this.DashboardS.Name = "DashboardS";
-            this.DashboardS.Size = new System.Drawing.Size(139, 46);
+            this.DashboardS.Size = new System.Drawing.Size(206, 46);
             this.DashboardS.TabIndex = 10000;
             this.DashboardS.TabStop = false;
             this.DashboardS.Text = "Dashboard";
@@ -209,6 +234,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainpanel.AutoSize = true;
+            this.mainpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
             this.mainpanel.Location = new System.Drawing.Point(219, 0);
             this.mainpanel.Name = "mainpanel";
             this.mainpanel.Size = new System.Drawing.Size(1080, 719);
@@ -261,5 +287,6 @@
         private System.Windows.Forms.Button DashboardS;
         private System.Windows.Forms.Timer dateTimer;
         private System.Windows.Forms.Timer hoursTimer;
+        private System.Windows.Forms.Panel panel4;
     }
 }

@@ -32,6 +32,7 @@ namespace ClinicSystem.Appointments
                 }
             }
             displaySchedules(filtered,"TODAY");
+           
         }
 
         private void displaySchedules(List<DoctorOperation> patientAppointments, string comboText)
@@ -43,57 +44,57 @@ namespace ClinicSystem.Appointments
                 {
                     Panel panel = new Panel();
                     panel.Size = new Size(300, 310);
-                    panel.BackColor = Color.FromArgb(153, 180, 209);
-                    panel.BorderStyle = BorderStyle.FixedSingle;
+                    panel.BackColor = Color.FromArgb(111, 163, 216);
                     panel.Margin = new Padding(15, 10, 10, 10);
                     panel.Padding = new Padding(10, 10, 10, 10);
+                    panel.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 50, 50));
 
-                    Label label = createLabel("Room No", pa.Roomno.ToString(), 10, 10);
+                    Label label = createLabel("Room No", pa.Roomno.ToString(), 10, 15);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Operation Code", pa.Schedule.Operation.OperationCode, 10, 30);
+                    label = createLabel("Operation Code", pa.Schedule.Operation.OperationCode, 10, 35);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Operation Name", pa.Schedule.Operation.OperationName, 10, 50);
+                    label = createLabel("Operation Name", pa.Schedule.Operation.OperationName, 10, 55);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Schedule", pa.Schedule.DateSchedule.ToString("yyyy-MM-dd"), 10, 70);
+                    label = createLabel("Schedule", pa.Schedule.DateSchedule.ToString("yyyy-MM-dd"), 10, 75);
                     panel.Controls.Add(label);
 
                     DateTime date = DateTime.Today.Add(pa.Schedule.StartTime);
                     string formattedTime = date.ToString("hh:mm:ss tt");
-                    label = createLabel("Start-Time", formattedTime, 10, 90);
+                    label = createLabel("Start-Time", formattedTime, 10, 95);
                     panel.Controls.Add(label);
 
 
                     date = DateTime.Today.Add(pa.Schedule.EndTime);
                     formattedTime = date.ToString("hh:mm:ss tt");
-                    label = createLabel("End-Time", formattedTime, 10, 110);
+                    label = createLabel("End-Time", formattedTime, 10, 115);
                     panel.Controls.Add(label);
 
                     Panel panel2 = new Panel();
                     panel2.BackColor = Color.Gray;
                     panel2.Size = new Size(270, 2);
-                    panel2.Location = new Point(15, 150);
+                    panel2.Location = new Point(15, 155);
                     panel.Controls.Add(panel2);
 
-                    label = createLabel("Patient ID", pa.Patient.Patientid.ToString(), 10, 170);
+                    label = createLabel("Patient ID", pa.Patient.Patientid.ToString(), 10, 175);
                     panel.Controls.Add(label);
 
                     string fullname = pa.Patient.Firstname + " " + pa.Patient.Middlename + " " + pa.Patient.Lastname;
                     label = createLabel("Name", fullname, 10, 190);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Age", pa.Patient.Age.ToString(), 10, 210);
+                    label = createLabel("Age", pa.Patient.Age.ToString(), 10, 215);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Gender", pa.Patient.Gender, 10, 230);
+                    label = createLabel("Gender", pa.Patient.Gender, 10, 235);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Contact Number", pa.Patient.ContactNumber, 10, 250);
+                    label = createLabel("Contact Number", pa.Patient.ContactNumber, 10, 255);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Date-Admitted", pa.DateAdmitted.ToString("yyyy-MM-dd"), 10, 270);
+                    label = createLabel("Date-Admitted", pa.DateAdmitted.ToString("yyyy-MM-dd"), 10, 275);
                     panel.Controls.Add(label);
 
 
@@ -197,10 +198,16 @@ namespace ClinicSystem.Appointments
             else
             {
                 datePickDate.Visible = false;
+
             }
         }
 
         private void datePickDate_ValueChanged_1(object sender, EventArgs e)
+        {
+            pickDate();
+        }
+
+        public void pickDate()
         {
             DateTime date = Convert.ToDateTime(datePickDate.Value.ToString("yyyy-MM-dd"));
 
@@ -212,7 +219,7 @@ namespace ClinicSystem.Appointments
                     filtered.Add(pa);
                 }
             }
-            displaySchedules(filtered,"THIS DATE");
+            displaySchedules(filtered, "THIS DATE");
         }
     }
 }

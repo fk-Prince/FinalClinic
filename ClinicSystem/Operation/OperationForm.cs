@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ClinicSystem.UserLoginForm;
 
@@ -19,8 +20,13 @@ namespace ClinicSystem
             InitializeComponent();
             operationlist = db.getOperations();
             displayOperations(operationlist);
-
+            button1.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
+            button2.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 10, 10));
+            button3.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 10, 10));
+            addOperationPanel.Region= System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, addOperationPanel.Width, addOperationPanel.Height, 50, 50));
         }
+
+
 
 
         private void displayOperations(List<Operation> operationlist)
@@ -30,43 +36,44 @@ namespace ClinicSystem
             foreach (Operation operation in operationlist)
             {
                 Panel panel = new Panel();
-                panel.Size = new Size( 300,250);
-                panel.Location = new Point(50, 100);
-                panel.BorderStyle = BorderStyle.FixedSingle;
+                panel.Size = new Size(300, 250);
+                panel.Location = new Point(50, 100);    
                 panel.Margin = new Padding(30, 10, 10, 10);
-                panel.BackColor = Color.FromArgb(153, 180, 209);
+                panel.BackColor = Color.FromArgb(111, 163, 216);
+                panel.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 50, 50));
 
-                Label label = createLabel("Operation Code", operation.OperationCode, 10, 0);
+
+                Label label = createLabel("Operation Code", operation.OperationCode, 10, 5);
                 panel.Controls.Add(label);
 
-                label = createLabel("Operation Name", operation.OperationName, 10, 20);
+                label = createLabel("Operation Name", operation.OperationName, 10, 25);
                 panel.Controls.Add(label);
 
                 label = createLabel(
                     "Date-Added",
                     operation.DateAdded.ToString("yyyy-MM-dd"),
                     10,
-                    40
+                    45
                 );
                 panel.Controls.Add(label);
 
-                label = createLabel("Price", operation.Price.ToString(), 10, 60);
+                label = createLabel("Price", operation.Price.ToString(), 10, 65);
                 panel.Controls.Add(label);
 
-                label = createLabel("Duration", operation.Duration.ToString(), 10, 80);
+                label = createLabel("Duration", operation.Duration.ToString(), 10, 85);
                 panel.Controls.Add(label);
 
                 label = new Label();
                 label.Text = "Description";
                 label.MaximumSize = new Size(200, 0);
                 label.AutoSize = true;
-                label.Location = new Point(15, 100);
+                label.Location = new Point(15, 105);
                 panel.Controls.Add(label);
 
                 TextBox tb = new TextBox();
                 tb.Multiline = true;
                 tb.Text = operation.Description;
-                tb.Location = new Point(15, 120);
+                tb.Location = new Point(15, 125);
                 tb.Size = new Size(270, 60);
                 tb.ReadOnly = true;
                 panel.Controls.Add(tb);
@@ -74,14 +81,14 @@ namespace ClinicSystem
                 Panel panelLine = new Panel();
                 panelLine.Size = new Size(300, 1);
                 panelLine.BackColor = Color.Gray;
-                panelLine.Location = new Point(0, 190);
+                panelLine.Location = new Point(0, 195);
                 panel.Controls.Add(panelLine);
 
                 label = new Label();
                 label.Text = "Doctor Assigned";
                 label.MaximumSize = new Size(200, 0);
                 label.AutoSize = true;
-                label.Location = new Point(15, 210);
+                label.Location = new Point(15, 215);
                 panel.Controls.Add(label);
 
                 ComboBox combo = new ComboBox();
@@ -94,7 +101,7 @@ namespace ClinicSystem
                 {
                     combo.Items.Add("No Doctor Assigned");
                 }
-                combo.Location = new Point(138, 207);
+                combo.Location = new Point(138, 212);
                 combo.DropDownStyle = ComboBoxStyle.DropDownList;
                 combo.Size = new Size(150, 40);
                 panel.Controls.Add(combo);
@@ -136,6 +143,7 @@ namespace ClinicSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            timerin.Start();
             addOperationPanel.Visible = true;
             flowLayout.Visible = false;
             SearchBar.Enabled = false;
@@ -260,6 +268,7 @@ namespace ClinicSystem
         private void button3_Click(object sender, EventArgs e)
         {
             reset();
+            timerout.Start();
         }
 
         public void reset()
@@ -269,8 +278,6 @@ namespace ClinicSystem
             opDescription.Text = "";
             opPrice.Text = "";
             opDuration.Text = "";
-            addOperationPanel.Visible = false;
-            flowLayout.Visible = true;
             operationlist = db.getOperations();
             displayOperations(operationlist);
             SearchBar.Text = "";
@@ -308,6 +315,30 @@ namespace ClinicSystem
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
+            }
+        }
+
+        private int x = -457;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            x += 20;
+            addOperationPanel.Location = new Point(x, 131);
+            if (x >= 320)
+            {
+                timerin.Stop();
+            }
+        }
+
+       
+        private void timerout_Tick(object sender, EventArgs e)
+        {
+            x -= 20;
+            addOperationPanel.Location = new Point(x, 131);
+            if (x <= -457)
+            {
+                timerout.Stop();
+                addOperationPanel.Visible = false;
+                flowLayout.Visible = true;
             }
         }
     }

@@ -40,10 +40,10 @@ namespace ClinicSystem.Main2
                 {
                     Panel panel = new Panel();
                     panel.Size = new Size(300, 310);
-                    panel.BackColor = Color.FromArgb(153, 180, 209);
-                    panel.BorderStyle = BorderStyle.FixedSingle;
                     panel.Margin = new Padding(13, 10, 10, 10);
                     panel.Padding = new Padding(10, 10, 10, 10);
+                    panel.BackColor = Color.FromArgb(111, 163, 216);
+                    panel.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 50, 50));
 
                     Label label = createLabel("Room No", pa.Roomno.ToString(), 10, 10);
                     panel.Controls.Add(label);

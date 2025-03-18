@@ -135,14 +135,14 @@
             this.flowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowPanel.Location = new System.Drawing.Point(21, 154);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(1038, 453);
+            this.flowPanel.Size = new System.Drawing.Size(1038, 488);
             this.flowPanel.TabIndex = 3;
             // 
             // AllAppointments
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1080, 619);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
+            this.ClientSize = new System.Drawing.Size(1080, 654);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowPanel);

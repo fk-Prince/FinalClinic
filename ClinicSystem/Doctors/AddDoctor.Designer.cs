@@ -69,7 +69,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -104,26 +104,27 @@
             // 
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(54, 118);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(108, 33);
+            this.panel1.Size = new System.Drawing.Size(290, 33);
             this.panel1.TabIndex = 10083;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(81, 10);
+            this.label4.Location = new System.Drawing.Point(96, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.Size = new System.Drawing.Size(17, 20);
             this.label4.TabIndex = 1;
             this.label4.Text = "1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 10);
+            this.label3.Location = new System.Drawing.Point(9, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Doctor ID";
             // 
@@ -133,7 +134,7 @@
             this.panel3.Controls.Add(this.FirstName);
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(54, 189);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(290, 37);
@@ -142,9 +143,9 @@
             // FirstName
             // 
             this.FirstName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.FirstName.Location = new System.Drawing.Point(122, 6);
+            this.FirstName.Location = new System.Drawing.Point(122, 5);
             this.FirstName.Name = "FirstName";
-            this.FirstName.Size = new System.Drawing.Size(160, 23);
+            this.FirstName.Size = new System.Drawing.Size(160, 27);
             this.FirstName.TabIndex = 1;
             // 
             // textBox2
@@ -152,16 +153,16 @@
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox2.Location = new System.Drawing.Point(100, 8);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(0, 23);
+            this.textBox2.Size = new System.Drawing.Size(0, 27);
             this.textBox2.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 11);
+            this.label5.Location = new System.Drawing.Point(9, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 15);
+            this.label5.Size = new System.Drawing.Size(80, 20);
             this.label5.TabIndex = 10000;
             this.label5.Text = "First Name";
             // 
@@ -171,7 +172,7 @@
             this.panel6.Controls.Add(this.Address);
             this.panel6.Controls.Add(this.textBox9);
             this.panel6.Controls.Add(this.label6);
-            this.panel6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel6.Location = new System.Drawing.Point(53, 262);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(638, 37);
@@ -180,9 +181,9 @@
             // Address
             // 
             this.Address.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Address.Location = new System.Drawing.Point(123, 6);
+            this.Address.Location = new System.Drawing.Point(123, 5);
             this.Address.Name = "Address";
-            this.Address.Size = new System.Drawing.Size(508, 23);
+            this.Address.Size = new System.Drawing.Size(508, 27);
             this.Address.TabIndex = 4;
             // 
             // textBox9
@@ -190,16 +191,16 @@
             this.textBox9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox9.Location = new System.Drawing.Point(141, 8);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(0, 23);
+            this.textBox9.Size = new System.Drawing.Size(0, 27);
             this.textBox9.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 11);
+            this.label6.Location = new System.Drawing.Point(10, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 15);
+            this.label6.Size = new System.Drawing.Size(62, 20);
             this.label6.TabIndex = 10000;
             this.label6.Text = "Address";
             // 
@@ -209,7 +210,7 @@
             this.panel5.Controls.Add(this.LastName);
             this.panel5.Controls.Add(this.textBox7);
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.Location = new System.Drawing.Point(716, 189);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(290, 37);
@@ -218,9 +219,9 @@
             // LastName
             // 
             this.LastName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LastName.Location = new System.Drawing.Point(115, 6);
+            this.LastName.Location = new System.Drawing.Point(115, 5);
             this.LastName.Name = "LastName";
-            this.LastName.Size = new System.Drawing.Size(168, 23);
+            this.LastName.Size = new System.Drawing.Size(168, 27);
             this.LastName.TabIndex = 3;
             // 
             // textBox7
@@ -228,16 +229,16 @@
             this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox7.Location = new System.Drawing.Point(88, 8);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(0, 23);
+            this.textBox7.Size = new System.Drawing.Size(0, 27);
             this.textBox7.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 11);
+            this.label7.Location = new System.Drawing.Point(9, 8);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 15);
+            this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 10000;
             this.label7.Text = "Last Name";
             // 
@@ -247,7 +248,7 @@
             this.panel9.Controls.Add(this.Gender);
             this.panel9.Controls.Add(this.textBox13);
             this.panel9.Controls.Add(this.label8);
-            this.panel9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel9.Location = new System.Drawing.Point(843, 262);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(162, 37);
@@ -258,9 +259,9 @@
             this.Gender.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Gender.FormattingEnabled = true;
-            this.Gender.Location = new System.Drawing.Point(72, 7);
+            this.Gender.Location = new System.Drawing.Point(68, 4);
             this.Gender.Name = "Gender";
-            this.Gender.Size = new System.Drawing.Size(84, 23);
+            this.Gender.Size = new System.Drawing.Size(84, 28);
             this.Gender.TabIndex = 6;
             // 
             // textBox13
@@ -268,16 +269,16 @@
             this.textBox13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox13.Location = new System.Drawing.Point(68, 8);
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(0, 23);
+            this.textBox13.Size = new System.Drawing.Size(0, 27);
             this.textBox13.TabIndex = 1;
             // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 11);
+            this.label8.Location = new System.Drawing.Point(5, 8);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 15);
+            this.label8.Size = new System.Drawing.Size(57, 20);
             this.label8.TabIndex = 10000;
             this.label8.Text = "Gender";
             // 
@@ -287,7 +288,7 @@
             this.panel7.Controls.Add(this.BirthDate);
             this.panel7.Controls.Add(this.textBox11);
             this.panel7.Controls.Add(this.label9);
-            this.panel7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel7.Location = new System.Drawing.Point(54, 336);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(466, 37);
@@ -296,9 +297,9 @@
             // BirthDate
             // 
             this.BirthDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BirthDate.Location = new System.Drawing.Point(123, 8);
+            this.BirthDate.Location = new System.Drawing.Point(122, 6);
             this.BirthDate.Name = "BirthDate";
-            this.BirthDate.Size = new System.Drawing.Size(333, 23);
+            this.BirthDate.Size = new System.Drawing.Size(333, 27);
             this.BirthDate.TabIndex = 7;
             // 
             // textBox11
@@ -306,7 +307,7 @@
             this.textBox11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox11.Location = new System.Drawing.Point(159, 8);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(0, 23);
+            this.textBox11.Size = new System.Drawing.Size(0, 27);
             this.textBox11.TabIndex = 1;
             // 
             // label9
@@ -315,7 +316,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(9, 11);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 15);
+            this.label9.Size = new System.Drawing.Size(84, 20);
             this.label9.TabIndex = 10000;
             this.label9.Text = "Date-Hired";
             // 
@@ -325,7 +326,7 @@
             this.panel4.Controls.Add(this.MiddleName);
             this.panel4.Controls.Add(this.textBox5);
             this.panel4.Controls.Add(this.label10);
-            this.panel4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(402, 189);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(290, 37);
@@ -334,9 +335,9 @@
             // MiddleName
             // 
             this.MiddleName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.MiddleName.Location = new System.Drawing.Point(138, 6);
+            this.MiddleName.Location = new System.Drawing.Point(138, 5);
             this.MiddleName.Name = "MiddleName";
-            this.MiddleName.Size = new System.Drawing.Size(144, 23);
+            this.MiddleName.Size = new System.Drawing.Size(144, 27);
             this.MiddleName.TabIndex = 2;
             // 
             // textBox5
@@ -344,16 +345,16 @@
             this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox5.Location = new System.Drawing.Point(95, 8);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(0, 23);
+            this.textBox5.Size = new System.Drawing.Size(0, 27);
             this.textBox5.TabIndex = 1;
             // 
             // label10
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 11);
+            this.label10.Location = new System.Drawing.Point(14, 8);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 15);
+            this.label10.Size = new System.Drawing.Size(104, 20);
             this.label10.TabIndex = 10000;
             this.label10.Text = "Middle  Name";
             // 
@@ -363,8 +364,8 @@
             this.panel17.Controls.Add(this.ContactNo);
             this.panel17.Controls.Add(this.textBox20);
             this.panel17.Controls.Add(this.label15);
-            this.panel17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel17.Location = new System.Drawing.Point(661, 344);
+            this.panel17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel17.Location = new System.Drawing.Point(662, 334);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(344, 37);
             this.panel17.TabIndex = 10091;
@@ -372,9 +373,9 @@
             // ContactNo
             // 
             this.ContactNo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ContactNo.Location = new System.Drawing.Point(153, 8);
+            this.ContactNo.Location = new System.Drawing.Point(152, 6);
             this.ContactNo.Name = "ContactNo";
-            this.ContactNo.Size = new System.Drawing.Size(185, 23);
+            this.ContactNo.Size = new System.Drawing.Size(185, 27);
             this.ContactNo.TabIndex = 1;
             // 
             // textBox20
@@ -382,16 +383,16 @@
             this.textBox20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox20.Location = new System.Drawing.Point(115, 8);
             this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(0, 23);
+            this.textBox20.Size = new System.Drawing.Size(0, 27);
             this.textBox20.TabIndex = 1;
             // 
             // label15
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 11);
+            this.label15.Location = new System.Drawing.Point(14, 8);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(73, 15);
+            this.label15.Size = new System.Drawing.Size(90, 20);
             this.label15.TabIndex = 10000;
             this.label15.Text = "PIN Number";
             // 
@@ -401,7 +402,7 @@
             this.panel8.Controls.Add(this.Age);
             this.panel8.Controls.Add(this.textBox10);
             this.panel8.Controls.Add(this.label11);
-            this.panel8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel8.Location = new System.Drawing.Point(715, 262);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(105, 37);
@@ -410,10 +411,10 @@
             // Age
             // 
             this.Age.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Age.Location = new System.Drawing.Point(50, 6);
+            this.Age.Location = new System.Drawing.Point(48, 5);
             this.Age.Name = "Age";
             this.Age.ReadOnly = true;
-            this.Age.Size = new System.Drawing.Size(52, 23);
+            this.Age.Size = new System.Drawing.Size(52, 27);
             this.Age.TabIndex = 5;
             this.Age.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -422,16 +423,16 @@
             this.textBox10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox10.Location = new System.Drawing.Point(72, 8);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(0, 23);
+            this.textBox10.Size = new System.Drawing.Size(0, 27);
             this.textBox10.TabIndex = 1;
             // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 11);
+            this.label11.Location = new System.Drawing.Point(10, 8);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 15);
+            this.label11.Size = new System.Drawing.Size(36, 20);
             this.label11.TabIndex = 10000;
             this.label11.Text = "Age";
             // 
@@ -441,8 +442,8 @@
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.textBox3);
             this.panel2.Controls.Add(this.label12);
-            this.panel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(662, 408);
+            this.panel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(662, 386);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(344, 37);
             this.panel2.TabIndex = 10092;
@@ -450,9 +451,9 @@
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(153, 8);
+            this.textBox1.Location = new System.Drawing.Point(152, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 23);
+            this.textBox1.Size = new System.Drawing.Size(185, 27);
             this.textBox1.TabIndex = 1;
             // 
             // textBox3
@@ -460,37 +461,40 @@
             this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox3.Location = new System.Drawing.Point(115, 8);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(0, 23);
+            this.textBox3.Size = new System.Drawing.Size(0, 27);
             this.textBox3.TabIndex = 1;
             // 
             // label12
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 11);
+            this.label12.Location = new System.Drawing.Point(14, 8);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 15);
+            this.label12.Size = new System.Drawing.Size(93, 20);
             this.label12.TabIndex = 10000;
             this.label12.Text = "Confirm PIN ";
             // 
-            // button1
+            // button3
             // 
-            this.button1.BackColor = System.Drawing.Color.Silver;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(349, 488);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(343, 70);
-            this.button1.TabIndex = 10093;
-            this.button1.Text = "Add Doctor";
-            this.button1.UseVisualStyleBackColor = false;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(365, 494);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(337, 50);
+            this.button3.TabIndex = 10094;
+            this.button3.Text = "Add Doctor";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // AddDoctor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(1056, 585);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel6);
@@ -574,8 +578,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button1;
-
-
+        private System.Windows.Forms.Button button3;
     }
 }

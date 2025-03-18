@@ -52,7 +52,7 @@ namespace ClinicSystem
             Button btn = sender as Button;
             if (btn != lastButtonClicked)
             {
-                btn.BackColor = Color.FromArgb(119, 136, 152);
+                btn.BackColor = Color.FromArgb(111, 163, 216);
                 btn.ForeColor = Color.White;
                 lastButtonClicked.BackColor = Color.FromArgb(255, 255, 255);
                 lastButtonClicked.ForeColor = Color.Black;

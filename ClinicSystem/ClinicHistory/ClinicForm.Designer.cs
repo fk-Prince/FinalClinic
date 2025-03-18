@@ -30,9 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbPatientId = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label123 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -49,29 +50,29 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label123);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 720);
+            this.panel1.Size = new System.Drawing.Size(392, 720);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -79,42 +80,44 @@
             this.panel3.Controls.Add(this.dataGridView);
             this.panel3.Location = new System.Drawing.Point(34, 172);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(228, 485);
+            this.panel3.Size = new System.Drawing.Size(326, 485);
             this.panel3.TabIndex = 5;
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToOrderColumns = true;
-            this.dataGridView.AllowUserToResizeColumns = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView.ColumnHeadersHeight = 35;
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.Size = new System.Drawing.Size(228, 485);
-            this.dataGridView.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.tbPatientId);
             this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(34, 112);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(229, 35);
+            this.panel2.Size = new System.Drawing.Size(326, 38);
             this.panel2.TabIndex = 4;
             // 
             // tbPatientId
             // 
-            this.tbPatientId.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPatientId.Location = new System.Drawing.Point(28, 5);
+            this.tbPatientId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPatientId.Location = new System.Drawing.Point(31, 5);
             this.tbPatientId.Name = "tbPatientId";
-            this.tbPatientId.Size = new System.Drawing.Size(198, 25);
+            this.tbPatientId.Size = new System.Drawing.Size(292, 29);
             this.tbPatientId.TabIndex = 2;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::ClinicSystem.Properties.Resources.search24;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 8);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::ClinicSystem.Properties.Resources.folder;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 50);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 32);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // label123
             // 
@@ -128,16 +131,16 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
             this.panel4.Controls.Add(this.textBox2);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.pictureBox3);
-            this.panel4.Location = new System.Drawing.Point(340, 79);
+            this.panel4.Location = new System.Drawing.Point(454, 79);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(704, 533);
+            this.panel4.Size = new System.Drawing.Size(590, 533);
             this.panel4.TabIndex = 1;
             // 
             // textBox2
@@ -145,7 +148,7 @@
             this.textBox2.Location = new System.Drawing.Point(22, 321);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(660, 198);
+            this.textBox2.Size = new System.Drawing.Size(548, 198);
             this.textBox2.TabIndex = 12;
             // 
             // label7
@@ -195,18 +198,19 @@
             // pGender
             // 
             this.pGender.AutoSize = true;
-            this.pGender.Location = new System.Drawing.Point(148, 42);
+            this.pGender.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.pGender.Location = new System.Drawing.Point(154, 45);
             this.pGender.Name = "pGender";
-            this.pGender.Size = new System.Drawing.Size(30, 13);
+            this.pGender.Size = new System.Drawing.Size(37, 17);
             this.pGender.TabIndex = 14;
             this.pGender.Text = "Male";
             // 
             // pAge
             // 
-            this.pAge.AutoSize = true;
-            this.pAge.Location = new System.Drawing.Point(57, 43);
+            this.pAge.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pAge.Location = new System.Drawing.Point(56, 43);
             this.pAge.Name = "pAge";
-            this.pAge.Size = new System.Drawing.Size(19, 13);
+            this.pAge.Size = new System.Drawing.Size(30, 15);
             this.pAge.TabIndex = 13;
             this.pAge.Text = "53";
             // 
@@ -215,7 +219,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(100, 40);
+            this.label4.Location = new System.Drawing.Point(100, 45);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 15);
             this.label4.TabIndex = 12;
@@ -223,7 +227,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.Gray;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(78)))), ((int)(((byte)(120)))));
             this.panel7.Location = new System.Drawing.Point(92, 36);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(2, 30);
@@ -244,7 +248,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(19, 40);
+            this.label3.Location = new System.Drawing.Point(19, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 10;
@@ -252,10 +256,10 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.Silver;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(78)))), ((int)(((byte)(120)))));
             this.panel5.Location = new System.Drawing.Point(22, 116);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(660, 2);
+            this.panel5.Size = new System.Drawing.Size(548, 2);
             this.panel5.TabIndex = 7;
             // 
             // label1
@@ -277,29 +281,37 @@
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
-            // pictureBox2
+            // dataGridView
             // 
-            this.pictureBox2.BackgroundImage = global::ClinicSystem.Properties.Resources.search24;
-            this.pictureBox2.Location = new System.Drawing.Point(1, 7);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.ColumnHeadersHeight = 35;
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.Size = new System.Drawing.Size(326, 485);
+            this.dataGridView.TabIndex = 0;
             // 
-            // pictureBox1
+            // panel8
             // 
-            this.pictureBox1.BackgroundImage = global::ClinicSystem.Properties.Resources.folder;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 50);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 32);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(78)))), ((int)(((byte)(120)))));
+            this.panel8.Location = new System.Drawing.Point(398, 12);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(15, 695);
+            this.panel8.TabIndex = 2;
             // 
             // ClinicForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(1080, 719);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -308,16 +320,16 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,7 +342,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox tbPatientId;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
@@ -347,5 +358,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Panel panel8;
     }
 }

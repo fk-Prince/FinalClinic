@@ -29,10 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.doctorL = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.updateAppointmentB = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tbOname = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboAppointment = new System.Windows.Forms.ComboBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.comboEnd = new System.Windows.Forms.ComboBox();
             this.tbEnd = new System.Windows.Forms.TextBox();
@@ -47,21 +53,15 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.tbPname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboAppointment = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.doctorL = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,14 +75,44 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(192, 12);
+            this.panel1.Location = new System.Drawing.Point(195, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(667, 606);
             this.panel1.TabIndex = 0;
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.doctorL);
+            this.panel8.Controls.Add(this.label8);
+            this.panel8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel8.Location = new System.Drawing.Point(0, 149);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(535, 36);
+            this.panel8.TabIndex = 10085;
+            // 
+            // doctorL
+            // 
+            this.doctorL.AutoSize = true;
+            this.doctorL.Location = new System.Drawing.Point(117, 8);
+            this.doctorL.Name = "doctorL";
+            this.doctorL.Size = new System.Drawing.Size(0, 20);
+            this.doctorL.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 20);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Doctor Name";
+            // 
             // updateAppointmentB
             // 
-            this.updateAppointmentB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.updateAppointmentB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
+            this.updateAppointmentB.FlatAppearance.BorderSize = 0;
+            this.updateAppointmentB.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
+            this.updateAppointmentB.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
             this.updateAppointmentB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateAppointmentB.Location = new System.Drawing.Point(194, 482);
             this.updateAppointmentB.Name = "updateAppointmentB";
@@ -118,6 +148,35 @@
             this.label7.Size = new System.Drawing.Size(120, 20);
             this.label7.TabIndex = 1;
             this.label7.Text = "Operation Name";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.comboAppointment);
+            this.panel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(0, 107);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(239, 36);
+            this.panel2.TabIndex = 10083;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(2, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(124, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Appointment No.";
+            // 
+            // comboAppointment
+            // 
+            this.comboAppointment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboAppointment.FormattingEnabled = true;
+            this.comboAppointment.Location = new System.Drawing.Point(131, 4);
+            this.comboAppointment.Name = "comboAppointment";
+            this.comboAppointment.Size = new System.Drawing.Size(105, 28);
+            this.comboAppointment.TabIndex = 0;
+            this.comboAppointment.SelectedIndexChanged += new System.EventHandler(this.comboAppointment_SelectedIndexChanged);
             // 
             // panel6
             // 
@@ -257,35 +316,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Patient Name";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.comboAppointment);
-            this.panel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(0, 107);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(239, 36);
-            this.panel2.TabIndex = 10083;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Appointment No.";
-            // 
-            // comboAppointment
-            // 
-            this.comboAppointment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboAppointment.FormattingEnabled = true;
-            this.comboAppointment.Location = new System.Drawing.Point(131, 4);
-            this.comboAppointment.Name = "comboAppointment";
-            this.comboAppointment.Size = new System.Drawing.Size(105, 28);
-            this.comboAppointment.TabIndex = 0;
-            this.comboAppointment.SelectedIndexChanged += new System.EventHandler(this.comboAppointment_SelectedIndexChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -296,37 +326,10 @@
             this.label1.TabIndex = 10082;
             this.label1.Text = "Appointment Details";
             // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.doctorL);
-            this.panel8.Controls.Add(this.label8);
-            this.panel8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel8.Location = new System.Drawing.Point(0, 149);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(535, 36);
-            this.panel8.TabIndex = 10085;
-            // 
-            // doctorL
-            // 
-            this.doctorL.AutoSize = true;
-            this.doctorL.Location = new System.Drawing.Point(117, 8);
-            this.doctorL.Name = "doctorL";
-            this.doctorL.Size = new System.Drawing.Size(0, 20);
-            this.doctorL.TabIndex = 2;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 20);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Doctor Name";
-            // 
             // RescheduleForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(1080, 619);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -334,8 +337,12 @@
             this.Text = "RescheduleForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -344,10 +351,6 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }

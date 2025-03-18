@@ -28,28 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.appointmentPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.addAppointmentB = new System.Windows.Forms.Button();
             this.allAppointmentB = new System.Windows.Forms.Button();
             this.rescheduleB = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.appointmentPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // appointmentPanel
-            // 
-            this.appointmentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
-            this.appointmentPanel.Location = new System.Drawing.Point(0, 68);
-            this.appointmentPanel.Name = "appointmentPanel";
-            this.appointmentPanel.Size = new System.Drawing.Size(1080, 651);
-            this.appointmentPanel.TabIndex = 10068;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Location = new System.Drawing.Point(0, 66);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1080, 2);
-            this.panel1.TabIndex = 10067;
             // 
             // addAppointmentB
             // 
@@ -90,10 +74,26 @@
             this.rescheduleB.Click += new System.EventHandler(this.rescheduleB_Click);
             this.rescheduleB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(78)))), ((int)(((byte)(120)))));
+            this.panel1.Location = new System.Drawing.Point(0, 63);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1080, 10);
+            this.panel1.TabIndex = 10067;
+            // 
+            // appointmentPanel
+            // 
+            this.appointmentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
+            this.appointmentPanel.Location = new System.Drawing.Point(0, 65);
+            this.appointmentPanel.Name = "appointmentPanel";
+            this.appointmentPanel.Size = new System.Drawing.Size(1080, 654);
+            this.appointmentPanel.TabIndex = 10068;
+            // 
             // AppointmentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
             this.ClientSize = new System.Drawing.Size(1080, 719);
             this.Controls.Add(this.rescheduleB);
             this.Controls.Add(this.appointmentPanel);
@@ -108,11 +108,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel appointmentPanel;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button addAppointmentB;
         private System.Windows.Forms.Button allAppointmentB;
         private System.Windows.Forms.Button rescheduleB;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel appointmentPanel;
     }
 }

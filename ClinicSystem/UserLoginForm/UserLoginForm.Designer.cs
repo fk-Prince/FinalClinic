@@ -32,20 +32,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.Exit = new System.Windows.Forms.Button();
             this.doctorB = new System.Windows.Forms.Button();
             this.LoginButton = new System.Windows.Forms.Button();
-            this.checkPassword = new System.Windows.Forms.CheckBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.Password = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Username = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.v = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.passwordToggle = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.v = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -54,8 +56,9 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -63,9 +66,7 @@
             this.panel1.Controls.Add(this.Exit);
             this.panel1.Controls.Add(this.doctorB);
             this.panel1.Controls.Add(this.LoginButton);
-            this.panel1.Controls.Add(this.checkPassword);
             this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.Password);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.Username);
             this.panel1.Controls.Add(this.panel2);
@@ -108,15 +109,6 @@
             this.label3.TabIndex = 100;
             this.label3.Text = "Staff Portal";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::ClinicSystem.Properties.Resources.Doctor;
-            this.pictureBox4.Location = new System.Drawing.Point(172, 586);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(36, 36);
-            this.pictureBox4.TabIndex = 12;
-            this.pictureBox4.TabStop = false;
-            // 
             // Exit
             // 
             this.Exit.BackColor = System.Drawing.Color.White;
@@ -156,44 +148,16 @@
             this.LoginButton.UseVisualStyleBackColor = false;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
-            // checkPassword
-            // 
-            this.checkPassword.AutoSize = true;
-            this.checkPassword.Location = new System.Drawing.Point(379, 476);
-            this.checkPassword.Name = "checkPassword";
-            this.checkPassword.Size = new System.Drawing.Size(15, 14);
-            this.checkPassword.TabIndex = 100;
-            this.checkPassword.TabStop = false;
-            this.checkPassword.UseVisualStyleBackColor = true;
-            this.checkPassword.CheckedChanged += new System.EventHandler(this.checkPassword_CheckedChanged_1);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::ClinicSystem.Properties.Resources.Lock;
-            this.pictureBox3.Location = new System.Drawing.Point(108, 466);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
-            // 
             // Password
             // 
+            this.Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password.HideSelection = false;
-            this.Password.Location = new System.Drawing.Point(146, 470);
+            this.Password.Location = new System.Drawing.Point(2, 2);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(229, 26);
+            this.Password.Size = new System.Drawing.Size(202, 19);
             this.Password.TabIndex = 2;
             this.Password.UseSystemPasswordChar = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::ClinicSystem.Properties.Resources.user;
-            this.pictureBox2.Location = new System.Drawing.Point(108, 413);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
             // 
             // Username
             // 
@@ -210,15 +174,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(500, 2);
             this.panel2.TabIndex = 1;
-            // 
-            // v
-            // 
-            this.v.BackgroundImage = global::ClinicSystem.Properties.Resources.Logo;
-            this.v.Location = new System.Drawing.Point(37, 29);
-            this.v.Name = "v";
-            this.v.Size = new System.Drawing.Size(215, 237);
-            this.v.TabIndex = 0;
-            this.v.TabStop = false;
             // 
             // label1
             // 
@@ -242,6 +197,69 @@
             this.label2.TabIndex = 100;
             this.label2.Text = "Care";
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.passwordToggle);
+            this.panel3.Controls.Add(this.Password);
+            this.panel3.Location = new System.Drawing.Point(146, 470);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(229, 26);
+            this.panel3.TabIndex = 101;
+            // 
+            // passwordToggle
+            // 
+            this.passwordToggle.BackColor = System.Drawing.Color.White;
+            this.passwordToggle.FlatAppearance.BorderSize = 0;
+            this.passwordToggle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.passwordToggle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.passwordToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.passwordToggle.Image = global::ClinicSystem.Properties.Resources.shows;
+            this.passwordToggle.Location = new System.Drawing.Point(201, -1);
+            this.passwordToggle.Name = "passwordToggle";
+            this.passwordToggle.Size = new System.Drawing.Size(24, 24);
+            this.passwordToggle.TabIndex = 3;
+            this.passwordToggle.Text = "button1";
+            this.passwordToggle.UseVisualStyleBackColor = false;
+            this.passwordToggle.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::ClinicSystem.Properties.Resources.Doctor;
+            this.pictureBox4.Location = new System.Drawing.Point(172, 586);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(36, 36);
+            this.pictureBox4.TabIndex = 12;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::ClinicSystem.Properties.Resources.Lock;
+            this.pictureBox3.Location = new System.Drawing.Point(108, 466);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::ClinicSystem.Properties.Resources.user;
+            this.pictureBox2.Location = new System.Drawing.Point(108, 413);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // v
+            // 
+            this.v.BackgroundImage = global::ClinicSystem.Properties.Resources.Logo;
+            this.v.Location = new System.Drawing.Point(37, 29);
+            this.v.Name = "v";
+            this.v.Size = new System.Drawing.Size(215, 237);
+            this.v.TabIndex = 0;
+            this.v.TabStop = false;
+            // 
             // LoginUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +272,8 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -272,7 +292,6 @@
         private System.Windows.Forms.Button Exit;
         private System.Windows.Forms.Button doctorB;
         private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.CheckBox checkPassword;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -281,6 +300,8 @@
         private System.Windows.Forms.PictureBox v;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button passwordToggle;
     }
 }
 

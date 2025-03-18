@@ -11,16 +11,25 @@ namespace ClinicSystem
 
         private Button lastButtonClicked;
         private Doctor dr;
+        private static DoctorClinics instance;
         public DoctorClinics(Doctor dr)
         {
             this.dr = dr;
+            instance = this;
             InitializeComponent();
             Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
             Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DoctorHome home = new DoctorHome(dr);
+            Home.BackColor = Color.FromArgb(111, 163, 216);
+            Home.ForeColor = Color.White;
             loadForm(home);
             lastButtonClicked = Home;
-            lastButtonClicked.ForeColor = Color.White;
+           
+        }
+
+        public static DoctorClinics getInstance()
+        {
+            return instance;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -57,7 +66,7 @@ namespace ClinicSystem
             Button btn = sender as Button;
             if (btn != lastButtonClicked)
             {
-                btn.BackColor = Color.FromArgb(119, 136, 152);
+                btn.BackColor = Color.FromArgb(111, 163, 216);
                 btn.ForeColor = Color.White;
                 lastButtonClicked.BackColor = Color.FromArgb(255, 255, 255);
                 lastButtonClicked.ForeColor = Color.Black;

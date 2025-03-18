@@ -53,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.infoDoctorPanel.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -67,14 +68,14 @@
             // 
             this.panel11.AutoSize = true;
             this.panel11.BackColor = System.Drawing.Color.Gray;
-            this.panel11.Location = new System.Drawing.Point(0, 303);
+            this.panel11.Location = new System.Drawing.Point(0, 322);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(1079, 2);
             this.panel11.TabIndex = 119;
             // 
             // infoDoctorPanel
             // 
-            this.infoDoctorPanel.BackColor = System.Drawing.Color.White;
+            this.infoDoctorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
             this.infoDoctorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.infoDoctorPanel.Controls.Add(this.specialized);
             this.infoDoctorPanel.Controls.Add(this.label11);
@@ -84,7 +85,7 @@
             this.infoDoctorPanel.Controls.Add(this.panel7);
             this.infoDoctorPanel.Controls.Add(this.panel6);
             this.infoDoctorPanel.Controls.Add(this.panel5);
-            this.infoDoctorPanel.Location = new System.Drawing.Point(32, 347);
+            this.infoDoctorPanel.Location = new System.Drawing.Point(32, 366);
             this.infoDoctorPanel.Name = "infoDoctorPanel";
             this.infoDoctorPanel.Size = new System.Drawing.Size(1022, 300);
             this.infoDoctorPanel.TabIndex = 118;
@@ -301,11 +302,23 @@
             this.label3.TabIndex = 117;
             this.label3.Text = "Care";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1055, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 25);
+            this.label1.TabIndex = 120;
+            this.label1.Text = "X";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // DoctorHome
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1079, 683);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(184)))), ((int)(((byte)(216)))));
+            this.ClientSize = new System.Drawing.Size(1079, 718);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.infoDoctorPanel);
             this.Controls.Add(this.label2);
@@ -361,5 +374,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }

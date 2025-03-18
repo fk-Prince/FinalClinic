@@ -27,5 +27,17 @@ namespace ClinicSystem
                 specialized.Text += "------------------------------------------------------------------" + Environment.NewLine;
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            DialogResult option = MessageBox.Show("Do you want to logout ?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (option == DialogResult.Yes)
+            {
+                DoctorClinics doc = DoctorClinics.getInstance();
+                doc.Hide();
+                LoginUserForm form = new LoginUserForm();
+                form.Show();
+            }
+        }
     }
 }

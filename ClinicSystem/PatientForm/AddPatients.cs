@@ -23,6 +23,7 @@ namespace ClinicSystem
             int id = db.getPatientId();
             lastPatientID.Text = id.ToString();
             roomSettings();
+            button3.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 50, 50));
         }
 
         public void roomSettings()

@@ -23,21 +23,16 @@ namespace ClinicSystem.MainClinic
             patientTotal = db.TotalPatientLastMonth();
             ageList = db.getPatients();
             doctorTotal = db.getDoctor();
-           
-        }
+            panel4.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, panel4.Width, panel4.Height, 50, 50));
+            panel8.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 50, 50));
+            button1.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            LoginUserForm user = new LoginUserForm();
-            user.Show();
         }
-
         private void lastMonthTimer_Tick(object sender, EventArgs e)
         {
             if (patientTotal == 0)
             {
-                totalPatient.Text = "0";
+                lastMonthTotal.Text = "0";
                 lastMonthTimer.Stop();
             }
             if (patientCount > patientTotal)
@@ -45,7 +40,7 @@ namespace ClinicSystem.MainClinic
                 lastMonthTimer.Stop();
                 return;
             }
-            totalPatient.Text = patientCount.ToString();
+            lastMonthTotal.Text = patientCount.ToString();
             patientCount++;
         }
 
@@ -53,7 +48,7 @@ namespace ClinicSystem.MainClinic
         {
             if (doctorTotal == 0)
             {
-                totalDoctors.Text = "0";
+                totalDoctor.Text = "0";
                 doctorT.Stop();
             }
             if (doctorCount > doctorTotal)
@@ -61,15 +56,19 @@ namespace ClinicSystem.MainClinic
                 doctorT.Stop();
                 return;
             }
-            totalDoctors.Text = doctorCount.ToString();
+            totalDoctor.Text = doctorCount.ToString();
             doctorCount++;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            f.Hide();
-            LoginUserForm user = new LoginUserForm();
-            user.Show();
+            DialogResult option = MessageBox.Show("Do you want to logout ?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (option == DialogResult.Yes)
+            {
+                f.Hide();
+                LoginUserForm user = new LoginUserForm();
+                user.Show();
+            }
         }
     }
 }
