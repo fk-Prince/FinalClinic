@@ -17,18 +17,18 @@ namespace ClinicSystem.Appointments
 {
     public partial class RescheduleForm : Form
     {
-        private List<DoctorOperation> appointments = new List<DoctorOperation>();
+        private List<Appointment> appointments = new List<Appointment>();
         private ScheduleDatabase db = new ScheduleDatabase();
-        private DoctorOperation selectedAppointment;
+        private Appointment selectedAppointment;
         public RescheduleForm(Staff staff)
         {
             InitializeComponent();
-            List< DoctorOperation> filter = db.getAppointments();
-            updateAppointmentB.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, updateAppointmentB.Width, updateAppointmentB.Height, 20, 20));
+            List<Appointment> filter = db.getAppointments();
+            updateAppointmentB.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, updateAppointmentB.Width, updateAppointmentB.Height, 20, 20));
             DateTime currentDate = DateTime.Now;
-            foreach (DoctorOperation f in filter)
+            foreach (Appointment f in filter)
             {  
-                DateTime appointmentDateTime = f.Schedule.DateSchedule.Date.Add(f.Schedule.StartTime);
+                DateTime appointmentDateTime = f.DateSchedule.Date.Add(f.StartTime);
 
                 if (appointmentDateTime > currentDate)
                 {
@@ -36,9 +36,9 @@ namespace ClinicSystem.Appointments
                 }
             }
 
-            foreach (DoctorOperation appointment in appointments)
+            foreach (Appointment appointment in appointments)
             {
-                comboAppointment.Items.Add(appointment.Schedule.AppointmentDetailNo);
+                comboAppointment.Items.Add(appointment.AppointmentDetailNo);
             }
         }
 
@@ -48,9 +48,9 @@ namespace ClinicSystem.Appointments
         {
             if (comboAppointment.SelectedIndex == -1) return;
             int comboA = int.Parse(comboAppointment.SelectedItem.ToString());
-            foreach (DoctorOperation selected in appointments)
+            foreach (Appointment selected in appointments)
             {
-                if (selected.Schedule.AppointmentDetailNo == comboA)
+                if (selected.AppointmentDetailNo == comboA)
                 {
                     selectedAppointment = selected;
                 }
@@ -61,46 +61,36 @@ namespace ClinicSystem.Appointments
                                   $"{selectedAppointment.Patient.Middlename}  " +
                                   $"{selectedAppointment.Patient.Lastname}";
                 tbPname.Text = fullname;
-                tbOname.Text = selectedAppointment.Schedule.Operation.OperationName;
-                dateSchedulePicker.Value = selectedAppointment.Schedule.DateSchedule;
+                tbOname.Text = selectedAppointment.Operation.OperationName;
+                dateSchedulePicker.Value = selectedAppointment.DateSchedule;
 
-                string dfullname = $"{selectedAppointment.Schedule.Doctor.DoctorFirstName} " +
-                                   $"{selectedAppointment.Schedule.Doctor.DoctorFirstName}  " +
-                                   $"{selectedAppointment.Schedule.Doctor.DoctorFirstName}";
+                string dfullname = $"{selectedAppointment.Doctor.DoctorFirstName} " +
+                                   $"{selectedAppointment.Doctor.DoctorFirstName}  " +
+                                   $"{selectedAppointment.Doctor.DoctorFirstName}";
                 doctorL.Text = dfullname;
 
-                DateTime date = selectedAppointment.Schedule.DateSchedule;
-                DateTime startDateTime = date.Add(selectedAppointment.Schedule.StartTime);
+                DateTime date = selectedAppointment.DateSchedule;
+                DateTime startDateTime = date.Add(selectedAppointment.StartTime);
                 string formatStart;
-                //if (startDateTime.ToString("HH:mm:ss") == "00:00:00")
-                //{
-                //    formatStart = "00:00:00 AM";
-                //}
-                //else
-                //{
-                //    formatStart = startDateTime.ToString("hh:mm:ss tt");
-                //}
                 formatStart = startDateTime.ToString("hh:mm:ss tt");
                 string[] ampmStart = formatStart.Split(' ');
                 tbStart.Text = ampmStart[0];
                 comboStart.SelectedItem = ampmStart[1];
 
-             
-                DateTime endDateTime = date.Add(selectedAppointment.Schedule.EndTime);
 
-                //if (endDateTime.ToString("HH:mm:ss") == "00:00:00")
-                //{
-                //    formatEnd = "00:00:00 AM";
-                //}
-                //else
-                //{
-                //    formatEnd = endDateTime.ToString("hh:mm:ss tt");
-                //}
-                string formatEnd = endDateTime.ToString("HH:mm:ss");
-                string[] ampmEnd = formatEnd.Split(' ');
-                tbEnd.Text = ampmEnd[0];
-                comboEnd.SelectedItem = ampmEnd[1];
-               
+                DateTime datey = date.Add(selectedAppointment.EndTime); 
+                if (datey.Hour >= 0 && datey.Hour < 12)
+                {  
+                    tbEnd.Text = datey.ToString("HH:mm:ss tt").Split(' ')[0]; 
+                    comboEnd.SelectedItem = "AM";  
+                }
+                else
+                {
+                    string formattedEndTime = datey.ToString("hh:mm:ss tt");
+                    tbEnd.Text = formattedEndTime.Split(' ')[0];  
+                    comboEnd.SelectedItem = "PM";  
+                }
+
             }
         }
 
@@ -132,17 +122,17 @@ namespace ClinicSystem.Appointments
 
             if (origStartTime == null || origEndTime == null) return;
 
-            if (selectedAppointment.Schedule.DateSchedule == dateSchedulePicker.Value && selectedAppointment.Schedule.StartTime == origStartTime && selectedAppointment.Schedule.EndTime == origEndTime)
+            if (selectedAppointment.DateSchedule == dateSchedulePicker.Value && selectedAppointment.StartTime == origStartTime && selectedAppointment.EndTime == origEndTime)
             {
                 return;
             }
 
-            Appointment app = new Appointment(selectedAppointment.Schedule.Operation,
-                selectedAppointment.Schedule.Doctor,
+            Appointment app = new Appointment(selectedAppointment.Operation,
+                selectedAppointment.Doctor,
                 dateSchedulePicker.Value,
                 origStartTime,
                 origEndTime,
-                selectedAppointment.Schedule.AppointmentDetailNo);
+                selectedAppointment.AppointmentDetailNo);
 
             bool available = db.isAvailable(app);
             if (available)
@@ -175,18 +165,25 @@ namespace ClinicSystem.Appointments
             if (DateTime.TryParseExact(timeInput, @"hh\:mm\:ss tt", null, DateTimeStyles.None, out startTime))
             {    
                 TimeSpan startTimeSpan = startTime.TimeOfDay;
-                origStartTime = startTimeSpan;
-                TimeSpan endTime = startTimeSpan + selectedAppointment.Schedule.Operation.Duration;
-                origEndTime = endTime;
+                origStartTime = startTimeSpan; 
+                TimeSpan endTime = startTimeSpan + selectedAppointment.Operation.Duration;
                 if (endTime.TotalHours >= 24)
-                {    
+                {
                     endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
                 }
                 DateTime endDateTime = DateTime.Today.Add(endTime);
-                string formattedEndTime = endDateTime.ToString(@"hh\:mm\:ss tt");
-                tbEnd.Text = formattedEndTime.Split(' ')[0];
-                string ampmEnd = endTime.Hours >= 12 ? "PM" : "AM";
-                comboEnd.SelectedItem = ampmEnd;
+                origEndTime = TimeSpan.Parse(endDateTime.ToString("HH:mm:ss"));
+                if (endDateTime.Hour >= 0 && endDateTime.Hour < 12)
+                {
+                    tbEnd.Text = endDateTime.ToString("HH:mm:ss tt").Split(' ')[0];
+                    comboEnd.SelectedItem = "AM";
+                }
+                else
+                {
+                    string formattedEndTime = endDateTime.ToString("hh:mm:ss tt");
+                    tbEnd.Text = formattedEndTime.Split(' ')[0];
+                    comboEnd.SelectedItem = "PM";
+                }
             }
         }
 

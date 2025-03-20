@@ -19,15 +19,15 @@ namespace DoctorClinic
                 conn.Open();
                 string query = @"SELECT * FROM patient_tbl
                         JOIN clinichistory_tbl ON patient_tbl.patientId = clinichistory_tbl.patientid
-                        JOIN patientoperationdetails_tbl ON patient_tbl.patientid = patientoperationdetails_tbl.patientid
-                        JOIN patientappointment_tbl ON patientappointment_tbl.patientOperationNo = patientoperationdetails_tbl.patientOperationNo
+                        JOIN patientappointment_tbl ON patient_tbl.patientid = patientappointment_tbl.patientid
                         JOIN doctor_operation_mm_tbl ON doctor_operation_mm_tbl.doctorOperationID = patientappointment_tbl.doctorOperationID
                         JOIN operation_tbl ON doctor_operation_mm_tbl.OperationCode = operation_tbl.operationCode
                         WHERE doctor_operation_mm_tbl.DoctorId = @DoctorID";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("DoctorID", doctorID);
                 MySqlDataReader reader = command.ExecuteReader();
-                while (reader.Read()) {
+                while (reader.Read())
+                {
                     Patient patient = new Patient(
                             reader.GetInt32("patientid"),
                             reader.GetString("patientfirstname"),
@@ -58,10 +58,11 @@ namespace DoctorClinic
                     Appointment app = new Appointment(date, startTime, endTime, patient, operation, roomno, diagnosis, appointmentno);
                     appointments.Add(app);
                 }
+                conn.Close();
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error from getPatients() DB" + ex.Message);
+                MessageBox.Show("Error from getPati ents() DB" + ex.Message);
             }
             return appointments;
         }

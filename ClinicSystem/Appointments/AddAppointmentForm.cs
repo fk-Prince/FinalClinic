@@ -18,7 +18,6 @@ namespace ClinicSystem.Appointments
         private List<Patient> patientList;
         private List<Appointment> temporaryStorage = new List<Appointment>();
         private List<Appointment> patientSchedules = new List<Appointment>();
-        private List<DoctorOperation> docOp = new List<DoctorOperation>();
         private Stack<string> text = new Stack<string>();
 
 
@@ -190,14 +189,14 @@ namespace ClinicSystem.Appointments
                     return;
                 }
             }
-            Appointment pschedule = new Appointment(selectedPatient, selectedDate, startTime, endTime);
+            Appointment pschedule = new Appointment(selectedPatient, selectedDoctor,selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price);
             patientSchedules.Add(pschedule);
 
 
             foreach (Appointment sc in temporaryStorage)
             {
                 if (sc.Doctor.DoctorID == selectedDoctor.DoctorID && sc.DateSchedule.Date == selectedDate.Date &&
-                    (startTime < sc.EndTime && endTime > sc.StartTime))
+                    (startTime < sc.EndTime || endTime > sc.StartTime))
                 {
                     MessageBox.Show("Schedule conflicts with the doctor schedule.", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -205,9 +204,9 @@ namespace ClinicSystem.Appointments
             }
             temporaryStorage.Add(schedule);
             operationNameAddedList.Add(selectedOperation.OperationName);
+
             displayOperationAdded(schedule);
             MessageBox.Show("Operation Added", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            docOp.Add(new DoctorOperation(selectedDoctor, selectedOperation, schedule));
             calculateTotalBill();
             lastSelected = selectedOperation;
         }
@@ -215,9 +214,9 @@ namespace ClinicSystem.Appointments
         private void calculateTotalBill()
         {
             double totalBill = 0;
-            foreach (DoctorOperation doc in docOp)
+            foreach (Appointment ap in patientSchedules)
             {
-                totalBill += doc.Operation.Price;
+                totalBill += ap.Bill;
             }
             TotalBill.Text = totalBill.ToString("F2");
         }
@@ -292,7 +291,7 @@ namespace ClinicSystem.Appointments
             text.Clear();
             temporaryStorage.Clear();
             patientSchedules.Clear();
-            docOp.Clear();
+           // docOp.Clear();
             comboOperation.Items.Clear();
             comboDoctor.Items.Clear();
             TotalBill.Text = "";
@@ -385,7 +384,7 @@ namespace ClinicSystem.Appointments
                 MessageBox.Show("Please Select a Patient", "No Patient", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (docOp.Count <= 0)
+            if (patientSchedules.Count <= 0)
             {
                 MessageBox.Show("Please Select Operation", "No Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -393,7 +392,7 @@ namespace ClinicSystem.Appointments
 
             double bill = double.Parse(TotalBill.Text);
             
-            bool success = db.AddAppointment(selectedPatient, docOp, bill);
+            bool success = db.AddAppointment(selectedPatient, patientSchedules);
             if (success)
             {
                 MessageBox.Show("Appoinment Added", "Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -412,7 +411,6 @@ namespace ClinicSystem.Appointments
                 lastSelected = null;
                 temporaryStorage.Clear();
                 patientSchedules.Clear();
-                docOp.Clear();
                 comboPatientID.Items.Clear();
                 comboOperation.Items.Clear();
                 patientList = db.getPatients();

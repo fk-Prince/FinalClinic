@@ -11,7 +11,7 @@ namespace ClinicSystem.Main2
 {
     public partial class DoctorAppointmentForm : Form
     {
-        private List<DoctorOperation> patientAppointments;
+        private List<Appointment> patientAppointments;
         private ScheduleDatabase db = new ScheduleDatabase();
         private Doctor dr;
         public DoctorAppointmentForm(Doctor dr)
@@ -20,10 +20,10 @@ namespace ClinicSystem.Main2
             InitializeComponent();
             DateTime today = DateTime.Today;
             patientAppointments = db.getAppointmentsbyDoctor(dr);
-            List<DoctorOperation> filtered = new List<DoctorOperation>();
-            foreach (DoctorOperation pa in patientAppointments)
+            List<Appointment> filtered = new List<Appointment>();
+            foreach (Appointment pa in patientAppointments)
             {
-                if (pa.Schedule.DateSchedule.Date.ToString("yyyy-MM-dd").Equals(today.ToString("yyyy-MM-dd")))
+                if (pa.DateSchedule.Date.ToString("yyyy-MM-dd").Equals(today.ToString("yyyy-MM-dd")))
                 {
                     filtered.Add(pa);
                 }
@@ -31,12 +31,12 @@ namespace ClinicSystem.Main2
             displaySchedules(filtered, "TODAY");
         }
 
-        private void displaySchedules(List<DoctorOperation> patientAppointments, string comboText)
+        private void displaySchedules(List<Appointment> patientAppointments, string comboText)
         {
             flowPanel.Controls.Clear();
             if (patientAppointments.Count > 0)
             {
-                foreach (DoctorOperation pa in patientAppointments)
+                foreach (Appointment pa in patientAppointments)
                 {
                     Panel panel = new Panel();
                     panel.Size = new Size(300, 310);
@@ -45,25 +45,25 @@ namespace ClinicSystem.Main2
                     panel.BackColor = Color.FromArgb(111, 163, 216);
                     panel.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 50, 50));
 
-                    Label label = createLabel("Room No", pa.Roomno.ToString(), 10, 10);
+                    Label label = createLabel("Room No", pa.RoomNo.ToString(), 10, 10);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Operation Code", pa.Schedule.Operation.OperationCode, 10, 30);
+                    label = createLabel("Operation Code", pa.Operation.OperationCode, 10, 30);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Operation Name", pa.Schedule.Operation.OperationName, 10, 50);
+                    label = createLabel("Operation Name", pa.Operation.OperationName, 10, 50);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Schedule", pa.Schedule.DateSchedule.ToString("yyyy-MM-dd"), 10, 70);
+                    label = createLabel("Schedule", pa.DateSchedule.ToString("yyyy-MM-dd"), 10, 70);
                     panel.Controls.Add(label);
 
-                    DateTime date = DateTime.Today.Add(pa.Schedule.StartTime);
+                    DateTime date = DateTime.Today.Add(pa.StartTime);
                     string formattedTime = date.ToString("hh:mm:ss tt");
                     label = createLabel("Start-Time", formattedTime, 10, 90);
                     panel.Controls.Add(label);
 
 
-                    date = DateTime.Today.Add(pa.Schedule.EndTime);
+                    date = DateTime.Today.Add(pa.EndTime);
                     formattedTime = date.ToString("hh:mm:ss tt");
                     label = createLabel("End-Time", formattedTime, 10, 110);
                     panel.Controls.Add(label);
@@ -136,10 +136,10 @@ namespace ClinicSystem.Main2
         private void weekRadio_Check(object sender, EventArgs e)
         {
             DateTime week = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-            List<DoctorOperation> filtered = new List<DoctorOperation>();
-            foreach (DoctorOperation pa in patientAppointments)
+            List<Appointment> filtered = new List<Appointment>();
+            foreach (Appointment pa in patientAppointments)
             {
-                if (week <= pa.Schedule.DateSchedule && pa.Schedule.DateSchedule < week.AddDays(7))
+                if (week <= pa.DateSchedule && pa.DateSchedule < week.AddDays(7))
                 {
                     filtered.Add(pa);
                 }
@@ -154,11 +154,11 @@ namespace ClinicSystem.Main2
             DateTime start = new DateTime(month.Year, month.Month, 1);
             DateTime end = start.AddMonths(1).AddDays(-1);
 
-            List<DoctorOperation> filtered = new List<DoctorOperation>();
+            List<Appointment> filtered = new List<Appointment>();
 
-            foreach (DoctorOperation pa in patientAppointments)
+            foreach (Appointment pa in patientAppointments)
             {
-                if (pa.Schedule.DateSchedule >= start && pa.Schedule.DateSchedule <= end)
+                if (pa.DateSchedule >= start && pa.DateSchedule <= end)
                 {
                     filtered.Add(pa);
                 }
@@ -176,11 +176,11 @@ namespace ClinicSystem.Main2
         {
             DateTime today = DateTime.Today;
 
-            List<DoctorOperation> filtered = new List<DoctorOperation>();
-            foreach (DoctorOperation pa in patientAppointments)
+            List<Appointment> filtered = new List<Appointment>();
+            foreach (Appointment pa in patientAppointments)
             {
 
-                if (pa.Schedule.DateSchedule.Date.ToString("yyyy-MM-dd").Equals(today.ToString("yyyy-MM-dd")))
+                if (pa.DateSchedule.Date.ToString("yyyy-MM-dd").Equals(today.ToString("yyyy-MM-dd")))
                 {
                     filtered.Add(pa);
                 }
@@ -192,10 +192,10 @@ namespace ClinicSystem.Main2
         {
             DateTime date = Convert.ToDateTime(datePickDate.Value.ToString("yyyy-MM-dd"));
 
-            List<DoctorOperation> filtered = new List<DoctorOperation>();
-            foreach (DoctorOperation pa in patientAppointments)
+            List<Appointment> filtered = new List<Appointment>();
+            foreach (Appointment pa in patientAppointments)
             {
-                if (pa.Schedule.DateSchedule == date)
+                if (pa.DateSchedule == date)
                 {
                     filtered.Add(pa);
                 }

@@ -16,27 +16,25 @@ namespace ClinicSystem.Appointments
     {
         private string driver = "server=localhost;username=root;pwd=root;database=db_clinic";
 
-        public List<DoctorOperation> getAppointments()
+        public List<Appointment> getAppointments()
         {
-            List<DoctorOperation> list = new List<DoctorOperation>();
+            List<Appointment> list = new List<Appointment>();
             try
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                string query = @"SELECT * FROM patient_tbl
-                            LEFT JOIN patientoperationdetails_tbl 
-                            ON patientoperationdetails_tbl.patientId = patient_tbl.patientid
-                            LEFT JOIN patientappointment_tbl 
-                            ON patientoperationdetails_tbl.patientOperationNo = patientappointment_tbl.patientOperationNo
-                            LEFT JOIN doctor_operation_mm_tbl
-                            ON doctor_operation_mm_tbl.doctoroperationid = patientappointment_tbl.doctorOperationID
-                            LEFT JOIN doctor_tbl
-                            ON doctor_tbl.doctorId = doctor_operation_mm_tbl.doctorId
-                            LEFT JOIN operation_tbl
-                            ON operation_tbl.operationCode = doctor_operation_mm_tbl.OperationCode
-                            LEFT JOIN clinichistory_tbl
-                            ON clinichistory_tbl.patientid = patient_tbl.patientid
-                            WHERE patientoperationdetails_tbl.patientOperationNo IS NOT NULL";
+                string query = @"SELECT patient_tbl.*, patientappointment_tbl.*, doctor_tbl.*, operation_tbl.*, clinichistory_tbl.DateAdmitted FROM patient_tbl
+                                    LEFT JOIN patientappointment_tbl 
+                                    ON patientappointment_tbl.patientId = patient_tbl.patientId
+                                    LEFT JOIN doctor_operation_mm_tbl
+                                    ON doctor_operation_mm_tbl.doctoroperationid = patientappointment_tbl.doctorOperationID
+                                    LEFT JOIN doctor_tbl
+                                    ON doctor_tbl.doctorId = doctor_operation_mm_tbl.doctorId
+                                    LEFT JOIN operation_tbl
+                                    ON operation_tbl.operationCode = doctor_operation_mm_tbl.OperationCode
+                                    LEFT JOIN clinichistory_tbl
+                                    ON clinichistory_tbl.patientid = patient_tbl.patientid
+                                    WHERE patient_tbl.PatientID IS NOT NULL";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -74,21 +72,23 @@ namespace ClinicSystem.Appointments
                             reader.GetTimeSpan("duration")
                         );
                     int appointmentdetailno = reader.GetInt32("AppointmentDetailNo");
-                    Appointment schedule = new Appointment(
-                        operation,
-                        doctor,
-                        reader.GetDateTime("DateSchedule"),
-                        reader.GetTimeSpan("StartTime"),
-                        reader.GetTimeSpan("EndTime"),
-                        appointmentdetailno
-                     );
 
                     int roomno = reader.GetInt32("Roomno");
                     DateTime dateAdmitted = reader.GetDateTime("DateAdmitted");
 
+                    Appointment app = new Appointment(
+                        patient,
+                        doctor,
+                        operation,
+                        reader.GetDateTime("DateSchedule"),
+                        reader.GetTimeSpan("StartTime"),
+                        reader.GetTimeSpan("EndTime"),
+                        appointmentdetailno,
+                        roomno,
+                        dateAdmitted
+                    );
 
-                    DoctorOperation docop = new DoctorOperation(schedule, roomno, patient, dateAdmitted);
-                    list.Add(docop);
+                    list.Add(app);
                 }
             } catch (MySqlException ex)
             {
@@ -98,18 +98,16 @@ namespace ClinicSystem.Appointments
             return list;
         }
 
-        public List<DoctorOperation> getAppointmentsbyDoctor(Doctor dr)
+        public List<Appointment> getAppointmentsbyDoctor(Doctor dr)
         {
-            List<DoctorOperation> list = new List<DoctorOperation>();
+            List<Appointment> list = new List<Appointment>();
             try
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
                 string query = @"SELECT * FROM patient_tbl
-                            LEFT JOIN patientoperationdetails_tbl 
-                            ON patientoperationdetails_tbl.patientId = patient_tbl.patientid
                             LEFT JOIN patientappointment_tbl 
-                            ON patientoperationdetails_tbl.patientOperationNo = patientappointment_tbl.patientOperationNo
+                            ON patient_tbl.patientid = patientappointment_tbl.patientid
                             LEFT JOIN doctor_operation_mm_tbl
                             ON doctor_operation_mm_tbl.doctoroperationid = patientappointment_tbl.doctorOperationID
                             LEFT JOIN doctor_tbl
@@ -118,7 +116,7 @@ namespace ClinicSystem.Appointments
                             ON operation_tbl.operationCode = doctor_operation_mm_tbl.OperationCode
                             LEFT JOIN clinichistory_tbl
                             ON clinichistory_tbl.patientid = patient_tbl.patientid
-                            WHERE patientoperationdetails_tbl.patientOperationNo IS NOT NULL AND doctor_tbl.DOCTORID = @DOCTORID";
+                            WHERE patient_tbl.patientid IS NOT NULL AND doctor_tbl.DOCTORID = @DOCTORID";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("DOCTORID",dr.DoctorID);
                 MySqlDataReader reader = command.ExecuteReader();
@@ -156,20 +154,22 @@ namespace ClinicSystem.Appointments
                             reader.GetDouble("price"),
                             reader.GetTimeSpan("duration")
                         );
-                    Appointment schedule = new Appointment(
-                        operation,
-                        doctor,
-                        reader.GetDateTime("DateSchedule"),
-                        reader.GetTimeSpan("StartTime"),
-                        reader.GetTimeSpan("EndTime")
-                     );
 
                     int roomno = reader.GetInt32("Roomno");
                     DateTime dateAdmitted = reader.GetDateTime("DateAdmitted");
 
 
-                    DoctorOperation docop = new DoctorOperation(schedule, roomno, patient, dateAdmitted);
-                    list.Add(docop);
+                    Appointment app = new Appointment(
+                        patient,
+                        doctor,
+                        operation, 
+                        reader.GetDateTime("DateSchedule"), 
+                        reader.GetTimeSpan("StartTime"), 
+                        reader.GetTimeSpan("EndTime"),
+                        reader.GetInt32("AppointmentDetailNo"),
+                        roomno, 
+                        dateAdmitted);
+                    list.Add(app);
                 }
             }
             catch (MySqlException ex)
@@ -186,6 +186,7 @@ namespace ClinicSystem.Appointments
 
             try
             {
+                MessageBox.Show(app.EndTime + "    " +app.StartTime);
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
                 string query = "SELECT patientappointment_tbl.* " +
@@ -193,7 +194,7 @@ namespace ClinicSystem.Appointments
                             "JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId " +
                             "WHERE doctor_operation_mm_tbl.DoctorID = @DoctorID " +
                             "AND patientappointment_tbl.DateSchedule = @DateSchedule " +
-                            "AND (patientappointment_tbl.StartTime < @EndTime OR patientappointment_tbl.EndTime > @StartTime) " +
+                            "AND (patientappointment_tbl.StartTime < @EndTime AND patientappointment_tbl.EndTime > @StartTime) " +
                             "AND AppointmentDetailNo != @AppointmentDetailNo";
                 MySqlCommand command = new MySqlCommand(query, conn);             
                 command.Parameters.AddWithValue("@DoctorID", app.Doctor.DoctorID);

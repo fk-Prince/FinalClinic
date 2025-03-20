@@ -43,17 +43,19 @@ namespace ClinicSystem
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
 
-                string query = "INSERT INTO patient_tbl (patientfirstname, patientmiddlename, patientlastname, address, age, gender, birthdate, contactnumber) " +
-                          "VALUES (@patientfirstname, @patientmiddlename, @patientlastname, @address, @age, @gender, @birthdate, @contactnumber); " +
+                string query = "INSERT INTO patient_tbl (patientfirstname, roomno, staffid, patientmiddlename, patientlastname, address, age, gender, birthdate, contactnumber) " +
+                          "VALUES (@patientfirstname, @roomno, @staffid, @patientmiddlename, @patientlastname, @address, @age, @gender, @birthdate, @contactnumber); " +
                           "SELECT LAST_INSERT_ID();";
 
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@patientfirstname", patient.Firstname);
                 command.Parameters.AddWithValue("@patientmiddlename", patient.Middlename);
                 command.Parameters.AddWithValue("@patientlastname", patient.Lastname);
+                command.Parameters.AddWithValue("@staffid", staffId);
                 command.Parameters.AddWithValue("@address", patient.Address);
                 command.Parameters.AddWithValue("@age", patient.Age);
                 command.Parameters.AddWithValue("@gender", patient.Gender);
+                command.Parameters.AddWithValue("@roomno",roomno);
                 command.Parameters.AddWithValue("@birthdate", patient.Birthdate.ToString("yyyy-MM-dd"));
                 if (!string.IsNullOrEmpty(patient.ContactNumber))
                 {
@@ -65,10 +67,9 @@ namespace ClinicSystem
                 }
                 object result = command.ExecuteScalar();
                 int patientid = Convert.ToInt32(result);
-                conn.Close();
-                insertPatientStaff( patientid, staffId);
+                conn.Close();     
                 setRoomOccupieed(roomno);
-                insertHistory(patientid, roomno);
+                insertHistory(patientid);
                 return true;
             }
             catch (MySqlException ex)
@@ -78,15 +79,14 @@ namespace ClinicSystem
 
             return false;
         }
-        private void insertHistory(int patientid, string roomno)
+        private void insertHistory(int patientid)
         {
            try
            {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                string query = "INSERT INTO clinichistory_tbl (patientid, dateAdmitted, roomno ) VALUES (@patientid, @dateAdmitted, @roomno )";
+                string query = "INSERT INTO clinichistory_tbl (patientid, dateAdmitted ) VALUES (@patientid, @dateAdmitted)";
                 MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@roomno", roomno);
                 command.Parameters.AddWithValue("@patientid", patientid);
                 command.Parameters.AddWithValue("@dateAdmitted", DateTime.Now.ToString("yyyy-MM-dd"));
                 command.ExecuteNonQuery();
@@ -97,24 +97,24 @@ namespace ClinicSystem
 
            }
         }
-        private void insertPatientStaff(int patientid, int staffId)
+        public void setRoomOccupieed(string roomno)
         {
             try
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                string query = "INSERT INTO staffpatient_mm_tbl ( StaffId, PatientId) VALUES (@StaffId, @PatientID)";
+                string query = "UPDATE rooms_tbl SET `Occupation` = 'Occupied' WHERE roomno = @roomno";
                 MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@StaffId", staffId);
-                command.Parameters.AddWithValue("@PatientID", patientid);
+                command.Parameters.AddWithValue("@roomno", roomno);
                 command.ExecuteNonQuery();
                 conn.Close();
             }
-            catch (MySqlException e)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("Error from insertPatientStaff() DB" + e.Message);
+                MessageBox.Show("Error on setRoomOccupied() db" + ex.Message);
             }
         }
+
         public List<Operation> getOperations()
         {
             List<Operation> operations = new List<Operation>();
@@ -259,22 +259,35 @@ namespace ClinicSystem
             }
             return patients;
         }
-        public bool AddAppointment(Patient patient, List<DoctorOperation> docOp, double bill)
+        public bool AddAppointment(Patient patient, List<Appointment> ap)
         {
             try
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                string query = "INSERT INTO patientoperationdetails_tbl (patientId, PatientBill ) VALUES (@patientId, @PatientBill); " +
-                          "SELECT LAST_INSERT_ID();";
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@patientId", patient.Patientid);
-                command.Parameters.AddWithValue("@PatientBill", bill);
-                object result = command.ExecuteScalar();
-                int patientoperationNo = Convert.ToInt32(result);
+              
+                foreach (Appointment op in ap)
+                {
+
+                    int doctoroperationId = getDoctorOperationId(op.Doctor, op.Operation);
+
+                    string query = $"INSERT INTO patientappointment_tbl (doctoroperationID, patientid, dateSchedule, StartTime, EndTime, bill) " +
+                               $"VALUES " +
+                               $"(@doctoroperationID, @patientid, @dateSchedule, @StartTime, @EndTime, @bill)";
+                    MySqlCommand command = new MySqlCommand(query, conn);
+
+                    command.Parameters.AddWithValue("@patientid",patient.Patientid);
+                    command.Parameters.AddWithValue("@doctoroperationID", doctoroperationId);
+                    command.Parameters.AddWithValue("@dateSchedule", op.DateSchedule);
+                    command.Parameters.AddWithValue("@StartTime", op.StartTime);
+                    command.Parameters.AddWithValue("@EndTime", op.EndTime);
+                    command.Parameters.AddWithValue("@bill", op.Bill.ToString("F2"));
+                    command.ExecuteNonQuery();
+                }
+
                 conn.Close();
 
-                insertAppointment(patientoperationNo, docOp);
+              
                 return true;
             }
             catch (MySqlException ex)
@@ -283,40 +296,7 @@ namespace ClinicSystem
             }
             return false;
         }
-        private void insertAppointment(int patientoperationNo, List<DoctorOperation> docOp)
-        {
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(driver);
-                conn.Open();
-
-                foreach (DoctorOperation op in docOp)
-                {
-                    
-                    int doctoroperationId = getDoctorOperationId(op.Doctor, op.Operation);
-
-                    string query = "INSERT INTO patientappointment_tbl (patientOperationNo, doctoroperationID, dateSchedule, StartTime, EndTime) VALUES (@patientOperationNo, @doctoroperationID, @dateSchedule, @StartTime, @EndTime)";
-                    MySqlCommand command = new MySqlCommand(query, conn);
-
-                    command.Parameters.AddWithValue("@patientOperationNo", patientoperationNo);
-                    command.Parameters.AddWithValue("@doctoroperationID", doctoroperationId);
-                    command.Parameters.AddWithValue("@dateSchedule", op.Schedule.DateSchedule);
-                    command.Parameters.AddWithValue("@StartTime", op.Schedule.StartTime);
-                    command.Parameters.AddWithValue("@EndTime", op.Schedule.EndTime);
-
-
-
-                    command.ExecuteNonQuery();
-
-                  
-                }
-                conn.Close();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("error on insertAppointment() db " + ex.Message);
-            }
-        }
+        
         private int getDoctorOperationId(Doctor doctor, Operation operation)
         {
             try
@@ -359,21 +339,6 @@ namespace ClinicSystem
             }
             return 1;
         }
-        public void setRoomOccupieed(string roomno)
-        {
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(driver);
-                conn.Open();
-                string query = "UPDATE rooms_tbl SET `Occupation` = 'Occupied' WHERE roomno = @roomno";
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.AddWithValue("@roomno", roomno);
-                command.ExecuteNonQuery();
-                conn.Close();
-            }catch (MySqlException ex)
-            {
-                MessageBox.Show("Error on setRoomOccupied() db" + ex.Message);
-            }
-        }
+       
     }
 }

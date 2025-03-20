@@ -151,9 +151,7 @@ namespace ClinicSystem
 
         public string Capitalize(string name)
         {
-            if (string.IsNullOrEmpty(name))
-                return name;
-
+            if (string.IsNullOrEmpty(name)) return name;
             return char.ToUpper(name[0]) + name.Substring(1).ToLower();
         }
     }

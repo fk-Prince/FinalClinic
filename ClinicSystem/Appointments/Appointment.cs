@@ -16,29 +16,14 @@ namespace ClinicSystem
         private TimeSpan endTime;
         private Patient patient;
         private Operation operation;
+        private double bill;
         private int roomno;
-        private string diagnosis;
+        private DateTime dateAdmitted;
         private int appointmentDetailNo;
 
+        private string diagnosis;
 
-        public Appointment(Operation operation, Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime)
-        {
-            this.doctor = doctor;
-            this.operation = operation;
-            this.dateSchedule = dateSchedule;
-            this.startTime = startTime;
-            this.endTime = endTime;
-        }
 
-        public Appointment(Operation operation, Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int appointmentDetailId)
-        {
-            this.doctor = doctor;
-            this.operation = operation;
-            this.dateSchedule = dateSchedule;
-            this.startTime = startTime;
-            this.endTime = endTime;
-            this.appointmentDetailNo = appointmentDetailId;
-        }
 
         public Appointment( Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime)
         {
@@ -48,14 +33,6 @@ namespace ClinicSystem
             this.startTime = startTime;
             this.endTime = endTime;
         }
-        public Appointment(Patient patient, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime)
-        {
-            this.patient = patient;
-            this.dateSchedule = dateSchedule.Date;
-            this.startTime = startTime;
-            this.endTime = endTime;
-        }
-
         public Appointment(DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, Patient patient, Operation operation, int roomno, string diagnosis, int appointmentDetailId)
         {
             this.dateSchedule = dateSchedule;
@@ -68,13 +45,52 @@ namespace ClinicSystem
             appointmentDetailNo = appointmentDetailId;
         }
 
+        public Appointment(Patient patient, Doctor doctor, Operation operation, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, double bill)
+        {
+            this.patient = patient;
+            this.dateSchedule = dateSchedule.Date;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.doctor = doctor;
+            this.operation = operation;
+            this.bill = bill;
+        }
+
+        public Appointment(Operation operation, Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int appointmentDetailId)
+        {
+            this.doctor = doctor;
+            this.operation = operation;
+            this.dateSchedule = dateSchedule;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.appointmentDetailNo = appointmentDetailId;
+        }
+
+
+        public Appointment(Patient patient, Doctor doctor, Operation operation, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int appointmentDetailId, int roomno, DateTime dateAdmitted)
+        {
+            this.patient = patient;
+            this.dateSchedule = dateSchedule.Date;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.doctor = doctor;
+            this.operation = operation;
+            this.appointmentDetailNo = appointmentDetailId;
+            this.roomno = roomno;
+            this.dateAdmitted = dateAdmitted;
+        }
+
+      
+
         public Doctor Doctor { get => doctor; }
         public Operation Operation { get => operation; }
         public Patient Patient { get => patient; }
         public DateTime DateSchedule { get => dateSchedule; }
+        public DateTime DateAdmitted { get => dateAdmitted; }
         public TimeSpan StartTime { get => startTime;  }
         public TimeSpan EndTime { get => endTime;  }
 
+        public double Bill { get => bill; }
         public int RoomNo { get => roomno; }
         public string Diagnosis { get => diagnosis;  }
         public int AppointmentDetailNo { get => appointmentDetailNo; }
