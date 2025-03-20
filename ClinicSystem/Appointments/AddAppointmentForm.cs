@@ -208,6 +208,8 @@ namespace ClinicSystem.Appointments
             displayOperationAdded(schedule);
             MessageBox.Show("Operation Added", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             calculateTotalBill();
+            string opNumber = db.getAppointmentDetail();
+            PatientAppointmentNo.Text = (int.Parse(opNumber) + 1).ToString();
             lastSelected = selectedOperation;
         }
 
@@ -291,9 +293,9 @@ namespace ClinicSystem.Appointments
             text.Clear();
             temporaryStorage.Clear();
             patientSchedules.Clear();
-           // docOp.Clear();
             comboOperation.Items.Clear();
             comboDoctor.Items.Clear();
+            operationNameAddedList.Clear();
             TotalBill.Text = "";
             StartTime.Text = "";
             EndTime.Text = "";
@@ -314,7 +316,7 @@ namespace ClinicSystem.Appointments
                     break;
                 }
             }
-            string opNumber = db.getPatientOperationNo();
+            string opNumber = db.getAppointmentDetail();
             PatientAppointmentNo.Text = opNumber;
             comboStart.Items.Clear(); 
             comboEnd.Items.Clear();
@@ -396,7 +398,6 @@ namespace ClinicSystem.Appointments
             if (success)
             {
                 MessageBox.Show("Appoinment Added", "Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                comboPatientID.SelectedIndex = -1;
                 comboOperation.SelectedIndex = -1;
                 comboDoctor.SelectedIndex = -1;
                 scheduleDate.Value = DateTime.Now;

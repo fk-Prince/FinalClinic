@@ -183,21 +183,21 @@ namespace ClinicSystem
             }
             return doctorList;
         }
-        public string getPatientOperationNo()
+        public string getAppointmentDetail()
         {
             try
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                MySqlCommand command = new MySqlCommand("SELECT PatientOperationNo FROM PatientOperationDetails_Tbl " +
-                    "ORDER BY PatientOperationNo DESC LIMIT 1 ", conn);
+                MySqlCommand command = new MySqlCommand("SELECT AppointmentDetailNo FROM patientappointment_tbl " +
+                    "ORDER BY AppointmentDetailNo DESC LIMIT 1 ", conn);
                 MySqlDataReader reader = command.ExecuteReader();
-                int id = reader.Read() ? int.Parse(reader["PatientOperationNo"].ToString()) + 1 : 1;
+                int id = reader.Read() ? int.Parse(reader["AppointmentDetailNo"].ToString()) + 1 : 1;
                 return id.ToString();
             }
             catch (MySqlException e)
             {
-                MessageBox.Show("Error from getLastOperationNo DB" + e.Message);
+                MessageBox.Show("Error from getAppointmentDetail DB" + e.Message);
             }
             return "0";
         }

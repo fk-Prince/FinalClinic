@@ -34,7 +34,7 @@ namespace ClinicSystem.Appointments
                                     ON operation_tbl.operationCode = doctor_operation_mm_tbl.OperationCode
                                     LEFT JOIN clinichistory_tbl
                                     ON clinichistory_tbl.patientid = patient_tbl.patientid
-                                    WHERE patient_tbl.PatientID IS NOT NULL";
+                                    WHERE patientappointment_tbl.AppointmentDetailNo IS NOT NULL";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -51,6 +51,7 @@ namespace ClinicSystem.Appointments
                             reader.GetDateTime("birthdate"),
                             reader.IsDBNull(reader.GetOrdinal("contactnumber")) ? "N/A" : reader.GetString("contactnumber")
                         );
+
                     Doctor doctor = new Doctor(
                             reader.GetInt32("doctorid"),
                             reader.GetString("doctorfirstname"),
