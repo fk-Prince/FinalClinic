@@ -170,6 +170,12 @@
     <Compile Include="Doctors\DoctorMainForm.Designer.cs">
       <DependentUpon>DoctorMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctors\ViewDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\ViewDoctor.Designer.cs">
+      <DependentUpon>ViewDoctor.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainClinic\ClinicDatabase.cs" />
     <Compile Include="MainClinic\DashboardForm.cs">
       <SubType>Form</SubType>
@@ -207,6 +213,8 @@
       <DependentUpon>PatientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Appointments\Appointment.cs" />
+    <Compile Include="Rooms\DatabaseRoom.cs" />
+    <Compile Include="Rooms\Room.cs" />
     <Compile Include="Rooms\RoomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctors\DoctorMainForm.resx">
       <DependentUpon>DoctorMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\ViewDoctor.resx">
+      <DependentUpon>ViewDoctor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainClinic\DashboardForm.resx">
       <DependentUpon>DashboardForm.cs</DependentUpon>
@@ -389,6 +400,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor-test.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

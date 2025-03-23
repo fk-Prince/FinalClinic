@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicSystem.UserLoginForm;
 
@@ -14,12 +8,16 @@ namespace ClinicSystem.Doctors
     public partial class DoctorMainForm : Form
     {
         private Button lastButtonClicked;
+        private Staff staff;
         public DoctorMainForm(Staff staff)
         {
+            this.staff = staff;
             InitializeComponent();
             lastButtonClicked = addDoctorB;
-            AddDoctor add = new AddDoctor(staff);
-            LoadForm(add);
+            ViewDoctor view = new ViewDoctor(staff);
+            view.BackColor = Color.FromArgb(119, 136, 152);
+            view.ForeColor = Color.White;
+            LoadForm(view);
         }
 
         public void LoadForm(Form f)
@@ -47,6 +45,18 @@ namespace ClinicSystem.Doctors
                 lastButtonClicked.ForeColor = Color.Black;
                 lastButtonClicked = btn;
             }
+        }
+
+        private void addDoctorB_Click(object sender, EventArgs e)
+        {
+            AddDoctor add = new AddDoctor(staff);
+            LoadForm(add);
+        }
+
+        private void viewDoctorB_Click(object sender, EventArgs e)
+        {
+            ViewDoctor view = new ViewDoctor(staff);
+            LoadForm(view);
         }
     }
 }

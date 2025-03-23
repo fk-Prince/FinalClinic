@@ -88,5 +88,37 @@ namespace DoctorClinic
             }
             return false;
         }
+
+        public List<Doctor> getDoctors()
+        {
+            List<Doctor> doctorList = new List<Doctor>();   
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(driver);
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM doctor_tbl", conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Doctor doctor = new Doctor(
+                       reader.GetInt32("DoctorID"),
+                       reader.GetString("doctorFirstName"),
+                       reader.GetString("doctorMiddleName"),
+                       reader.GetString("doctorLastName"),
+                       reader.GetInt32("doctorAge"),
+                       reader.GetString("Pin"),
+                       reader.GetDateTime("DateHired"),
+                       reader.GetString("Gender"),
+                       reader.GetString("Address")
+                    );
+                    doctorList.Add(doctor);
+                }
+                conn.Close();
+            }catch (MySqlException ex)
+            {
+                MessageBox.Show("Error on getDoctors() db" + ex.Message);
+            }
+            return doctorList;
+        }
     }
 }

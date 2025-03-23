@@ -59,6 +59,7 @@
             this.addDoctorB.TabIndex = 105;
             this.addDoctorB.Text = "Add Doctors";
             this.addDoctorB.UseVisualStyleBackColor = false;
+            this.addDoctorB.Click += new System.EventHandler(this.addDoctorB_Click);
             this.addDoctorB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
             // 
             // viewDoctorB
@@ -71,6 +72,7 @@
             this.viewDoctorB.TabIndex = 104;
             this.viewDoctorB.Text = "View Doctors";
             this.viewDoctorB.UseVisualStyleBackColor = false;
+            this.viewDoctorB.Click += new System.EventHandler(this.viewDoctorB_Click);
             this.viewDoctorB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
             // 
             // DoctorMainForm
