@@ -227,6 +227,9 @@
     <Compile Include="UserLoginForm\DoctorLogin.Designer.cs">
       <DependentUpon>DoctorLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserLoginForm\MessagePromp.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserLoginForm\Staff.cs" />
     <Compile Include="UserLoginForm\UserLoginForm.cs">
       <SubType>Form</SubType>
@@ -309,6 +312,9 @@
     <EmbeddedResource Include="UserLoginForm\DoctorLogin.resx">
       <DependentUpon>DoctorLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserLoginForm\MessagePromp.resx">
+      <DependentUpon>MessagePromp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserLoginForm\UserLoginForm.resx">
       <DependentUpon>UserLoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -369,9 +375,6 @@
     <None Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\dashboard.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\patient.png" />
   </ItemGroup>
   <ItemGroup>
@@ -403,6 +406,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\doctor-test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\dashboard.png" />
+    <None Include="Resources\Staff.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

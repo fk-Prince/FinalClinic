@@ -109,14 +109,15 @@
             // 
             // updateAppointmentB
             // 
-            this.updateAppointmentB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
+            this.updateAppointmentB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.updateAppointmentB.FlatAppearance.BorderSize = 0;
             this.updateAppointmentB.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
             this.updateAppointmentB.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
             this.updateAppointmentB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateAppointmentB.Location = new System.Drawing.Point(194, 482);
+            this.updateAppointmentB.ForeColor = System.Drawing.Color.White;
+            this.updateAppointmentB.Location = new System.Drawing.Point(194, 493);
             this.updateAppointmentB.Name = "updateAppointmentB";
-            this.updateAppointmentB.Size = new System.Drawing.Size(284, 53);
+            this.updateAppointmentB.Size = new System.Drawing.Size(284, 42);
             this.updateAppointmentB.TabIndex = 10088;
             this.updateAppointmentB.Text = "Update";
             this.updateAppointmentB.UseVisualStyleBackColor = false;
@@ -329,7 +330,7 @@
             // RescheduleForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(1080, 619);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

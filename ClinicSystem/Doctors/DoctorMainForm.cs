@@ -13,10 +13,9 @@ namespace ClinicSystem.Doctors
         {
             this.staff = staff;
             InitializeComponent();
-            lastButtonClicked = addDoctorB;
-            ViewDoctor view = new ViewDoctor(staff);
-            view.BackColor = Color.FromArgb(119, 136, 152);
-            view.ForeColor = Color.White;
+          
+            ViewDoctor view = new ViewDoctor(staff);        
+            lastButtonClicked = viewDoctorB;
             LoadForm(view);
         }
 

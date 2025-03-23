@@ -187,7 +187,6 @@ namespace ClinicSystem.Appointments
 
             try
             {
-                MessageBox.Show(app.EndTime + "    " +app.StartTime);
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
                 string query = "SELECT patientappointment_tbl.* " +

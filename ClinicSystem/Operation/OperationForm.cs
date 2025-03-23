@@ -14,6 +14,7 @@ namespace ClinicSystem
         private List<Operation> operationlist;
         private DataBaseOperation db = new DataBaseOperation();
         private Staff staff;
+        private bool isAddOperationShowing = false;
         public OperationForm(Staff staff)
         {
             this.staff = staff;
@@ -39,7 +40,7 @@ namespace ClinicSystem
                 panel.Size = new Size(300, 250);
                 panel.Location = new Point(50, 100);    
                 panel.Margin = new Padding(30, 10, 10, 10);
-                panel.BackColor = Color.FromArgb(111, 163, 216);
+                panel.BackColor = Color.FromArgb(60, 141, 188);
                 panel.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 50, 50));
 
 
@@ -143,6 +144,11 @@ namespace ClinicSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (isAddOperationShowing)
+            {
+                return;
+            }
+            isAddOperationShowing = !isAddOperationShowing;
             timerin.Start();
             addOperationPanel.Visible = true;
             flowLayout.Visible = false;
@@ -209,51 +215,58 @@ namespace ClinicSystem
                 || string.IsNullOrWhiteSpace(opPrice.Text) 
                 || string.IsNullOrWhiteSpace(opDuration.Text))
             {
-                MessageBox.Show("Please fill up all fields", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Please fill up all fields", MessageBoxIcon.Error);
+                //MessageBox.Show("Please fill up all fields", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             bool duplicateCode = operationlist.Any(operation => operation.OperationCode.Equals(opCode, StringComparison.OrdinalIgnoreCase));
             if (duplicateCode)
             {
-                MessageBox.Show("Duplicate Operation Code", "Duplicate Code", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Duplicate Operation Code", MessageBoxIcon.Error);
+                //MessageBox.Show("Duplicate Operation Code", "Duplicate Code", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             double price;
             if (!double.TryParse(opPrice.Text, out price))
             {
-                MessageBox.Show("Invalid Price", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Invalid Price", MessageBoxIcon.Error);
+               // MessageBox.Show("Invalid Price", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             price = double.Parse(price.ToString("F2"));
 
             if (price >= 1000000000)
             {
-                MessageBox.Show("Price is too big.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Price is too big.", MessageBoxIcon.Error);
+                // MessageBox.Show("Price is too big.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             TimeSpan duration;
             if (!TimeSpan.TryParseExact(opDuration.Text, @"hh\:mm\:ss", null, out duration))
             {
-                MessageBox.Show("Invalid Duration", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessagePromp.MainShowMessage(this, "Invalid Duration", MessageBoxIcon.Error);
+               // MessageBox.Show("Invalid Duration", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (duration == TimeSpan.Zero)
             {
-                MessageBox.Show("Invalid Duration", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Invalid Duration", MessageBoxIcon.Error);
+               // MessageBox.Show("Invalid Duration", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             bool success = db.insert(staff.StaffId, new Operation(opCode.ToUpper(), Capitalize(opName), DateTime.Now, opDescription, price, duration));
             if (success)
             {
-                MessageBox.Show("Operation Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessagePromp.MainShowMessage(this, "Operation Added Successfully", MessageBoxIcon.Error);
+               // MessageBox.Show("Operation Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 reset();
             }
             else
             {
-                MessageBox.Show("Operation Failed to Add");
+                MessagePromp.MainShowMessage(this, "Operation Failed to Add", MessageBoxIcon.Error);
+                //MessageBox.Show("Operation Failed to Add");
             }
         }
         public string Capitalize(string name)
@@ -267,6 +280,7 @@ namespace ClinicSystem
 
         private void button3_Click(object sender, EventArgs e)
         {
+            isAddOperationShowing = !isAddOperationShowing;
             reset();
             timerout.Start();
         }

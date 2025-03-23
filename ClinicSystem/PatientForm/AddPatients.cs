@@ -85,45 +85,52 @@ namespace ClinicSystem
               string.IsNullOrWhiteSpace(age) ||
               string.IsNullOrWhiteSpace(bday.ToString()))
             {
-                MessageBox.Show("Please fill up all fields", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Please fill up all fields", MessageBoxIcon.Error);
+                //MessageBox.Show("Please fill up all fields", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (comboRoom.SelectedItem == null || comboRoom.SelectedIndex == -1)
             {
-                MessageBox.Show("Choose room", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Choose room", MessageBoxIcon.Error);
+                //MessageBox.Show("Choose room", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (Gender.SelectedItem == null || Gender.SelectedIndex == -1)
             {
-                MessageBox.Show("Choose gender", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Choose gender", MessageBoxIcon.Error);
+                //MessageBox.Show("Choose gender", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             string gender = Gender.SelectedItem.ToString();
             if (bday > DateTime.Now)
             {
-                MessageBox.Show("Invalid Birthdate", "Invalid Birthdate", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Invalid Birthdate", MessageBoxIcon.Error);
+                //MessageBox.Show("Invalid Birthdate", "Invalid Birthdate", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             int ageInt = 0;
             if (!int.TryParse(age, out ageInt))
             {
-                MessageBox.Show("Invalid Age", "Invalid Age", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Invalid Age", MessageBoxIcon.Error);
+                //MessageBox.Show("Invalid Age", "Invalid Age", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (ageInt > 120 || ageInt <= 0)
             {
-                MessageBox.Show("Invalid Age", "Invalid Age", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Invalid Age", MessageBoxIcon.Error);
+               // MessageBox.Show("Invalid Age", "Invalid Age", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!string.IsNullOrWhiteSpace(contact) && (!long.TryParse(contact, out _) || !Regex.IsMatch(contact, @"^09\d{9}$")))
             {
-                MessageBox.Show("Invalid Contact Number", "Invalid Contact Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Invalid Contact Number", MessageBoxIcon.Error);
+                //MessageBox.Show("Invalid Contact Number", "Invalid Contact Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -133,8 +140,8 @@ namespace ClinicSystem
 
             if (success)
             {
-             
-                MessageBox.Show("Successfully Added Patient", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessagePromp.MainShowMessage(this, "Successfully Added Patient", MessageBoxIcon.Information);
+               // MessageBox.Show("Successfully Added Patient", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FirstName.Text = "";
                 MiddleName.Text = "";
                 LastName.Text = "";

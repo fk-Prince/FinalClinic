@@ -38,6 +38,7 @@
             // addAppointmentB
             // 
             this.addAppointmentB.BackColor = System.Drawing.Color.White;
+            this.addAppointmentB.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.addAppointmentB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addAppointmentB.Location = new System.Drawing.Point(219, 12);
             this.addAppointmentB.Name = "addAppointmentB";
@@ -51,6 +52,7 @@
             // allAppointmentB
             // 
             this.allAppointmentB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(136)))), ((int)(((byte)(152)))));
+            this.allAppointmentB.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.allAppointmentB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.allAppointmentB.Location = new System.Drawing.Point(12, 12);
             this.allAppointmentB.Name = "allAppointmentB";
@@ -64,6 +66,7 @@
             // rescheduleB
             // 
             this.rescheduleB.BackColor = System.Drawing.Color.White;
+            this.rescheduleB.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.rescheduleB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rescheduleB.Location = new System.Drawing.Point(425, 12);
             this.rescheduleB.Name = "rescheduleB";
@@ -84,7 +87,7 @@
             // 
             // appointmentPanel
             // 
-            this.appointmentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
+            this.appointmentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.appointmentPanel.Location = new System.Drawing.Point(0, 65);
             this.appointmentPanel.Name = "appointmentPanel";
             this.appointmentPanel.Size = new System.Drawing.Size(1080, 654);
@@ -93,7 +96,7 @@
             // AppointmentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
             this.ClientSize = new System.Drawing.Size(1080, 719);
             this.Controls.Add(this.rescheduleB);
             this.Controls.Add(this.appointmentPanel);

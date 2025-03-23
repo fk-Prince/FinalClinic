@@ -39,6 +39,7 @@
             // addPatient
             // 
             this.addPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(136)))), ((int)(((byte)(152)))));
+            this.addPatient.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.addPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addPatient.Location = new System.Drawing.Point(12, 12);
             this.addPatient.Name = "addPatient";
@@ -52,6 +53,7 @@
             // viewPatient
             // 
             this.viewPatient.BackColor = System.Drawing.Color.White;
+            this.viewPatient.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.viewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewPatient.Location = new System.Drawing.Point(156, 12);
             this.viewPatient.Name = "viewPatient";
@@ -88,7 +90,7 @@
             // FormPatient
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
             this.ClientSize = new System.Drawing.Size(1080, 719);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

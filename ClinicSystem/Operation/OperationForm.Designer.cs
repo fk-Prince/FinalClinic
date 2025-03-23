@@ -90,12 +90,15 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(821, 46);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(821, 67);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(228, 62);
+            this.button1.Size = new System.Drawing.Size(228, 41);
             this.button1.TabIndex = 1;
             this.button1.Text = "Add Operation";
             this.button1.UseVisualStyleBackColor = false;
@@ -143,16 +146,15 @@
             // flowLayout
             // 
             this.flowLayout.AutoScroll = true;
-            this.flowLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
-            this.flowLayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayout.Location = new System.Drawing.Point(0, 119);
+            this.flowLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
+            this.flowLayout.Location = new System.Drawing.Point(1, 114);
             this.flowLayout.Name = "flowLayout";
             this.flowLayout.Size = new System.Drawing.Size(1080, 601);
             this.flowLayout.TabIndex = 3;
             // 
             // addOperationPanel
             // 
-            this.addOperationPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(230)))), ((int)(((byte)(237)))));
+            this.addOperationPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
             this.addOperationPanel.Controls.Add(this.picturePrice);
             this.addOperationPanel.Controls.Add(this.button3);
             this.addOperationPanel.Controls.Add(this.pictureDuration);
@@ -166,7 +168,7 @@
             this.addOperationPanel.Controls.Add(this.panel5);
             this.addOperationPanel.Controls.Add(this.panel4);
             this.addOperationPanel.Controls.Add(this.panel3);
-            this.addOperationPanel.Location = new System.Drawing.Point(-457, 135);
+            this.addOperationPanel.Location = new System.Drawing.Point(-457, 117);
             this.addOperationPanel.Name = "addOperationPanel";
             this.addOperationPanel.Size = new System.Drawing.Size(457, 575);
             this.addOperationPanel.TabIndex = 4;
@@ -185,8 +187,10 @@
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImage = global::ClinicSystem.Properties.Resources.back;
             this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(8, 5);
+            this.button3.Location = new System.Drawing.Point(25, 15);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(24, 24);
             this.button3.TabIndex = 0;
@@ -219,7 +223,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
+            this.button2.BackColor = System.Drawing.Color.White;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
@@ -236,6 +240,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(138, 29);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(195, 25);
@@ -246,6 +251,7 @@
             // 
             this.panel8.Controls.Add(this.Description);
             this.panel8.Controls.Add(this.opDescription);
+            this.panel8.ForeColor = System.Drawing.Color.White;
             this.panel8.Location = new System.Drawing.Point(35, 349);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(396, 106);
@@ -275,6 +281,7 @@
             // 
             this.panel7.Controls.Add(this.label6);
             this.panel7.Controls.Add(this.opDuration);
+            this.panel7.ForeColor = System.Drawing.Color.White;
             this.panel7.Location = new System.Drawing.Point(35, 188);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(396, 32);
@@ -306,6 +313,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.opDate);
+            this.panel6.ForeColor = System.Drawing.Color.White;
             this.panel6.Location = new System.Drawing.Point(35, 292);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(396, 128);
@@ -335,6 +343,7 @@
             // 
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.opPrice);
+            this.panel5.ForeColor = System.Drawing.Color.White;
             this.panel5.Location = new System.Drawing.Point(35, 240);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(396, 32);
@@ -365,6 +374,7 @@
             // 
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.opName);
+            this.panel4.ForeColor = System.Drawing.Color.White;
             this.panel4.Location = new System.Drawing.Point(35, 137);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(396, 32);
@@ -395,6 +405,7 @@
             // 
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.opCode);
+            this.panel3.ForeColor = System.Drawing.Color.White;
             this.panel3.Location = new System.Drawing.Point(35, 85);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(396, 32);
@@ -431,7 +442,7 @@
             // OperationForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(1080, 719);
             this.Controls.Add(this.addOperationPanel);
             this.Controls.Add(this.flowLayout);

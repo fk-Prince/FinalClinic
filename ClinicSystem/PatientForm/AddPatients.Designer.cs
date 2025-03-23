@@ -88,7 +88,7 @@
             // 
             // personaldetail
             // 
-            this.personaldetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
+            this.personaldetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.personaldetail.Controls.Add(this.panel2);
             this.personaldetail.Controls.Add(this.panel1);
             this.personaldetail.Controls.Add(this.panel3);
@@ -114,6 +114,7 @@
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(58, 132);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 44);
@@ -163,6 +164,7 @@
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.Location = new System.Drawing.Point(58, 196);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 41);
@@ -202,6 +204,7 @@
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel3.ForeColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(58, 297);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(290, 37);
@@ -241,6 +244,7 @@
             this.panel6.Controls.Add(this.textBox9);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel6.ForeColor = System.Drawing.Color.Black;
             this.panel6.Location = new System.Drawing.Point(58, 348);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(638, 37);
@@ -290,6 +294,7 @@
             this.panel5.Controls.Add(this.textBox7);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel5.ForeColor = System.Drawing.Color.Black;
             this.panel5.Location = new System.Drawing.Point(720, 297);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(290, 37);
@@ -329,6 +334,7 @@
             this.panel9.Controls.Add(this.textBox13);
             this.panel9.Controls.Add(this.label8);
             this.panel9.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel9.ForeColor = System.Drawing.Color.Black;
             this.panel9.Location = new System.Drawing.Point(848, 348);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(162, 37);
@@ -369,6 +375,7 @@
             this.panel7.Controls.Add(this.textBox11);
             this.panel7.Controls.Add(this.label6);
             this.panel7.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel7.ForeColor = System.Drawing.Color.Black;
             this.panel7.Location = new System.Drawing.Point(58, 403);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(466, 37);
@@ -403,12 +410,13 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(673, 533);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(337, 50);
@@ -424,6 +432,7 @@
             this.panel4.Controls.Add(this.textBox5);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel4.ForeColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(406, 297);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(290, 37);
@@ -463,6 +472,7 @@
             this.panel17.Controls.Add(this.textBox20);
             this.panel17.Controls.Add(this.label15);
             this.panel17.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel17.ForeColor = System.Drawing.Color.Black;
             this.panel17.Location = new System.Drawing.Point(666, 403);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(344, 37);
@@ -502,6 +512,7 @@
             this.panel8.Controls.Add(this.textBox10);
             this.panel8.Controls.Add(this.label7);
             this.panel8.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.panel8.ForeColor = System.Drawing.Color.Black;
             this.panel8.Location = new System.Drawing.Point(720, 348);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(105, 37);

@@ -98,25 +98,36 @@ namespace ClinicSystem.Appointments
         {
             if (comboAppointment.SelectedIndex == -1)
             {
-                MessageBox.Show("No Appointment Selected.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessagePromp.MainShowMessage(this, "No Appointment Selected.", MessageBoxIcon.Error);
                 return;
             }
+
+            
             TimeSpan startTime;
             if (!TimeSpan.TryParseExact(tbStart.Text.ToString(), @"hh\:mm\:ss", null, out startTime))
             {
-                MessageBox.Show("Invalid time, Please enter valid time(hh:mm:ss).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Invalid time, Please enter valid time(hh:mm:ss).", MessageBoxIcon.Error);
+                return;
+            }
+
+            DateTime selectedDate = this.dateSchedulePicker.Value.Date;
+            DateTime currentDateTime = DateTime.Now;
+            DateTime selectedStartDateTime = selectedDate.Add(startTime);
+            if (selectedStartDateTime < currentDateTime)
+            {
+                MessagePromp.MainShowMessage(this, "Time is already past.", MessageBoxIcon.Error);
                 return;
             }
 
             if (int.Parse(tbStart.Text.Split(':')[0]) >= 12)
             {
-                MessageBox.Show("Enter 12 hours format (00:00:00) - (11:59:00).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Enter 12 hours format (00:00:00) - (11:59:00).", MessageBoxIcon.Error);
                 return;
             }
 
             if (int.Parse(tbStart.Text.Split(':')[1]) >= 60 || int.Parse(tbStart.Text.Split(':')[2]) >= 60)
             {
-                MessageBox.Show("Minutes and seconds must be between 00 and 59.", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Minutes and seconds must be between 00 and 59.", MessageBoxIcon.Error);
                 return;
             }
 
@@ -140,12 +151,12 @@ namespace ClinicSystem.Appointments
                 bool updated = db.UpdateSchedule(app);
                 if (updated)
                 {
-                    MessageBox.Show("Appointment is updated.", "Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessagePromp.MainShowMessage(this, "Appointment is updated.", MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("This schdule conflict other schedule.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessagePromp.MainShowMessageBig(this, "This schdule conflict other schedule.", MessageBoxIcon.Error);
             }
         }
 

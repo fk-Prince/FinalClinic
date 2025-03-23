@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.Password = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Exit = new System.Windows.Forms.Button();
             this.doctorB = new System.Windows.Forms.Button();
             this.LoginButton = new System.Windows.Forms.Button();
-            this.Password = new System.Windows.Forms.TextBox();
             this.Username = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.passwordToggle = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -48,6 +49,7 @@
             this.v = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -56,8 +58,9 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(159)))), ((int)(((byte)(195)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
@@ -78,6 +81,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(500, 700);
             this.panel1.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.passwordToggle);
+            this.panel3.Controls.Add(this.Password);
+            this.panel3.Location = new System.Drawing.Point(146, 470);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(229, 26);
+            this.panel3.TabIndex = 101;
+            // 
+            // Password
+            // 
+            this.Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Password.HideSelection = false;
+            this.Password.Location = new System.Drawing.Point(2, 2);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(202, 19);
+            this.Password.TabIndex = 2;
+            this.Password.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -148,17 +173,6 @@
             this.LoginButton.UseVisualStyleBackColor = false;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
-            // Password
-            // 
-            this.Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Password.HideSelection = false;
-            this.Password.Location = new System.Drawing.Point(2, 2);
-            this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(202, 19);
-            this.Password.TabIndex = 2;
-            this.Password.UseSystemPasswordChar = true;
-            // 
             // Username
             // 
             this.Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -197,16 +211,13 @@
             this.label2.TabIndex = 100;
             this.label2.Text = "Care";
             // 
-            // panel3
+            // pictureBox1
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.passwordToggle);
-            this.panel3.Controls.Add(this.Password);
-            this.panel3.Location = new System.Drawing.Point(146, 470);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(229, 26);
-            this.panel3.TabIndex = 101;
+            this.pictureBox1.Location = new System.Drawing.Point(-16, -16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 102;
+            this.pictureBox1.TabStop = false;
             // 
             // passwordToggle
             // 
@@ -274,6 +285,7 @@
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -302,6 +314,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button passwordToggle;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

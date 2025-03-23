@@ -15,22 +15,15 @@ namespace ClinicSystem
         private Staff staff;
         public ClinicSystem(Staff staff)
         {
-            this.staff = staff; 
+            this.staff = staff;
             InitializeComponent();
+            StaffIdentity.Text = staff.Username;
             Clock.Text = DateTime.Now.ToString("hh:mm:ss tt");
             Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
             DashboardForm dashboard = new DashboardForm(staff,this);
             LoadForm(dashboard);
-
+            button1.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
             lastButtonClicked = DashboardS;
-            lastButtonClicked.ForeColor = Color.White;
-        }
-
-
-        private void ViewPatientSide_Click(object sender, EventArgs e)
-        {
-            ViewPatientForm viewPatientForm = new ViewPatientForm(staff);
-            LoadForm(viewPatientForm);
         }
 
         public void LoadForm(Form f)
@@ -52,10 +45,8 @@ namespace ClinicSystem
             Button btn = sender as Button;
             if (btn != lastButtonClicked)
             {
-                btn.BackColor = Color.FromArgb(111, 163, 216);
-                btn.ForeColor = Color.White;
-                lastButtonClicked.BackColor = Color.FromArgb(255, 255, 255);
-                lastButtonClicked.ForeColor = Color.Black;
+                btn.BackColor = Color.FromArgb(19, 30, 46);
+                lastButtonClicked.BackColor = Color.FromArgb(26, 42, 64);
                 lastButtonClicked = btn;
             }
         }
@@ -121,6 +112,17 @@ namespace ClinicSystem
         {
             ClinicForm clinic = new ClinicForm(staff);
             LoadForm(clinic);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult option = MessageBox.Show("Do you want to logout ?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (option == DialogResult.Yes)
+            {
+                Hide();
+                LoginUserForm user = new LoginUserForm();
+                user.Show();
+            }
         }
     }
 }

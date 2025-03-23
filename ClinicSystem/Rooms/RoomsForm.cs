@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClinicSystem.Rooms
@@ -10,6 +11,7 @@ namespace ClinicSystem.Rooms
         private List<Room> roomType;
         private DatabaseRoom db = new DatabaseRoom();
         private Room selected;
+        private bool isRoomPanel = false;
         public RoomsForm()
         {
             InitializeComponent();
@@ -19,6 +21,7 @@ namespace ClinicSystem.Rooms
             {    
                comboType.Items.Add(room.Roomtype);
             }
+            addRoomPanel.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, addRoomPanel.Width, addRoomPanel.Height, 50, 50));
         }
 
         private void comboType_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,6 +80,47 @@ namespace ClinicSystem.Rooms
                 {
                     comboType.Items.Add(roomdasd.Roomtype);
                 }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            timerout.Start();
+            isRoomPanel = !isRoomPanel;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (isRoomPanel)
+            {
+                return;
+            }
+            isRoomPanel = !isRoomPanel;
+            timerin.Start();
+            flowLayoutPanel1.Visible = false;
+        }
+        private int x = -375;
+        private void timerin_Tick(object sender, EventArgs e)
+        {
+            x += 20;
+          
+            if (x >= 375)
+            {
+                x = 375;
+                timerin.Stop();
+            }
+            addRoomPanel.Location = new Point(x, 80);
+        }
+
+        private void timerout_Tick(object sender, EventArgs e)
+        {
+            x -= 20;
+            addRoomPanel.Location = new Point(x, 80);
+            if (x <= -375)
+            {
+                timerout.Stop();
+                addRoomPanel.Visible = false;
+                flowLayoutPanel1.Visible = true;
             }
         }
     }

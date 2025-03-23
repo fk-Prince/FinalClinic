@@ -4,6 +4,8 @@ using MySql.Data.MySqlClient;
 
 using System.Windows.Forms;
 using ClinicSystem.UserLoginForm;
+using System.Drawing;
+using System.Management.Instrumentation;
 
 namespace ClinicSystem
 {
@@ -49,7 +51,7 @@ namespace ClinicSystem
             {
                 if (string.IsNullOrWhiteSpace(Username.Text) || string.IsNullOrWhiteSpace(Password.Text) || Username.Text == "User Name" || Password.Text == "Password")
                 {
-                    MessageBox.Show("Empty space, provide credentials", "Incomplete Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessagePromp.LoginShowMessage(this, "Wrong username or Password", MessageBoxIcon.Error);
                     return;
                 }
                 string driver = "server=localhost;username=root;password=root;database=db_clinic";
@@ -65,16 +67,27 @@ namespace ClinicSystem
                 MySqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows == false)
                 {
-                    MessageBox.Show("Wrong Username or Password", "Incorrect Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessagePromp.LoginShowMessage(this, "Wrong Username or Password", MessageBoxIcon.Error);
+
                     return;
                 }
                 while (reader.Read())
                 {
+                    LoginButton.Enabled = false;
                     Staff staff = new Staff(int.Parse(reader["StaffID"].ToString()), reader["Username"].ToString(), reader["Password"].ToString());
-                    MessageBox.Show("Successfully Login", "Login Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    ClinicSystem clinicSystem = new ClinicSystem(staff);
-                    clinicSystem.Show();
+                    MessagePromp.LoginShowMessage(this, "Successfully Login", MessageBoxIcon.Information);
+                    Timer timer = new Timer();
+                    timer.Interval = 2000;
+                    timer.Tick += (s, y) =>
+                    {
+                        timer.Stop();
+                        this.Hide();
+                        ClinicSystem clinicSystem = new ClinicSystem(staff);
+                        clinicSystem.Show();
+                    };
+                   // timer.Tick += Timer_Tick;
+                    timer.Start();
+
                 }
                 conn.Close();
             }
@@ -82,8 +95,34 @@ namespace ClinicSystem
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
+
+
+
+        //public void timer(LoginMessagePromp promp)
+        //{
+        //    if (promp.getInstance() != null)
+        //    {
+        //        this.Controls.Remove(promp);
+        //    }
+        //    Timer timer = new Timer();
+        //    timer.Interval = 15;
+        //    int y = -50;
+        //    timer.Tick += (s, b) => {
+        //        y += 5;
+        //        if (y >= 10)
+        //        {
+        //            y = 10;
+        //            timer.Stop();
+        //        }
+        //        promp.Location = new Point(110, y);
+        //    };
+        //    timer.Start();
+
+        //    promp.Location = new Point(110, 10);
+        //    this.Controls.Add(promp);
+        //    promp.BringToFront();
+        //}
 
         private void doctorB_Click(object sender, EventArgs e)
         {

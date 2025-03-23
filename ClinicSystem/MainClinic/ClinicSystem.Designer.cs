@@ -29,8 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClinicSystem));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.StaffIdentity = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.Date = new System.Windows.Forms.Label();
             this.Clock = new System.Windows.Forms.Label();
@@ -47,6 +52,8 @@
             this.hoursTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +72,9 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.Date);
             this.panel2.Controls.Add(this.Clock);
@@ -76,6 +85,53 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(220, 718);
             this.panel2.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Sitka Text", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(4, 685);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 30);
+            this.button1.TabIndex = 109;
+            this.button1.Text = "SIGN OUT";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
+            this.panel5.Controls.Add(this.StaffIdentity);
+            this.panel5.Controls.Add(this.pictureBox2);
+            this.panel5.Location = new System.Drawing.Point(0, 636);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(220, 47);
+            this.panel5.TabIndex = 108;
+            // 
+            // StaffIdentity
+            // 
+            this.StaffIdentity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.StaffIdentity.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StaffIdentity.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StaffIdentity.ForeColor = System.Drawing.Color.White;
+            this.StaffIdentity.Location = new System.Drawing.Point(57, 14);
+            this.StaffIdentity.Name = "StaffIdentity";
+            this.StaffIdentity.Size = new System.Drawing.Size(154, 20);
+            this.StaffIdentity.TabIndex = 104;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(4, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(50, 44);
+            this.pictureBox2.TabIndex = 103;
+            this.pictureBox2.TabStop = false;
             // 
             // panel4
             // 
@@ -99,7 +155,7 @@
             // 
             this.Clock.AutoSize = true;
             this.Clock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clock.ForeColor = System.Drawing.Color.Black;
+            this.Clock.ForeColor = System.Drawing.Color.White;
             this.Clock.Location = new System.Drawing.Point(21, 8);
             this.Clock.Name = "Clock";
             this.Clock.Size = new System.Drawing.Size(0, 40);
@@ -108,7 +164,7 @@
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.appointmentButton);
             this.panel3.Controls.Add(this.button6);
@@ -116,19 +172,21 @@
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.AddPatientS);
             this.panel3.Controls.Add(this.DashboardS);
-            this.panel3.Location = new System.Drawing.Point(0, 143);
+            this.panel3.Location = new System.Drawing.Point(0, 172);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(218, 344);
+            this.panel3.Size = new System.Drawing.Size(218, 319);
             this.panel3.TabIndex = 0;
             // 
             // button8
             // 
+            this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.White;
             this.button8.Image = global::ClinicSystem.Properties.Resources.clinicrecord;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(6, 288);
+            this.button8.Location = new System.Drawing.Point(-1, 271);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(206, 46);
+            this.button8.Size = new System.Drawing.Size(221, 46);
             this.button8.TabIndex = 10000;
             this.button8.TabStop = false;
             this.button8.Text = "Clinic History";
@@ -138,12 +196,14 @@
             // 
             // appointmentButton
             // 
+            this.appointmentButton.FlatAppearance.BorderSize = 0;
             this.appointmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appointmentButton.ForeColor = System.Drawing.Color.White;
             this.appointmentButton.Image = global::ClinicSystem.Properties.Resources.appointment;
             this.appointmentButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.appointmentButton.Location = new System.Drawing.Point(6, 242);
+            this.appointmentButton.Location = new System.Drawing.Point(-1, 226);
             this.appointmentButton.Name = "appointmentButton";
-            this.appointmentButton.Size = new System.Drawing.Size(206, 46);
+            this.appointmentButton.Size = new System.Drawing.Size(221, 46);
             this.appointmentButton.TabIndex = 10000;
             this.appointmentButton.TabStop = false;
             this.appointmentButton.Text = "Appointments";
@@ -153,12 +213,14 @@
             // 
             // button6
             // 
+            this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.White;
             this.button6.Image = global::ClinicSystem.Properties.Resources.rooms;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(6, 196);
+            this.button6.Location = new System.Drawing.Point(-1, 181);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(206, 46);
+            this.button6.Size = new System.Drawing.Size(221, 46);
             this.button6.TabIndex = 10000;
             this.button6.TabStop = false;
             this.button6.Text = "Rooms";
@@ -168,12 +230,14 @@
             // 
             // button5
             // 
+            this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Image = global::ClinicSystem.Properties.Resources.doctor2;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(6, 150);
+            this.button5.Location = new System.Drawing.Point(0, 136);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(206, 46);
+            this.button5.Size = new System.Drawing.Size(220, 46);
             this.button5.TabIndex = 10000;
             this.button5.TabStop = false;
             this.button5.Text = "Doctors";
@@ -183,12 +247,14 @@
             // 
             // button4
             // 
+            this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Image = global::ClinicSystem.Properties.Resources.operation;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(6, 104);
+            this.button4.Location = new System.Drawing.Point(0, 91);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(206, 46);
+            this.button4.Size = new System.Drawing.Size(220, 46);
             this.button4.TabIndex = 10000;
             this.button4.TabStop = false;
             this.button4.Text = "Operations";
@@ -198,29 +264,34 @@
             // 
             // AddPatientS
             // 
+            this.AddPatientS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.AddPatientS.FlatAppearance.BorderSize = 0;
             this.AddPatientS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddPatientS.ForeColor = System.Drawing.Color.White;
             this.AddPatientS.Image = global::ClinicSystem.Properties.Resources.patient;
             this.AddPatientS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AddPatientS.Location = new System.Drawing.Point(6, 58);
+            this.AddPatientS.Location = new System.Drawing.Point(-1, 46);
             this.AddPatientS.Name = "AddPatientS";
-            this.AddPatientS.Size = new System.Drawing.Size(206, 46);
+            this.AddPatientS.Size = new System.Drawing.Size(221, 46);
             this.AddPatientS.TabIndex = 10000;
             this.AddPatientS.TabStop = false;
             this.AddPatientS.Text = "Patient";
-            this.AddPatientS.UseVisualStyleBackColor = true;
+            this.AddPatientS.UseVisualStyleBackColor = false;
             this.AddPatientS.Click += new System.EventHandler(this.AddPatientS_Click_1);
             this.AddPatientS.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
             // 
             // DashboardS
             // 
-            this.DashboardS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
+            this.DashboardS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(30)))), ((int)(((byte)(46)))));
             this.DashboardS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DashboardS.FlatAppearance.BorderSize = 0;
             this.DashboardS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DashboardS.ForeColor = System.Drawing.Color.White;
             this.DashboardS.Image = global::ClinicSystem.Properties.Resources.dashboard;
             this.DashboardS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DashboardS.Location = new System.Drawing.Point(6, 12);
+            this.DashboardS.Location = new System.Drawing.Point(-1, 1);
             this.DashboardS.Name = "DashboardS";
-            this.DashboardS.Size = new System.Drawing.Size(206, 46);
+            this.DashboardS.Size = new System.Drawing.Size(219, 46);
             this.DashboardS.TabIndex = 10000;
             this.DashboardS.TabStop = false;
             this.DashboardS.Text = "Dashboard";
@@ -234,7 +305,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainpanel.AutoSize = true;
-            this.mainpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(200)))), ((int)(((byte)(225)))));
+            this.mainpanel.BackColor = System.Drawing.Color.LightSteelBlue;
             this.mainpanel.Location = new System.Drawing.Point(219, 0);
             this.mainpanel.Name = "mainpanel";
             this.mainpanel.Size = new System.Drawing.Size(1080, 719);
@@ -265,6 +336,9 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -288,5 +362,9 @@
         private System.Windows.Forms.Timer dateTimer;
         private System.Windows.Forms.Timer hoursTimer;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox StaffIdentity;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button1;
     }
 }

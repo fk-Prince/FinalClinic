@@ -99,9 +99,9 @@ namespace ClinicSystem.Appointments
             string timeInput = StartTime.Text + " " + ampm;
             if (DateTime.TryParseExact(timeInput, @"hh\:mm\:ss tt", null, DateTimeStyles.None, out startTime))
             {
-                if (StartTime.Text.Equals("12:00:00"))
+                if (StartTime.Text.Contains("12:00:00"))
                 {
-                    MessageBox.Show("Invalid Date 12HRS (00:00:00) - (11:59:00)", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessagePromp.MainShowMessageBig(this, "Invalid Date 12HRS (00:00:00) - (11:59:00)", MessageBoxIcon.Error);
                     return;
                 }
 
@@ -136,21 +136,21 @@ namespace ClinicSystem.Appointments
             if (duplicate) return;
 
             TimeSpan startTime;
-            if (!TimeSpan.TryParseExact(origStartTime.ToString(), @"hh\:mm\:ss", null, out startTime))
+            if (!TimeSpan.TryParseExact(origStartTime.ToString(), "hh:mm:ss", null, out startTime))
             {
-                MessageBox.Show("Invalid time, Please enter valid time(hh:mm:ss).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Invalid time, Please enter valid time(hh:mm:ss).", MessageBoxIcon.Error);
                 return;
             }
 
             if (int.Parse(StartTime.Text.Split(':')[0]) >= 12)
             {
-                MessageBox.Show("Enter 12 hours format (00:00:00) - (11:59:00).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Enter 12 hours format (00:00:00) - (11:59:00).", MessageBoxIcon.Error);
                 return;
             }
 
             if (int.Parse(StartTime.Text.Split(':')[1]) >= 60 || int.Parse(StartTime.Text.Split(':')[2]) >= 60)
             {
-                MessageBox.Show("Minutes and seconds must be between 00 and 59.", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Minutes and seconds must be between 00 and 59.", MessageBoxIcon.Error);
                 return;
             }
 
@@ -160,7 +160,7 @@ namespace ClinicSystem.Appointments
             DateTime selectedStartDateTime = selectedDate.Add(startTime);
             if (selectedStartDateTime < currentDateTime)
             {
-                MessageBox.Show("Time is already past", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Time is already past.", MessageBoxIcon.Error);
                 return;
             }
 
@@ -176,7 +176,7 @@ namespace ClinicSystem.Appointments
             bool isScheduleAvailable = db.isScheduleAvailable(schedule);
             if (!isScheduleAvailable)
             {
-                MessageBox.Show("Schedule conflicts with the doctor schedule.", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.", MessageBoxIcon.Error);
                 return;
             }
 
@@ -185,7 +185,7 @@ namespace ClinicSystem.Appointments
                 if (sc.Patient.Patientid == selectedPatient.Patientid && sc.DateSchedule.Date == selectedDate.Date &&
                     (startTime < sc.EndTime && endTime > sc.StartTime))
                 {
-                    MessageBox.Show("Schedule conflicts with the your schedule.", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the your schedule.", MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -198,7 +198,7 @@ namespace ClinicSystem.Appointments
                 if (sc.Doctor.DoctorID == selectedDoctor.DoctorID && sc.DateSchedule.Date == selectedDate.Date &&
                     (startTime < sc.EndTime || endTime > sc.StartTime))
                 {
-                    MessageBox.Show("Schedule conflicts with the doctor schedule.", "Schedule Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.", MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -206,7 +206,7 @@ namespace ClinicSystem.Appointments
             operationNameAddedList.Add(selectedOperation.OperationName);
 
             displayOperationAdded(schedule);
-            MessageBox.Show("Operation Added", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessagePromp.MainShowMessage(this, "Operation Added.", MessageBoxIcon.Information);
             calculateTotalBill();
             string opNumber = db.getAppointmentDetail();
             PatientAppointmentNo.Text = (int.Parse(opNumber) + 1).ToString();
@@ -231,7 +231,7 @@ namespace ClinicSystem.Appointments
                 {
                     if (operationNameAddedList.Contains(selectedOperation.OperationName))
                     {
-                        MessageBox.Show("This operation is already added.", "Duplicate Operation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessagePromp.MainShowMessageBig(this, "This operation is already added.", MessageBoxIcon.Error);
                         return true;
                     }
                 }
@@ -250,14 +250,6 @@ namespace ClinicSystem.Appointments
                                  $"StartTime: {StartTime.Text} {comboStart.SelectedItem.ToString()}{Environment.NewLine}" +
                                  $"EndTime:  {EndTime.Text} {comboEnd.SelectedItem.ToString()}{Environment.NewLine}" +
                                  "------------------------------------------------------------------------------------------------------------" + Environment.NewLine;
-
-            //string displayText = $"Operation Name:                              {selectedOperation.OperationName}  {Environment.NewLine}" +
-            //                     $"Operation Bill:                              {selectedOperation.Price.ToString("F2")}  {Environment.NewLine}" +
-            //                     $"Doctor Assigned:                             Dr. {fullname}  {Environment.NewLine}" +
-            //                     $"Date Schedule:                               {schedule.DateSchedule.ToString("yyyy-MM-dd")} {Environment.NewLine}" +
-            //                     $"StartTime:                                   {StartTime.Text} {comboStart.SelectedItem.ToString()}{Environment.NewLine}" +
-            //                     $"EndTime:                                     {EndTime.Text} {comboEnd.SelectedItem.ToString()}{Environment.NewLine}" +
-            //                     "------------------------------------------------------------------------------------------------------------" + Environment.NewLine;
             tbListOperation.Text += displayText;
             text.Push(displayText);
         }
@@ -266,22 +258,22 @@ namespace ClinicSystem.Appointments
         {
             if (comboOperation.SelectedItem == null || string.IsNullOrWhiteSpace(comboOperation.SelectedItem.ToString()))
             {
-                MessageBox.Show("No Operation Selected", "No Operation", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "No Operation Selected.", MessageBoxIcon.Error);
                 return false;
             }
             if (comboOperation.SelectedItem.Equals("No Operation Available"))
             {
-                MessageBox.Show("No Operation Available", "No Operation", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "No Operation Available.", MessageBoxIcon.Error);
                 return false;
             }
             if (comboDoctor.SelectedItem == null || string.IsNullOrWhiteSpace(comboDoctor.SelectedItem.ToString()))
             {
-                MessageBox.Show("No Doctor Selected", "No Doctor", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "No Doctor Selected.", MessageBoxIcon.Error);
                 return false;
             }
             if (comboDoctor.SelectedItem.Equals("No Doctor Available"))
             {
-                MessageBox.Show("No Doctor Available", "No Doctor", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "No Doctor Available.", MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -383,12 +375,12 @@ namespace ClinicSystem.Appointments
         {
             if (selectedPatient == null)
             {
-                MessageBox.Show("Please Select a Patient", "No Patient", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Please Select a Patient.", MessageBoxIcon.Error);          
                 return;
             }
             if (patientSchedules.Count <= 0)
             {
-                MessageBox.Show("Please Select Operation", "No Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Please Select Operation.", MessageBoxIcon.Error);
                 return;
             }
 
@@ -397,7 +389,7 @@ namespace ClinicSystem.Appointments
             bool success = db.AddAppointment(selectedPatient, patientSchedules);
             if (success)
             {
-                MessageBox.Show("Appoinment Added", "Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessagePromp.MainShowMessage(this, "Appoinment Added", MessageBoxIcon.Error);
                 comboOperation.SelectedIndex = -1;
                 comboDoctor.SelectedIndex = -1;
                 scheduleDate.Value = DateTime.Now;
