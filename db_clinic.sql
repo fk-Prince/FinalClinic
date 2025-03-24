@@ -18,6 +18,8 @@
 --
 -- Table structure for table `clinichistory_tbl`
 --
+CREATE DATABASE db_clinic;
+USE db_clinic;
 
 DROP TABLE IF EXISTS `clinichistory_tbl`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -207,10 +209,11 @@ DROP TABLE IF EXISTS `rooms_tbl`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rooms_tbl` (
   `RoomNo` bigint NOT NULL,
-  `RoomType` varchar(45) NOT NULL DEFAULT 'Shared',
+  `RoomType` varchar(20) NOT NULL,
   `Occupation` varchar(45) NOT NULL DEFAULT 'Not Occupied',
-  `Rate` varchar(45) NOT NULL DEFAULT '0.1',
-  PRIMARY KEY (`RoomNo`)
+  PRIMARY KEY (`RoomNo`),
+  KEY `roomtyp_idx` (`RoomType`),
+  CONSTRAINT `rrr` FOREIGN KEY (`RoomType`) REFERENCES `roomtype_tbl` (`roomtype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,8 +223,31 @@ CREATE TABLE `rooms_tbl` (
 
 LOCK TABLES `rooms_tbl` WRITE;
 /*!40000 ALTER TABLE `rooms_tbl` DISABLE KEYS */;
-INSERT INTO `rooms_tbl` VALUES (401,'Shared','Not Occupied','300'),(402,'VIP','Not Occupied','1000');
 /*!40000 ALTER TABLE `rooms_tbl` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roomtype_tbl`
+--
+
+DROP TABLE IF EXISTS `roomtype_tbl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roomtype_tbl` (
+  `roomtype` varchar(20) NOT NULL,
+  `roomprice` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`roomtype`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roomtype_tbl`
+--
+
+LOCK TABLES `roomtype_tbl` WRITE;
+/*!40000 ALTER TABLE `roomtype_tbl` DISABLE KEYS */;
+INSERT INTO `roomtype_tbl` VALUES ('Shared',500.00),('Solo',1500.00),('VIP',3000.00),('VVIP',5000.00);
+/*!40000 ALTER TABLE `roomtype_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -264,4 +290,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-20 19:33:44
+-- Dump completed on 2025-03-23 22:43:50
