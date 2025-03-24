@@ -6,17 +6,22 @@ using System.Windows.Forms;
 using ClinicSystem.UserLoginForm;
 using System.Drawing;
 using System.Management.Instrumentation;
+using System.Collections.Generic;
 
 namespace ClinicSystem
 {
     public partial class LoginUserForm : Form
     {
         private static LoginUserForm instance;
+        private List<Control> tab = new List<Control>();
         public LoginUserForm()
         {
             InitializeComponent();
             SetPlaceholder(Username, "Username...");
             SetPlaceholder(Password, "Password...");
+            tab.Add(Username);
+            tab.Add(Password);
+            tab.Add(LoginButton);
             instance = this;
         }
 
@@ -33,12 +38,6 @@ namespace ClinicSystem
         private void SetPlaceholder(TextBox textBox, string placeholder)
         {
             SendMessage(textBox.Handle, EM_SETCUEBANNER, 0, placeholder);
-        }
-
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -77,7 +76,7 @@ namespace ClinicSystem
                     Staff staff = new Staff(int.Parse(reader["StaffID"].ToString()), reader["Username"].ToString(), reader["Password"].ToString());
                     MessagePromp.LoginShowMessage(this, "Successfully Login", MessageBoxIcon.Information);
                     Timer timer = new Timer();
-                    timer.Interval = 2000;
+                    timer.Interval = 1000;
                     timer.Tick += (s, y) =>
                     {
                         timer.Stop();
@@ -85,7 +84,6 @@ namespace ClinicSystem
                         ClinicSystem clinicSystem = new ClinicSystem(staff);
                         clinicSystem.Show();
                     };
-                   // timer.Tick += Timer_Tick;
                     timer.Start();
 
                 }
@@ -96,33 +94,6 @@ namespace ClinicSystem
                 MessageBox.Show(ex.Message);
             }
         }
-
-
-
-        //public void timer(LoginMessagePromp promp)
-        //{
-        //    if (promp.getInstance() != null)
-        //    {
-        //        this.Controls.Remove(promp);
-        //    }
-        //    Timer timer = new Timer();
-        //    timer.Interval = 15;
-        //    int y = -50;
-        //    timer.Tick += (s, b) => {
-        //        y += 5;
-        //        if (y >= 10)
-        //        {
-        //            y = 10;
-        //            timer.Stop();
-        //        }
-        //        promp.Location = new Point(110, y);
-        //    };
-        //    timer.Start();
-
-        //    promp.Location = new Point(110, 10);
-        //    this.Controls.Add(promp);
-        //    promp.BringToFront();
-        //}
 
         private void doctorB_Click(object sender, EventArgs e)
         {
@@ -159,6 +130,22 @@ namespace ClinicSystem
             passwordToggle.Image = Password.UseSystemPasswordChar ? Properties.Resources.shows : Properties.Resources.hide;
             SetPlaceholder(Username, "Username...");
             SetPlaceholder(Password, "Password...");
+        }
+
+        private void taab(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                Control currentControl = sender as Control;
+                int currentIndex = tab.IndexOf(currentControl);
+
+                if (currentIndex >= 0)
+                {
+                    int nextIndex = (currentIndex + 1) % tab.Count;
+                    tab[nextIndex].Focus();
+                    e.IsInputKey = true;
+                }
+            }
         }
     }
 }

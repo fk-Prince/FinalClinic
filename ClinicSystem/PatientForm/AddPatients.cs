@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using ClinicSystem.PatientForm;
 using ClinicSystem.UserLoginForm;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClinicSystem
 {
@@ -13,7 +15,7 @@ namespace ClinicSystem
         private PatientDatabase db = new PatientDatabase();
         private Staff staff;
         private List<string> rooms = new List<string>();
-      
+        private List<Control> tab = new List<Control>();
         public AddPatients(Staff staff)
         {
             this.staff = staff;
@@ -24,6 +26,15 @@ namespace ClinicSystem
             lastPatientID.Text = id.ToString();
             roomSettings();
             button3.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 50, 50));
+
+            tab.Add(FirstName);
+            tab.Add(MiddleName);
+            tab.Add(LastName); 
+            tab.Add(Address);
+            tab.Add(Gender);
+            tab.Add(BirthDate); 
+            tab.Add(ContactNo);
+            tab.Add(button3);
         }
 
         public void roomSettings()
@@ -86,21 +97,18 @@ namespace ClinicSystem
               string.IsNullOrWhiteSpace(bday.ToString()))
             {
                 MessagePromp.MainShowMessage(this, "Please fill up all fields", MessageBoxIcon.Error);
-                //MessageBox.Show("Please fill up all fields", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (comboRoom.SelectedItem == null || comboRoom.SelectedIndex == -1)
             {
                 MessagePromp.MainShowMessage(this, "Choose room", MessageBoxIcon.Error);
-                //MessageBox.Show("Choose room", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (Gender.SelectedItem == null || Gender.SelectedIndex == -1)
             {
                 MessagePromp.MainShowMessage(this, "Choose gender", MessageBoxIcon.Error);
-                //MessageBox.Show("Choose gender", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -108,7 +116,6 @@ namespace ClinicSystem
             if (bday > DateTime.Now)
             {
                 MessagePromp.MainShowMessage(this, "Invalid Birthdate", MessageBoxIcon.Error);
-                //MessageBox.Show("Invalid Birthdate", "Invalid Birthdate", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -116,21 +123,18 @@ namespace ClinicSystem
             if (!int.TryParse(age, out ageInt))
             {
                 MessagePromp.MainShowMessage(this, "Invalid Age", MessageBoxIcon.Error);
-                //MessageBox.Show("Invalid Age", "Invalid Age", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (ageInt > 120 || ageInt <= 0)
             {
                 MessagePromp.MainShowMessage(this, "Invalid Age", MessageBoxIcon.Error);
-               // MessageBox.Show("Invalid Age", "Invalid Age", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!string.IsNullOrWhiteSpace(contact) && (!long.TryParse(contact, out _) || !Regex.IsMatch(contact, @"^09\d{9}$")))
             {
                 MessagePromp.MainShowMessage(this, "Invalid Contact Number", MessageBoxIcon.Error);
-                //MessageBox.Show("Invalid Contact Number", "Invalid Contact Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -141,7 +145,6 @@ namespace ClinicSystem
             if (success)
             {
                 MessagePromp.MainShowMessage(this, "Successfully Added Patient", MessageBoxIcon.Information);
-               // MessageBox.Show("Successfully Added Patient", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FirstName.Text = "";
                 MiddleName.Text = "";
                 LastName.Text = "";
@@ -160,6 +163,22 @@ namespace ClinicSystem
         {
             if (string.IsNullOrEmpty(name)) return name;
             return char.ToUpper(name[0]) + name.Substring(1).ToLower();
+        }
+
+        private void taab(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                Control currentControl = sender as Control;
+                int currentIndex = tab.IndexOf(currentControl);
+
+                if (currentIndex >= 0)
+                {
+                    int nextIndex = (currentIndex + 1) % tab.Count;
+                    tab[nextIndex].Focus();
+                    e.IsInputKey = true;
+                }
+            }
         }
     }
 }

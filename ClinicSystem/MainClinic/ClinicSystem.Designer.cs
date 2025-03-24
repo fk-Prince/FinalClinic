@@ -72,7 +72,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(60)))), ((int)(((byte)(100)))));
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
@@ -114,12 +114,13 @@
             // 
             // StaffIdentity
             // 
-            this.StaffIdentity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.StaffIdentity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(60)))), ((int)(((byte)(100)))));
             this.StaffIdentity.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StaffIdentity.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StaffIdentity.ForeColor = System.Drawing.Color.White;
             this.StaffIdentity.Location = new System.Drawing.Point(57, 14);
             this.StaffIdentity.Name = "StaffIdentity";
+            this.StaffIdentity.ReadOnly = true;
             this.StaffIdentity.Size = new System.Drawing.Size(154, 20);
             this.StaffIdentity.TabIndex = 104;
             // 
@@ -164,7 +165,7 @@
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(60)))), ((int)(((byte)(100)))));
             this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.appointmentButton);
             this.panel3.Controls.Add(this.button6);
@@ -264,7 +265,7 @@
             // 
             // AddPatientS
             // 
-            this.AddPatientS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.AddPatientS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(60)))), ((int)(((byte)(100)))));
             this.AddPatientS.FlatAppearance.BorderSize = 0;
             this.AddPatientS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddPatientS.ForeColor = System.Drawing.Color.White;

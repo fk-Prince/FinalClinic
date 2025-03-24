@@ -218,6 +218,7 @@
             this.FirstName.Size = new System.Drawing.Size(192, 27);
             this.FirstName.TabIndex = 1;
             this.FirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextOnly);
+            this.FirstName.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.taab);
             // 
             // textBox2
             // 
@@ -257,6 +258,7 @@
             this.Address.Name = "Address";
             this.Address.Size = new System.Drawing.Size(539, 27);
             this.Address.TabIndex = 4;
+            this.Address.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.taab);
             // 
             // textBox9
             // 
@@ -308,6 +310,7 @@
             this.LastName.Size = new System.Drawing.Size(185, 27);
             this.LastName.TabIndex = 3;
             this.LastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextOnly);
+            this.LastName.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.taab);
             // 
             // textBox7
             // 
@@ -349,6 +352,7 @@
             this.Gender.Name = "Gender";
             this.Gender.Size = new System.Drawing.Size(84, 28);
             this.Gender.TabIndex = 6;
+            this.Gender.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.taab);
             // 
             // textBox13
             // 
@@ -389,6 +393,7 @@
             this.BirthDate.Size = new System.Drawing.Size(333, 27);
             this.BirthDate.TabIndex = 7;
             this.BirthDate.ValueChanged += new System.EventHandler(this.BirthDate_Value);
+            this.BirthDate.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.taab);
             // 
             // textBox11
             // 
@@ -424,6 +429,7 @@
             this.button3.Text = "Add Patient";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.registerPatient);
+            this.button3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.taab);
             // 
             // panel4
             // 
@@ -446,6 +452,7 @@
             this.MiddleName.Size = new System.Drawing.Size(168, 27);
             this.MiddleName.TabIndex = 2;
             this.MiddleName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextOnly);
+            this.MiddleName.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.taab);
             // 
             // textBox5
             // 
@@ -486,6 +493,7 @@
             this.ContactNo.Size = new System.Drawing.Size(185, 27);
             this.ContactNo.TabIndex = 1;
             this.ContactNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
+            this.ContactNo.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.taab);
             // 
             // textBox20
             // 

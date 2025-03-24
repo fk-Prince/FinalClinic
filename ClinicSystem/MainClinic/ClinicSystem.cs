@@ -46,7 +46,7 @@ namespace ClinicSystem
             if (btn != lastButtonClicked)
             {
                 btn.BackColor = Color.FromArgb(19, 30, 46);
-                lastButtonClicked.BackColor = Color.FromArgb(26, 42, 64);
+                lastButtonClicked.BackColor = Color.FromArgb(40, 60, 100);
                 lastButtonClicked = btn;
             }
         }
