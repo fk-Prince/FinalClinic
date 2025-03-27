@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.comboRoom = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.doctorL = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -54,10 +57,8 @@
             this.tbPname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboRoom = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,7 +66,6 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,6 +84,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(667, 606);
             this.panel1.TabIndex = 0;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.comboRoom);
+            this.panel9.Controls.Add(this.label9);
+            this.panel9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel9.Location = new System.Drawing.Point(65, 334);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(535, 36);
+            this.panel9.TabIndex = 10085;
+            // 
+            // comboRoom
+            // 
+            this.comboRoom.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboRoom.FormattingEnabled = true;
+            this.comboRoom.Location = new System.Drawing.Point(141, 5);
+            this.comboRoom.Name = "comboRoom";
+            this.comboRoom.Size = new System.Drawing.Size(388, 28);
+            this.comboRoom.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 20);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Room No.";
             // 
             // panel8
             // 
@@ -332,35 +361,6 @@
             this.label1.TabIndex = 10082;
             this.label1.Text = "Appointment Details";
             // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.comboRoom);
-            this.panel9.Controls.Add(this.label9);
-            this.panel9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel9.Location = new System.Drawing.Point(65, 334);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(535, 36);
-            this.panel9.TabIndex = 10085;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 20);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Room No.";
-            // 
-            // comboRoom
-            // 
-            this.comboRoom.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboRoom.FormattingEnabled = true;
-            this.comboRoom.Location = new System.Drawing.Point(141, 5);
-            this.comboRoom.Name = "comboRoom";
-            this.comboRoom.Size = new System.Drawing.Size(388, 28);
-            this.comboRoom.TabIndex = 2;
-            // 
             // RescheduleForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -372,6 +372,8 @@
             this.Text = "RescheduleForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -386,8 +388,6 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }

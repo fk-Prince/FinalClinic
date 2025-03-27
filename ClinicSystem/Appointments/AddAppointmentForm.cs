@@ -75,7 +75,7 @@ namespace ClinicSystem.Appointments
                     List<Room> filter = new List<Room>();
                     foreach (Room room in rooms)
                     {
-                        if (operation.OperationName.Contains(room.Roomtype) || room.Roomtype.Equals("General",StringComparison.OrdinalIgnoreCase))
+                        if (operation.OperationName.Contains(room.Roomtype))
                         {
                             filter.Add(room);
                             comboRoom.Items.Add(room.RoomNo + " | " + room.Roomtype);
