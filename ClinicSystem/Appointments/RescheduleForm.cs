@@ -11,6 +11,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicSystem.Rooms;
 using ClinicSystem.UserLoginForm;
 
 namespace ClinicSystem.Appointments
@@ -20,12 +21,16 @@ namespace ClinicSystem.Appointments
         private List<Appointment> appointments = new List<Appointment>();
         private ScheduleDatabase db = new ScheduleDatabase();
         private Appointment selectedAppointment;
+        private List<Room> rooms = new List<Room>();
         public RescheduleForm(Staff staff)
         {
             InitializeComponent();
             List<Appointment> filter = db.getAppointments();
+            rooms = db.getRoomNo();
             updateAppointmentB.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, updateAppointmentB.Width, updateAppointmentB.Height, 20, 20));
             DateTime currentDate = DateTime.Now;
+
+
             foreach (Appointment f in filter)
             {  
                 DateTime appointmentDateTime = f.DateSchedule.Date.Add(f.StartTime);
@@ -57,6 +62,8 @@ namespace ClinicSystem.Appointments
             }
             if (selectedAppointment != null)
             {
+             
+
                 string fullname = $"{selectedAppointment.Patient.Firstname}  " +
                                   $"{selectedAppointment.Patient.Middlename}  " +
                                   $"{selectedAppointment.Patient.Lastname}";
@@ -68,6 +75,23 @@ namespace ClinicSystem.Appointments
                                    $"{selectedAppointment.Doctor.DoctorFirstName}  " +
                                    $"{selectedAppointment.Doctor.DoctorFirstName}";
                 doctorL.Text = dfullname;
+
+                int index = 0;
+                foreach (Room room in rooms)
+                {
+                    if (room.RoomNo == selectedAppointment.RoomNo || room.Roomtype.Equals("General", StringComparison.OrdinalIgnoreCase))
+                    {
+                        comboRoom.Items.Add(selectedAppointment.RoomNo + " | " + room.Roomtype);
+                        comboRoom.SelectedIndex = index;
+                        continue;
+                    }
+                    if (selectedAppointment.Operation.OperationName.Contains(room.Roomtype))
+                    {
+                        comboRoom.Items.Add(room.RoomNo + " | " + room.Roomtype);
+                        index++;
+                    }
+                   
+                }
 
                 DateTime date = selectedAppointment.DateSchedule;
                 DateTime startDateTime = date.Add(selectedAppointment.StartTime);
@@ -137,6 +161,8 @@ namespace ClinicSystem.Appointments
             {
                 return;
             }
+            int roomno = int.Parse(comboRoom.SelectedItem.ToString().Split(' ')[0].Trim());
+            
 
             Appointment app = new Appointment(selectedAppointment.Operation,
                 selectedAppointment.Doctor,
@@ -148,6 +174,12 @@ namespace ClinicSystem.Appointments
             bool available = db.isAvailable(app);
             if (available)
             {
+                bool isRoomAvailable = db.isRoomAvailable(roomno, selectedDate, origStartTime, origEndTime, int.Parse(comboAppointment.SelectedItem.ToString()));
+                if (!isRoomAvailable)
+                {
+                    MessagePromp.MainShowMessageBig(this, "Room is not available during this time.", MessageBoxIcon.Error);
+                    return;
+                }
                 bool updated = db.UpdateSchedule(app);
                 if (updated)
                 {

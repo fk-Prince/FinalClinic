@@ -82,7 +82,7 @@ namespace ClinicSystem.Appointments
                     panel.Controls.Add(label);
 
                     string fullname = pa.Patient.Firstname + " " + pa.Patient.Middlename + " " + pa.Patient.Lastname;
-                    label = createLabel("Name", fullname, 10, 190);
+                    label = createLabel("Name", fullname, 10, 195);
                     panel.Controls.Add(label);
 
                     label = createLabel("Age", pa.Patient.Age.ToString(), 10, 215);
@@ -94,7 +94,7 @@ namespace ClinicSystem.Appointments
                     label = createLabel("Contact Number", pa.Patient.ContactNumber, 10, 255);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Date-Admitted", pa.DateAdmitted.ToString("yyyy-MM-dd"), 10, 275);
+                    label = createLabel("Date Visited", pa.DateVisited.ToString("yyyy-MM-dd"), 10, 275);
                     panel.Controls.Add(label);
 
 

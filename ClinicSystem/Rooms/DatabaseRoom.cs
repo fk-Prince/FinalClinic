@@ -19,12 +19,12 @@ namespace ClinicSystem.Rooms
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
 
-                string query = "SELECT Rooms_tbl.Roomno, Rooms_tbl.roomtype, roomtype_tbl.roomprice  FROM Rooms_tbl LEFT JOIN roomtype_tbl on rooms_tbl.roomtype = roomtype_tbl.roomtype";
+                string query = "SELECT * FROM Rooms_tbl ";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Room room = new Room(reader.GetInt32("roomno"), reader.GetString("roomtype"), reader.GetDouble("roomprice"));
+                    Room room = new Room(reader.GetInt32("roomno"), reader.GetString("roomtype"));
                     roomList.Add(room);
                 }
                 conn.Close();
@@ -53,32 +53,6 @@ namespace ClinicSystem.Rooms
             {
                 MessageBox.Show("Error on insertRoom() db" + ex.Message);
             }
-        }
-
-        public List<Room> getRoomType()
-        {
-            List<Room> roomtype = new List<Room>();
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(driver);
-                conn.Open();
-
-                string query = "SELECT * FROM Roomtype_tbl";
-                MySqlCommand command = new MySqlCommand(query, conn);
-                MySqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Room room = new Room(reader.GetString("roomtype"), reader.GetDouble("roomprice"));
-                    roomtype.Add(room);
-                }
-                conn.Close();
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Error on getRoomType() DB" + ex.Message);
-            }
-            return roomtype;
         }
     }
 }

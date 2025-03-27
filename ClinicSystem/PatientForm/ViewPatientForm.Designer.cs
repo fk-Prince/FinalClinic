@@ -45,11 +45,8 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.tbRoomNo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.datepickDateDischarged = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.datepickDateAdmitted = new System.Windows.Forms.DateTimePicker();
+            this.datepickDateVisit = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.datepickBirthDay = new System.Windows.Forms.DateTimePicker();
@@ -85,7 +82,6 @@
             this.panel13.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel12.SuspendLayout();
-            this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -147,7 +143,6 @@
             this.PatientDetails.Controls.Add(this.panel13);
             this.PatientDetails.Controls.Add(this.panel9);
             this.PatientDetails.Controls.Add(this.panel12);
-            this.PatientDetails.Controls.Add(this.panel11);
             this.PatientDetails.Controls.Add(this.panel10);
             this.PatientDetails.Controls.Add(this.panel8);
             this.PatientDetails.Controls.Add(this.panel7);
@@ -198,9 +193,9 @@
             this.panel13.Controls.Add(this.tbDoctorDiagnosis);
             this.panel13.Controls.Add(this.label14);
             this.panel13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel13.Location = new System.Drawing.Point(597, 317);
+            this.panel13.Location = new System.Drawing.Point(600, 317);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(420, 122);
+            this.panel13.Size = new System.Drawing.Size(417, 122);
             this.panel13.TabIndex = 8;
             // 
             // tbDoctorDiagnosis
@@ -284,37 +279,9 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "RoomNo. ";
             // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.datepickDateDischarged);
-            this.panel11.Controls.Add(this.label12);
-            this.panel11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel11.Location = new System.Drawing.Point(22, 317);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(417, 35);
-            this.panel11.TabIndex = 6;
-            // 
-            // datepickDateDischarged
-            // 
-            this.datepickDateDischarged.Enabled = false;
-            this.datepickDateDischarged.Location = new System.Drawing.Point(171, 5);
-            this.datepickDateDischarged.Name = "datepickDateDischarged";
-            this.datepickDateDischarged.Size = new System.Drawing.Size(233, 25);
-            this.datepickDateDischarged.TabIndex = 2;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(5, 8);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(108, 17);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Date-Discharged";
-            // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.datepickDateAdmitted);
+            this.panel10.Controls.Add(this.datepickDateVisit);
             this.panel10.Controls.Add(this.label11);
             this.panel10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel10.Location = new System.Drawing.Point(22, 267);
@@ -322,13 +289,13 @@
             this.panel10.Size = new System.Drawing.Size(417, 35);
             this.panel10.TabIndex = 5;
             // 
-            // datepickDateAdmitted
+            // datepickDateVisit
             // 
-            this.datepickDateAdmitted.Enabled = false;
-            this.datepickDateAdmitted.Location = new System.Drawing.Point(171, 7);
-            this.datepickDateAdmitted.Name = "datepickDateAdmitted";
-            this.datepickDateAdmitted.Size = new System.Drawing.Size(233, 25);
-            this.datepickDateAdmitted.TabIndex = 1;
+            this.datepickDateVisit.Enabled = false;
+            this.datepickDateVisit.Location = new System.Drawing.Point(171, 7);
+            this.datepickDateVisit.Name = "datepickDateVisit";
+            this.datepickDateVisit.Size = new System.Drawing.Size(233, 25);
+            this.datepickDateVisit.TabIndex = 1;
             // 
             // label11
             // 
@@ -336,9 +303,9 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(5, 8);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 17);
+            this.label11.Size = new System.Drawing.Size(81, 17);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Date-Admitted";
+            this.label11.Text = "Date-Visited";
             // 
             // panel8
             // 
@@ -612,8 +579,6 @@
             this.panel9.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -656,11 +621,8 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.TextBox tbRoomNo;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.DateTimePicker datepickDateDischarged;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.DateTimePicker datepickDateAdmitted;
+        private System.Windows.Forms.DateTimePicker datepickDateVisit;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.DateTimePicker datepickBirthDay;

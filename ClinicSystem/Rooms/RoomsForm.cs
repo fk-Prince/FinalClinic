@@ -16,40 +16,19 @@ namespace ClinicSystem.Rooms
         {
             InitializeComponent();
             roomList = db.getRooms();
-            roomType = db.getRoomType();
-            foreach (Room room in roomType)
-            {    
-               comboType.Items.Add(room.Roomtype);
-            }
+          
             addRoomPanel.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, addRoomPanel.Width, addRoomPanel.Height, 50, 50));
         }
-
-        private void comboType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboType.SelectedIndex == -1) return;
-
-            string roomtype = comboType.SelectedItem.ToString();
-            foreach (Room room in roomType)
-            {
-                if (roomtype.Equals(room.Roomtype, StringComparison.OrdinalIgnoreCase)) roomprice.Text = room.Price.ToString();
-                selected = room;
-            }
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(roomno.Text))
+            if (string.IsNullOrWhiteSpace(roomno.Text) || string.IsNullOrWhiteSpace(type.Text))
             {
-                MessageBox.Show("Empty Roomno", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (comboType.SelectedIndex == -1)
-            {
-                MessageBox.Show("Select room type.", "RoomType", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Empty Field", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            string roomtype = type.Text;
             int roomNumber;
             if (!int.TryParse(roomno.Text,out roomNumber))
             {
@@ -66,21 +45,13 @@ namespace ClinicSystem.Rooms
                 }
             }
 
-            Room room = new Room(roomNumber, selected.Roomtype, selected.Price);
+            Room room = new Room(roomNumber, roomtype);
             db.insertRoom(room);
             MessageBox.Show("Successfully Added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             roomno.Text = "";
-            roomprice.Text = "";
-            comboType.SelectedIndex = -1;
+            type.Text = "";
             roomList = db.getRooms();
-            comboType.Items.Clear();
-            foreach (Room roomdasd in roomType)
-            {
-                if (!comboType.Items.Contains(roomdasd.Roomtype))
-                {
-                    comboType.Items.Add(roomdasd.Roomtype);
-                }
-            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)

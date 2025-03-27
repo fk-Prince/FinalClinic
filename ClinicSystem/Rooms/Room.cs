@@ -10,22 +10,15 @@ namespace ClinicSystem.Rooms
     {
         private int roomNo;
         private string roomtype;
-        private double price;
 
-        public Room(int roomNo, string roomtype, double price)
+        public Room(int roomNo, string roomtype)
         {
             this.roomNo = roomNo;
             this.roomtype = roomtype;
-            this.price = price;
         }
-        public Room(string roomtype, double price)
-        {
-            this.roomtype = roomtype;
-            this.price = price;
-        }
+
 
         public int RoomNo { get => roomNo; }
         public string Roomtype { get => roomtype; }
-        public double Price { get => price;  }
     }
 }

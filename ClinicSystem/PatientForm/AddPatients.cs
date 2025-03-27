@@ -24,7 +24,6 @@ namespace ClinicSystem
             Gender.Items.Add("Female");
             int id = db.getPatientId();
             lastPatientID.Text = id.ToString();
-            roomSettings();
             button3.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 50, 50));
 
             tab.Add(FirstName);
@@ -37,16 +36,7 @@ namespace ClinicSystem
             tab.Add(button3);
         }
 
-        public void roomSettings()
-        {
-            comboRoom.Items.Clear();
-            rooms = db.getRoomNo();
-            foreach (string room in rooms)
-            {
-                comboRoom.Items.Add(room);
-            }
-            if (rooms.Count > 0) comboRoom.SelectedIndex = 0;
-        }
+      
 
         private void BirthDate_Value(object sender, EventArgs e)
         {
@@ -100,12 +90,6 @@ namespace ClinicSystem
                 return;
             }
 
-            if (comboRoom.SelectedItem == null || comboRoom.SelectedIndex == -1)
-            {
-                MessagePromp.MainShowMessage(this, "Choose room", MessageBoxIcon.Error);
-                return;
-            }
-
             if (Gender.SelectedItem == null || Gender.SelectedIndex == -1)
             {
                 MessagePromp.MainShowMessage(this, "Choose gender", MessageBoxIcon.Error);
@@ -138,9 +122,10 @@ namespace ClinicSystem
                 return;
             }
 
-            Patient patient = new Patient(Capitalize(fname), Capitalize(mname), Capitalize(lname), address, ageInt, gender, bday, contact);
 
-            bool success = db.insertPatient(staff.StaffId, patient, comboRoom.SelectedItem.ToString());
+            Patient patient = new Patient(int.Parse(lastPatientID.Text),Capitalize(fname), Capitalize(mname), Capitalize(lname), address, ageInt, gender, bday, contact);
+
+            bool success = db.insertPatient(staff.StaffId, patient);
 
             if (success)
             {
@@ -155,7 +140,6 @@ namespace ClinicSystem
                 BirthDate.Value = DateTime.Now;
                 int id = db.getPatientId();
                 lastPatientID.Text = id.ToString();
-                roomSettings();
             }
         }
 

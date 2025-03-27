@@ -34,10 +34,6 @@
             this.lastPatientID = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.comboRoom = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.FirstName = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -75,7 +71,6 @@
             this.personaldetail.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pid.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -90,7 +85,6 @@
             // 
             this.personaldetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.personaldetail.Controls.Add(this.panel2);
-            this.personaldetail.Controls.Add(this.panel1);
             this.personaldetail.Controls.Add(this.panel3);
             this.personaldetail.Controls.Add(this.panel6);
             this.personaldetail.Controls.Add(this.label1);
@@ -157,46 +151,6 @@
             this.label9.TabIndex = 10000;
             this.label9.Text = "Patient ID";
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.Controls.Add(this.comboRoom);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.label19);
-            this.panel1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(58, 196);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 41);
-            this.panel1.TabIndex = 10060;
-            // 
-            // comboRoom
-            // 
-            this.comboRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboRoom.FormattingEnabled = true;
-            this.comboRoom.Location = new System.Drawing.Point(95, 9);
-            this.comboRoom.Name = "comboRoom";
-            this.comboRoom.Size = new System.Drawing.Size(131, 28);
-            this.comboRoom.TabIndex = 10001;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.Location = new System.Drawing.Point(51, 10);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(0, 27);
-            this.textBox3.TabIndex = 1;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(9, 12);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(76, 20);
-            this.label19.TabIndex = 10000;
-            this.label19.Text = "Room No.";
-            // 
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -205,7 +159,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.panel3.ForeColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(58, 297);
+            this.panel3.Location = new System.Drawing.Point(58, 260);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(290, 37);
             this.panel3.TabIndex = 10050;
@@ -246,7 +200,7 @@
             this.panel6.Controls.Add(this.label5);
             this.panel6.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.panel6.ForeColor = System.Drawing.Color.Black;
-            this.panel6.Location = new System.Drawing.Point(58, 348);
+            this.panel6.Location = new System.Drawing.Point(58, 311);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(638, 37);
             this.panel6.TabIndex = 10053;
@@ -297,7 +251,7 @@
             this.panel5.Controls.Add(this.label4);
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.panel5.ForeColor = System.Drawing.Color.Black;
-            this.panel5.Location = new System.Drawing.Point(720, 297);
+            this.panel5.Location = new System.Drawing.Point(720, 260);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(290, 37);
             this.panel5.TabIndex = 10054;
@@ -338,7 +292,7 @@
             this.panel9.Controls.Add(this.label8);
             this.panel9.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.panel9.ForeColor = System.Drawing.Color.Black;
-            this.panel9.Location = new System.Drawing.Point(848, 348);
+            this.panel9.Location = new System.Drawing.Point(848, 311);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(162, 37);
             this.panel9.TabIndex = 10051;
@@ -380,7 +334,7 @@
             this.panel7.Controls.Add(this.label6);
             this.panel7.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.panel7.ForeColor = System.Drawing.Color.Black;
-            this.panel7.Location = new System.Drawing.Point(58, 403);
+            this.panel7.Location = new System.Drawing.Point(58, 366);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(466, 37);
             this.panel7.TabIndex = 10055;
@@ -439,7 +393,7 @@
             this.panel4.Controls.Add(this.label3);
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.panel4.ForeColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(406, 297);
+            this.panel4.Location = new System.Drawing.Point(406, 260);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(290, 37);
             this.panel4.TabIndex = 10052;
@@ -480,7 +434,7 @@
             this.panel17.Controls.Add(this.label15);
             this.panel17.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.panel17.ForeColor = System.Drawing.Color.Black;
-            this.panel17.Location = new System.Drawing.Point(666, 403);
+            this.panel17.Location = new System.Drawing.Point(666, 366);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(344, 37);
             this.panel17.TabIndex = 10057;
@@ -521,7 +475,7 @@
             this.panel8.Controls.Add(this.label7);
             this.panel8.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.panel8.ForeColor = System.Drawing.Color.Black;
-            this.panel8.Location = new System.Drawing.Point(720, 348);
+            this.panel8.Location = new System.Drawing.Point(720, 311);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(105, 37);
             this.panel8.TabIndex = 10056;
@@ -570,8 +524,6 @@
             this.panel2.PerformLayout();
             this.pid.ResumeLayout(false);
             this.pid.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -600,10 +552,6 @@
         private System.Windows.Forms.Label lastPatientID;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboRoom;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox FirstName;
         private System.Windows.Forms.TextBox textBox2;

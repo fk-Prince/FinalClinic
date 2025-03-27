@@ -90,7 +90,7 @@ namespace ClinicSystem.Main2
                     label = createLabel("Contact Number", pa.Patient.ContactNumber, 10, 250);
                     panel.Controls.Add(label);
 
-                    label = createLabel("Date-Admitted", pa.DateAdmitted.ToString("yyyy-MM-dd"), 10, 270);
+                    label = createLabel("Date-Admitted", pa.DateVisited.ToString("yyyy-MM-dd"), 10, 270);
                     panel.Controls.Add(label);
 
 

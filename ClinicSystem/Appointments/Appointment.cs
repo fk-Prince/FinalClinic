@@ -25,10 +25,10 @@ namespace ClinicSystem
 
 
 
-        public Appointment( Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime)
+        public Appointment( Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int roomno)
         {
             this.doctor = doctor;
-          
+            this.roomno = roomno;
             this.dateSchedule = dateSchedule.Date;
             this.startTime = startTime;
             this.endTime = endTime;
@@ -45,13 +45,14 @@ namespace ClinicSystem
             appointmentDetailNo = appointmentDetailId;
         }
 
-        public Appointment(Patient patient, Doctor doctor, Operation operation, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, double bill)
+        public Appointment(Patient patient, Doctor doctor, Operation operation, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, double bill, int roomno)
         {
             this.patient = patient;
             this.dateSchedule = dateSchedule.Date;
             this.startTime = startTime;
             this.endTime = endTime;
             this.doctor = doctor;
+            this.roomno = roomno;
             this.operation = operation;
             this.bill = bill;
         }
@@ -86,7 +87,7 @@ namespace ClinicSystem
         public Operation Operation { get => operation; }
         public Patient Patient { get => patient; }
         public DateTime DateSchedule { get => dateSchedule; }
-        public DateTime DateAdmitted { get => dateAdmitted; }
+        public DateTime DateVisited { get => dateAdmitted; }
         public TimeSpan StartTime { get => startTime;  }
         public TimeSpan EndTime { get => endTime;  }
 

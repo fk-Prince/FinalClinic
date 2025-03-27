@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using ClinicSystem.PatientForm;
+using ClinicSystem.Rooms;
 using ClinicSystem.UserLoginForm;
 
 namespace ClinicSystem.Appointments
@@ -19,6 +20,7 @@ namespace ClinicSystem.Appointments
         private List<Appointment> temporaryStorage = new List<Appointment>();
         private List<Appointment> patientSchedules = new List<Appointment>();
         private Stack<string> text = new Stack<string>();
+        private List<Room> rooms = new List<Room>();
 
 
         private Operation selectedOperation;
@@ -33,8 +35,9 @@ namespace ClinicSystem.Appointments
             foreach (Patient patient in patientList)
             {
                 comboPatientID.Items.Add(patient.Patientid);
-            }  
+            }
             button1.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 20, 20));
+            rooms = db.getRoomNo();
         }
 
         private void operationSettings()
@@ -56,6 +59,7 @@ namespace ClinicSystem.Appointments
 
         private void comboOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             comboDoctor.Items.Clear();
             if (comboOperation == null || comboOperation.SelectedItem == null) return;
             string operationNameSelected = comboOperation.SelectedItem.ToString();
@@ -66,7 +70,19 @@ namespace ClinicSystem.Appointments
             {
                 if (operation.OperationName.Equals(operationNameSelected, StringComparison.OrdinalIgnoreCase))
                 {
+                    comboRoom.Items.Clear();
                     selectedOperation = operation;
+                    List<Room> filter = new List<Room>();
+                    foreach (Room room in rooms)
+                    {
+                        if (operation.OperationName.Contains(room.Roomtype) || room.Roomtype.Equals("General",StringComparison.OrdinalIgnoreCase))
+                        {
+                            filter.Add(room);
+                            comboRoom.Items.Add(room.RoomNo + " | " + room.Roomtype);
+                        }
+                    }
+                    if (filter.Count == 0) comboRoom.Items.Add("No Room Available");
+                    comboRoom.SelectedIndex = 0;
                     break;
                 }
             }
@@ -84,6 +100,8 @@ namespace ClinicSystem.Appointments
                 comboDoctor.Items.Add("No Doctor Available");
             }
             comboDoctor.SelectedIndex = 0;
+
+
             calculateEndTime();
         }
 
@@ -135,9 +153,28 @@ namespace ClinicSystem.Appointments
             bool duplicate = isAlreadyAdded();
             if (duplicate) return;
 
-            TimeSpan startTime;
-            if (!TimeSpan.TryParseExact(origStartTime.ToString(), "hh:mm:ss", null, out startTime))
+            if (comboRoom.SelectedItem.ToString().Equals("No Room Available"))
             {
+                MessagePromp.MainShowMessageBig(this, "No Room Available.", MessageBoxIcon.Error);
+                return;
+            }
+
+            if (comboRoom.SelectedIndex == -1)
+            {
+                MessagePromp.MainShowMessageBig(this, "Please select room.", MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(StartTime.Text))
+            {
+                MessagePromp.MainShowMessageBig(this, "Please fill the start-time.", MessageBoxIcon.Error);
+                return;
+            }
+
+            TimeSpan startTime;
+            if (!TimeSpan.TryParseExact(origStartTime.ToString(), "hh\\:mm\\:ss", null, out startTime))
+            {
+                MessageBox.Show(origStartTime.ToString());
                 MessagePromp.MainShowMessageBig(this, "Invalid time, Please enter valid time(hh:mm:ss).", MessageBoxIcon.Error);
                 return;
             }
@@ -171,8 +208,15 @@ namespace ClinicSystem.Appointments
                 endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
 
             }
+            int roomno = int.Parse(comboRoom.SelectedItem.ToString().Split(' ')[0].Trim());
+            bool isRoomAvailable = db.isRoomAvailable(roomno, selectedDate,startTime,endTime);
+            if (!isRoomAvailable)
+            {
+                MessagePromp.MainShowMessageBig(this, "Room is not available during this time.", MessageBoxIcon.Error);
+                return;
+            }
 
-            Appointment schedule = new Appointment(selectedDoctor, selectedDate, startTime, endTime);
+            Appointment schedule = new Appointment(selectedDoctor, selectedDate, startTime, endTime,roomno);
             bool isScheduleAvailable = db.isScheduleAvailable(schedule);
             if (!isScheduleAvailable)
             {
@@ -189,7 +233,7 @@ namespace ClinicSystem.Appointments
                     return;
                 }
             }
-            Appointment pschedule = new Appointment(selectedPatient, selectedDoctor,selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price);
+            Appointment pschedule = new Appointment(selectedPatient, selectedDoctor,selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price, roomno);
             patientSchedules.Add(pschedule);
 
 
@@ -245,8 +289,9 @@ namespace ClinicSystem.Appointments
             string fullname = schedule.Doctor.DoctorLastName + ", " + schedule.Doctor.DoctorFirstName + " " + schedule.Doctor.DoctorMiddleName;
             string displayText = $"Operation Name:  {selectedOperation.OperationName}  {Environment.NewLine}"  +
                                  $"Operation Bill:  {selectedOperation.Price.ToString("F2")}  {Environment.NewLine}" +
-                                 $"Doctor Assigned: Dr.{fullname}  {Environment.NewLine}" +  
+                                 $"Doctor Assigned: Dr.{fullname}  {Environment.NewLine}" +
                                  $"Date Schedule: {schedule.DateSchedule.ToString("yyyy-MM-dd")} {Environment.NewLine}" +
+                                 $"RoomNo:  {schedule.RoomNo} {Environment.NewLine}" +
                                  $"StartTime: {StartTime.Text} {comboStart.SelectedItem.ToString()}{Environment.NewLine}" +
                                  $"EndTime:  {EndTime.Text} {comboEnd.SelectedItem.ToString()}{Environment.NewLine}" +
                                  "------------------------------------------------------------------------------------------------------------" + Environment.NewLine;
@@ -288,6 +333,7 @@ namespace ClinicSystem.Appointments
             comboOperation.Items.Clear();
             comboDoctor.Items.Clear();
             operationNameAddedList.Clear();
+            comboRoom.Items.Clear();
             TotalBill.Text = "";
             StartTime.Text = "";
             EndTime.Text = "";
@@ -389,7 +435,7 @@ namespace ClinicSystem.Appointments
             bool success = db.AddAppointment(selectedPatient, patientSchedules);
             if (success)
             {
-                MessagePromp.MainShowMessage(this, "Appoinment Added", MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Appoinment Added", MessageBoxIcon.Information);
                 comboOperation.SelectedIndex = -1;
                 comboDoctor.SelectedIndex = -1;
                 scheduleDate.Value = DateTime.Now;
@@ -404,6 +450,7 @@ namespace ClinicSystem.Appointments
                 lastSelected = null;
                 temporaryStorage.Clear();
                 patientSchedules.Clear();
+                comboRoom.Items.Clear();
                 comboPatientID.Items.Clear();
                 comboOperation.Items.Clear();
                 patientList = db.getPatients();

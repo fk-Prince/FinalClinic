@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.comboRoom = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -82,6 +85,7 @@
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -99,6 +103,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
+            this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
@@ -119,6 +124,36 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1080, 619);
             this.panel1.TabIndex = 0;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel7.Controls.Add(this.comboRoom);
+            this.panel7.Controls.Add(this.label6);
+            this.panel7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel7.Location = new System.Drawing.Point(48, 340);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(374, 34);
+            this.panel7.TabIndex = 10083;
+            // 
+            // comboRoom
+            // 
+            this.comboRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboRoom.FormattingEnabled = true;
+            this.comboRoom.Location = new System.Drawing.Point(127, 6);
+            this.comboRoom.Name = "comboRoom";
+            this.comboRoom.Size = new System.Drawing.Size(235, 23);
+            this.comboRoom.TabIndex = 10001;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 15);
+            this.label6.TabIndex = 10000;
+            this.label6.Text = "Rom No.";
             // 
             // panel6
             // 
@@ -311,7 +346,7 @@
             this.panel11.Controls.Add(this.textBox14);
             this.panel11.Controls.Add(this.label10);
             this.panel11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel11.Location = new System.Drawing.Point(48, 304);
+            this.panel11.Location = new System.Drawing.Point(48, 300);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(374, 34);
             this.panel11.TabIndex = 10075;
@@ -373,7 +408,7 @@
             this.panel12.Controls.Add(this.panel15);
             this.panel12.Controls.Add(this.panel14);
             this.panel12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel12.Location = new System.Drawing.Point(48, 376);
+            this.panel12.Location = new System.Drawing.Point(48, 394);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(374, 190);
             this.panel12.TabIndex = 10076;
@@ -559,7 +594,7 @@
             this.panel10.Controls.Add(this.textBox15);
             this.panel10.Controls.Add(this.label9);
             this.panel10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel10.Location = new System.Drawing.Point(48, 264);
+            this.panel10.Location = new System.Drawing.Point(48, 260);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(374, 34);
             this.panel10.TabIndex = 10073;
@@ -671,9 +706,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(3, 8);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(125, 15);
+            this.label16.Size = new System.Drawing.Size(100, 15);
             this.label16.TabIndex = 10000;
-            this.label16.Text = "Patient Operation No. ";
+            this.label16.Text = "Appointment No.";
             // 
             // AddAppointmentForm
             // 
@@ -685,6 +720,8 @@
             this.Text = "AddAppointmentForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -768,5 +805,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ComboBox comboStart;
         private System.Windows.Forms.ComboBox comboEnd;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ComboBox comboRoom;
+        private System.Windows.Forms.Label label6;
     }
 }
