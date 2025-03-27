@@ -67,7 +67,8 @@ namespace ClinicSystem.UserLoginForm
             LoginUserForm log = LoginUserForm.getInstance();
             log.Hide();
             this.Hide();
-            DoctorClinics doc = new DoctorClinics(null);
+            Doctor drs = new Doctor(1, "Prince", "dfgdfgdf", "Sestoso", 22, "0977", DateTime.Now, "Male", "Roxas");
+            DoctorClinics doc = new DoctorClinics(drs);
             doc.Show();
             return;
             try
