@@ -18,16 +18,17 @@
 --
 -- Table structure for table `clinichistory_tbl`
 --
+
 CREATE DATABASE db_clinic;
 USE db_clinic;
+
 
 DROP TABLE IF EXISTS `clinichistory_tbl`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clinichistory_tbl` (
-  `DateDischarged` date DEFAULT NULL,
-  `DateAdmitted` date NOT NULL,
   `PatientID` bigint NOT NULL,
+  `VisitDate` date NOT NULL,
   `TotalBill` decimal(10,2) DEFAULT NULL,
   KEY `fkpatient_idx` (`PatientID`),
   CONSTRAINT `fkpatient` FOREIGN KEY (`PatientID`) REFERENCES `patient_tbl` (`patientId`)
@@ -132,6 +133,32 @@ INSERT INTO `operation_tbl` VALUES ('BE5','Surgery','2022-05-05','badb',5000.00,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `patient_staff_tbl`
+--
+
+DROP TABLE IF EXISTS `patient_staff_tbl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `patient_staff_tbl` (
+  `patientid` bigint NOT NULL,
+  `staffid` bigint NOT NULL,
+  KEY `a_idx` (`patientid`),
+  KEY `b_idx` (`staffid`),
+  CONSTRAINT `a` FOREIGN KEY (`patientid`) REFERENCES `patient_tbl` (`patientId`),
+  CONSTRAINT `b` FOREIGN KEY (`staffid`) REFERENCES `staff_tbl` (`StaffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `patient_staff_tbl`
+--
+
+LOCK TABLES `patient_staff_tbl` WRITE;
+/*!40000 ALTER TABLE `patient_staff_tbl` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient_staff_tbl` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `patient_tbl`
 --
 
@@ -140,7 +167,6 @@ DROP TABLE IF EXISTS `patient_tbl`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `patient_tbl` (
   `patientId` bigint NOT NULL AUTO_INCREMENT,
-  `StaffID` bigint NOT NULL,
   `patientfirstname` varchar(45) NOT NULL,
   `patientmiddlename` varchar(45) NOT NULL,
   `patientlastname` varchar(45) NOT NULL,
@@ -149,12 +175,7 @@ CREATE TABLE `patient_tbl` (
   `gender` varchar(45) NOT NULL,
   `birthdate` date NOT NULL,
   `contactnumber` varchar(15) DEFAULT NULL,
-  `roomNo` bigint NOT NULL,
-  PRIMARY KEY (`patientId`),
-  KEY `staffId_idx` (`StaffID`),
-  KEY `roomno_idx` (`roomNo`),
-  CONSTRAINT `roomno` FOREIGN KEY (`roomNo`) REFERENCES `rooms_tbl` (`RoomNo`),
-  CONSTRAINT `staffId` FOREIGN KEY (`StaffID`) REFERENCES `staff_tbl` (`StaffID`)
+  PRIMARY KEY (`patientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -183,9 +204,12 @@ CREATE TABLE `patientappointment_tbl` (
   `EndTime` time DEFAULT NULL,
   `diagnosis` varchar(200) DEFAULT NULL,
   `Bill` decimal(10,2) DEFAULT NULL,
+  `RoomNo` bigint NOT NULL,
   PRIMARY KEY (`AppointmentDetailNo`,`doctorOperationID`),
   KEY `fk_PatientAppointment_tbl_doctor_operation_mm_tbl1_idx` (`doctorOperationID`),
   KEY `patientid_idx` (`PatientID`),
+  KEY `a_idx` (`RoomNo`),
+  CONSTRAINT `asd` FOREIGN KEY (`RoomNo`) REFERENCES `rooms_tbl` (`RoomNo`),
   CONSTRAINT `fk_PatientAppointment_tbl_doctor_operation_mm_tbl1` FOREIGN KEY (`doctorOperationID`) REFERENCES `doctor_operation_mm_tbl` (`doctorOperationID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `patientid` FOREIGN KEY (`PatientID`) REFERENCES `patient_tbl` (`patientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -209,11 +233,8 @@ DROP TABLE IF EXISTS `rooms_tbl`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rooms_tbl` (
   `RoomNo` bigint NOT NULL,
-  `RoomType` varchar(20) NOT NULL,
-  `Occupation` varchar(45) NOT NULL DEFAULT 'Not Occupied',
-  PRIMARY KEY (`RoomNo`),
-  KEY `roomtyp_idx` (`RoomType`),
-  CONSTRAINT `rrr` FOREIGN KEY (`RoomType`) REFERENCES `roomtype_tbl` (`roomtype`)
+  `RoomType` varchar(45) NOT NULL DEFAULT 'General',
+  PRIMARY KEY (`RoomNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -223,31 +244,8 @@ CREATE TABLE `rooms_tbl` (
 
 LOCK TABLES `rooms_tbl` WRITE;
 /*!40000 ALTER TABLE `rooms_tbl` DISABLE KEYS */;
+INSERT INTO `rooms_tbl` VALUES (401,'Surgery'),(402,'Checkup'),(501,'Surgery'),(601,'General');
 /*!40000 ALTER TABLE `rooms_tbl` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `roomtype_tbl`
---
-
-DROP TABLE IF EXISTS `roomtype_tbl`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `roomtype_tbl` (
-  `roomtype` varchar(20) NOT NULL,
-  `roomprice` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`roomtype`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `roomtype_tbl`
---
-
-LOCK TABLES `roomtype_tbl` WRITE;
-/*!40000 ALTER TABLE `roomtype_tbl` DISABLE KEYS */;
-INSERT INTO `roomtype_tbl` VALUES ('Shared',500.00),('Solo',1500.00),('VIP',3000.00),('VVIP',5000.00);
-/*!40000 ALTER TABLE `roomtype_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -290,4 +288,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-23 22:43:50
+-- Dump completed on 2025-03-27 22:12:52
