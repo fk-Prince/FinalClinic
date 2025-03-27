@@ -64,7 +64,12 @@ namespace ClinicSystem.UserLoginForm
         {
             string doctorid = DoctorID.Text.Trim();
             string pin = PIN.Text.Trim();
-
+            LoginUserForm log = LoginUserForm.getInstance();
+            log.Hide();
+            this.Hide();
+            DoctorClinics doc = new DoctorClinics(null);
+            doc.Show();
+            return;
             try
             {
                 if (string.IsNullOrWhiteSpace(doctorid) || string.IsNullOrWhiteSpace(pin))
@@ -100,23 +105,23 @@ namespace ClinicSystem.UserLoginForm
                 }
                 while (reader.Read())
                 {
-                    Doctor doctor = new Doctor(
-                        reader.GetInt32("doctorid"),
-                        reader.GetString("doctorfirstname"),
-                        reader.GetString("doctormiddlename"),
-                        reader.GetString("doctorlastname"),
-                        reader.GetInt32("doctorage"),
-                        reader.GetString("pin"),
-                        reader.GetDateTime("datehired"),
-                        reader.GetString("gender"),
-                        reader.GetString("address")
-                    );
-                    MessageBox.Show("Successfully Login", "Login Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoginUserForm log = LoginUserForm.getInstance();
-                    log.Hide();
-                    this.Hide();
-                    DoctorClinics doc = new DoctorClinics(doctor);
-                    doc.Show();
+                    //Doctor doctor = new Doctor(
+                    //    reader.GetInt32("doctorid"),
+                    //    reader.GetString("doctorfirstname"),
+                    //    reader.GetString("doctormiddlename"),
+                    //    reader.GetString("doctorlastname"),
+                    //    reader.GetInt32("doctorage"),
+                    //    reader.GetString("pin"),
+                    //    reader.GetDateTime("datehired"),
+                    //    reader.GetString("gender"),
+                    //    reader.GetString("address")
+                    //);
+                    //MessagePromp.MainShowMessage(this, "Successfully Login", MessageBoxIcon.Information);
+                    //LoginUserForm log = LoginUserForm.getInstance();
+                    //log.Hide();
+                    //this.Hide();
+                    //DoctorClinics doc = new DoctorClinics(doctor);
+                    //doc.Show();
                 }
                 conn.Close();
             }

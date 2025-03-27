@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using ClinicSystem.DoctorClinic;
+using ClinicSystem.UserLoginForm;
 using DoctorClinic;
 
 namespace ClinicSystem
@@ -283,7 +284,7 @@ namespace ClinicSystem
             if (success)
             {
                 patientAppointments = db.getPatients(dr.DoctorID);
-                MessageBox.Show("Appointment Updated", "Appointment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessagePromp.MainShowMessage(this, "Appointment Updated", MessageBoxIcon.Information);
             }
 
         }

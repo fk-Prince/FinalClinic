@@ -184,7 +184,7 @@ namespace ClinicSystem.Appointments
                             reader.GetInt32("age"),
                             reader.GetString("gender"),
                             reader.GetDateTime("birthdate"),
-                            reader.IsDBNull(reader.GetOrdinal("contactnumber")) ? "Contact number not provided" : reader.GetString("contactnumber")
+                            reader.IsDBNull(reader.GetOrdinal("contactnumber")) ? "N/A" : reader.GetString("contactnumber")
                         );
                     Doctor doctor = new Doctor(
                             reader.GetInt32("doctorid"),
@@ -208,7 +208,7 @@ namespace ClinicSystem.Appointments
                         );
 
                     int roomno = reader.GetInt32("Roomno");
-                    DateTime dateAdmitted = reader.GetDateTime("DateAdmitted");
+                    DateTime dateAdmitted = reader.GetDateTime("VisitDate");
 
 
                     Appointment app = new Appointment(

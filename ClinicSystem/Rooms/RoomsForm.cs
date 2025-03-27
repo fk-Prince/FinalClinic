@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using ClinicSystem.UserLoginForm;
 
 namespace ClinicSystem.Rooms
 {
@@ -24,7 +25,7 @@ namespace ClinicSystem.Rooms
 
             if (string.IsNullOrWhiteSpace(roomno.Text) || string.IsNullOrWhiteSpace(type.Text))
             {
-                MessageBox.Show("Empty Field", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Empty Field", MessageBoxIcon.Error);
                 return;
             }
 
@@ -32,7 +33,7 @@ namespace ClinicSystem.Rooms
             int roomNumber;
             if (!int.TryParse(roomno.Text,out roomNumber))
             {
-                MessageBox.Show("Room No can only be number", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Room No can only be number", MessageBoxIcon.Error);
                 return;
             }
 
@@ -40,14 +41,14 @@ namespace ClinicSystem.Rooms
             {
                 if (roomss.RoomNo == roomNumber)
                 {
-                    MessageBox.Show("Try different RoomNo. this room already exist", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessagePromp.MainShowMessageBig(this, "Try different RoomNo. this room already exist", MessageBoxIcon.Error);
                     return;
                 }
             }
 
             Room room = new Room(roomNumber, roomtype);
             db.insertRoom(room);
-            MessageBox.Show("Successfully Added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessagePromp.MainShowMessage(this, "Successfully Added", MessageBoxIcon.Information);
             roomno.Text = "";
             type.Text = "";
             roomList = db.getRooms();

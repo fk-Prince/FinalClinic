@@ -37,7 +37,7 @@ namespace DoctorClinic
                             reader.GetInt32("age"),
                             reader.GetString("gender"),
                             reader.GetDateTime("birthdate"),
-                            reader.IsDBNull(reader.GetOrdinal("contactnumber")) ? "Contact number not provided" : reader.GetString("contactnumber")
+                            reader.IsDBNull(reader.GetOrdinal("contactnumber")) ? "N/A" : reader.GetString("contactnumber")
                         );
 
                     int roomno = reader.GetInt32("RoomNo");

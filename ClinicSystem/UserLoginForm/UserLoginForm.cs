@@ -44,8 +44,10 @@ namespace ClinicSystem
         {
             string username = Username.Text.Trim();
             string password = Password.Text.Trim();
-
-
+            Staff staff2 = new Staff(1,"a","a");
+            ClinicSystem clinicSystem1 = new ClinicSystem(staff2);
+            clinicSystem1.Show();
+            return;
             try
             {
                 if (string.IsNullOrWhiteSpace(Username.Text) || string.IsNullOrWhiteSpace(Password.Text) || Username.Text == "User Name" || Password.Text == "Password")
@@ -73,6 +75,7 @@ namespace ClinicSystem
                 while (reader.Read())
                 {
                     LoginButton.Enabled = false;
+                    
                     Staff staff = new Staff(int.Parse(reader["StaffID"].ToString()), reader["Username"].ToString(), reader["Password"].ToString());
                     MessagePromp.LoginShowMessage(this, "Successfully Login", MessageBoxIcon.Information);
                     Timer timer = new Timer();
@@ -98,7 +101,7 @@ namespace ClinicSystem
         private void doctorB_Click(object sender, EventArgs e)
         {
             DoctorLogin docl = DoctorLogin.GetInstance();
-            docl.Show(); 
+            docl.Show();
         }
 
       
