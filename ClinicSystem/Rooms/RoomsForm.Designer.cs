@@ -43,7 +43,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.type = new System.Windows.Forms.TextBox();
+            this.comboType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.roomno = new System.Windows.Forms.TextBox();
@@ -61,7 +61,7 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 28);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(11, 28);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1056, 584);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -157,7 +157,7 @@
             this.addRoomPanel.Controls.Add(this.panel5);
             this.addRoomPanel.Controls.Add(this.panel3);
             this.addRoomPanel.Controls.Add(this.label2);
-            this.addRoomPanel.Location = new System.Drawing.Point(-371, 50);
+            this.addRoomPanel.Location = new System.Drawing.Point(-372, 50);
             this.addRoomPanel.Name = "addRoomPanel";
             this.addRoomPanel.Size = new System.Drawing.Size(371, 517);
             this.addRoomPanel.TabIndex = 0;
@@ -196,7 +196,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
-            this.panel5.Controls.Add(this.type);
+            this.panel5.Controls.Add(this.comboType);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.Location = new System.Drawing.Point(48, 213);
@@ -204,12 +204,16 @@
             this.panel5.Size = new System.Drawing.Size(272, 40);
             this.panel5.TabIndex = 3;
             // 
-            // type
+            // comboType
             // 
-            this.type.Location = new System.Drawing.Point(95, 11);
-            this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(174, 21);
-            this.type.TabIndex = 2;
+            this.comboType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
+            this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboType.FormattingEnabled = true;
+            this.comboType.Location = new System.Drawing.Point(95, 9);
+            this.comboType.Name = "comboType";
+            this.comboType.Size = new System.Drawing.Size(174, 23);
+            this.comboType.TabIndex = 1;
             // 
             // label5
             // 
@@ -312,7 +316,6 @@
         private System.Windows.Forms.Panel addRoomPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox type;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox roomno;
@@ -321,5 +324,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Timer timerin;
         private System.Windows.Forms.Timer timerout;
+        private System.Windows.Forms.ComboBox comboType;
     }
 }

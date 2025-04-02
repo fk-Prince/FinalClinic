@@ -9,7 +9,7 @@ namespace ClinicSystem.Rooms
     public partial class RoomsForm : Form
     {
         private List<Room> roomList;
-        private List<Room> roomType;
+        private List<string> roomType;
         private DatabaseRoom db = new DatabaseRoom();
         private Room selected;
         private bool isRoomPanel = false;
@@ -17,19 +17,32 @@ namespace ClinicSystem.Rooms
         {
             InitializeComponent();
             roomList = db.getRooms();
-          
+            roomType = db.getRoomsType();
+
+            foreach (string item in roomType)
+            {
+                comboType.Items.Add(item);
+            }
+
             addRoomPanel.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, addRoomPanel.Width, addRoomPanel.Height, 50, 50));
         }
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(roomno.Text) || string.IsNullOrWhiteSpace(type.Text))
+            if (string.IsNullOrWhiteSpace(roomno.Text))
             {
-                MessagePromp.MainShowMessage(this, "Empty Field", MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Empty room number.", MessageBoxIcon.Error);
                 return;
             }
 
-            string roomtype = type.Text;
+            if (comboType.SelectedIndex == -1)
+            {
+
+                MessagePromp.MainShowMessage(this, "Select a roomtype.", MessageBoxIcon.Error);
+                return;
+            }
+
+            string roomtype = comboType.SelectedItem.ToString();
             int roomNumber;
             if (!int.TryParse(roomno.Text,out roomNumber))
             {
@@ -50,7 +63,7 @@ namespace ClinicSystem.Rooms
             db.insertRoom(room);
             MessagePromp.MainShowMessage(this, "Successfully Added", MessageBoxIcon.Information);
             roomno.Text = "";
-            type.Text = "";
+            comboType.Text = "";
             roomList = db.getRooms();
             
         }

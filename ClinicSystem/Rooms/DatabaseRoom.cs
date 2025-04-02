@@ -54,5 +54,26 @@ namespace ClinicSystem.Rooms
                 MessageBox.Show("Error on insertRoom() db" + ex.Message);
             }
         }
+
+        internal List<string> getRoomsType()
+        {
+            List<string> roomType = new List<string>();
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(driver);
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM roomtype_tbl", conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    roomType.Add(reader.GetString("roomtype"));
+                }
+                conn.Close();
+            }catch (MySqlException ex)
+            {
+                MessageBox.Show("Error on getRoomsType() db" + ex.Message);
+            }
+            return roomType;
+        }
     }
 }
