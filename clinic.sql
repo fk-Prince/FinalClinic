@@ -18,10 +18,8 @@
 --
 -- Table structure for table `clinichistory_tbl`
 --
-
-CREATE DATABASE db_clinic;
+CREATE DATABASE IF NOT EXISTS db_clinic;
 USE db_clinic;
-
 
 DROP TABLE IF EXISTS `clinichistory_tbl`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -176,7 +174,7 @@ CREATE TABLE `patient_tbl` (
   `birthdate` date NOT NULL,
   `contactnumber` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`patientId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,7 +232,9 @@ DROP TABLE IF EXISTS `rooms_tbl`;
 CREATE TABLE `rooms_tbl` (
   `RoomNo` bigint NOT NULL,
   `RoomType` varchar(45) NOT NULL DEFAULT 'General',
-  PRIMARY KEY (`RoomNo`)
+  PRIMARY KEY (`RoomNo`),
+  KEY `dfg_idx` (`RoomType`),
+  CONSTRAINT `dfg` FOREIGN KEY (`RoomType`) REFERENCES `roomtype_tbl` (`Roomtype`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -244,8 +244,30 @@ CREATE TABLE `rooms_tbl` (
 
 LOCK TABLES `rooms_tbl` WRITE;
 /*!40000 ALTER TABLE `rooms_tbl` DISABLE KEYS */;
-INSERT INTO `rooms_tbl` VALUES (401,'Surgery'),(402,'Checkup'),(501,'Surgery'),(601,'General');
 /*!40000 ALTER TABLE `rooms_tbl` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roomtype_tbl`
+--
+
+DROP TABLE IF EXISTS `roomtype_tbl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roomtype_tbl` (
+  `Roomtype` varchar(45) NOT NULL,
+  PRIMARY KEY (`Roomtype`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roomtype_tbl`
+--
+
+LOCK TABLES `roomtype_tbl` WRITE;
+/*!40000 ALTER TABLE `roomtype_tbl` DISABLE KEYS */;
+INSERT INTO `roomtype_tbl` VALUES ('Examination Room'),('Operating Room');
+/*!40000 ALTER TABLE `roomtype_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -288,4 +310,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-27 22:12:52
+-- Dump completed on 2025-04-02 21:43:34
