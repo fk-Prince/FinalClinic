@@ -87,7 +87,7 @@ namespace ClinicSystem.Rooms
         private int x = -375;
         private void timerin_Tick(object sender, EventArgs e)
         {
-            x += 20;
+            x += 50;
           
             if (x >= 375)
             {
@@ -99,7 +99,7 @@ namespace ClinicSystem.Rooms
 
         private void timerout_Tick(object sender, EventArgs e)
         {
-            x -= 20;
+            x -= 50;
             addRoomPanel.Location = new Point(x, 80);
             if (x <= -375)
             {

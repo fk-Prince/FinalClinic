@@ -19,12 +19,11 @@ namespace ClinicSystem
         {
             this.staff = staff;
             InitializeComponent();
-            operationlist = db.getOperations();
-            displayOperations(operationlist);
-            button1.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
-            button2.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 10, 10));
-            button3.Region = System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 10, 10));
-            addOperationPanel.Region= System.Drawing.Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, addOperationPanel.Width, addOperationPanel.Height, 50, 50));
+       
+            button1.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
+            button2.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 10, 10));
+            button3.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 10, 10));
+            addOperationPanel.Region= Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, addOperationPanel.Width, addOperationPanel.Height, 50, 50));
         }
 
 
@@ -206,74 +205,12 @@ namespace ClinicSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string opCode = this.opCode.Text;
-            string opName = this.opName.Text;
-            string opDescription = this.opDescription.Text;
-            if (string.IsNullOrWhiteSpace(opCode) 
-                || string.IsNullOrWhiteSpace(opName) 
-                || string.IsNullOrWhiteSpace(opDescription) 
-                || string.IsNullOrWhiteSpace(opPrice.Text) 
-                || string.IsNullOrWhiteSpace(opDuration.Text))
-            {
-                MessagePromp.MainShowMessage(this, "Please fill up all fields", MessageBoxIcon.Error);
-                //MessageBox.Show("Please fill up all fields", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            bool duplicateCode = operationlist.Any(operation => operation.OperationCode.Equals(opCode, StringComparison.OrdinalIgnoreCase));
-            if (duplicateCode)
-            {
-                MessagePromp.MainShowMessage(this, "Duplicate Operation Code", MessageBoxIcon.Error);
-                //MessageBox.Show("Duplicate Operation Code", "Duplicate Code", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            double price;
-            if (!double.TryParse(opPrice.Text, out price))
-            {
-                MessagePromp.MainShowMessage(this, "Invalid Price", MessageBoxIcon.Error);
-               // MessageBox.Show("Invalid Price", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            price = double.Parse(price.ToString("F2"));
-
-            if (price >= 1000000000)
-            {
-                MessagePromp.MainShowMessage(this, "Price is too big.", MessageBoxIcon.Error);
-                // MessageBox.Show("Price is too big.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            TimeSpan duration;
-            if (!TimeSpan.TryParseExact(opDuration.Text, @"hh\:mm\:ss", null, out duration))
-            {
-                MessagePromp.MainShowMessage(this, "Invalid Duration", MessageBoxIcon.Error);
-               // MessageBox.Show("Invalid Duration", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (duration == TimeSpan.Zero)
-            {
-                MessagePromp.MainShowMessage(this, "Invalid Duration", MessageBoxIcon.Error);
-               // MessageBox.Show("Invalid Duration", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            bool success = db.insert(staff.StaffId, new Operation(opCode.ToUpper(), Capitalize(opName), DateTime.Now, opDescription, price, duration));
-            if (success)
-            {
-                MessagePromp.MainShowMessage(this, "Operation Added Successfully", MessageBoxIcon.Error);
-               // MessageBox.Show("Operation Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                reset();
-            }
-            else
-            {
-                MessagePromp.MainShowMessage(this, "Operation Failed to Add", MessageBoxIcon.Error);
-                //MessageBox.Show("Operation Failed to Add");
-            }
+           
         }
         public string Capitalize(string name)
         {
             if (string.IsNullOrEmpty(name))
                 return name;
-
             return char.ToUpper(name[0]) + name.Substring(1).ToLower();
         }
 
@@ -318,24 +255,18 @@ namespace ClinicSystem
 
         private void TextOnly(object sender, KeyPressEventArgs e)
         {
-             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
-             {
-                e.Handled = true;
-             }
+            
         }
 
         private void NumberOnly(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ' ')
-            {
-                e.Handled = true;
-            }
+           
         }
 
         private int x = -457;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            x += 20;
+            x += 50;
             addOperationPanel.Location = new Point(x, 131);
             if (x >= 320)
             {
@@ -346,7 +277,7 @@ namespace ClinicSystem
        
         private void timerout_Tick(object sender, EventArgs e)
         {
-            x -= 20;
+            x -= 50;
             addOperationPanel.Location = new Point(x, 131);
             if (x <= -457)
             {

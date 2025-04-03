@@ -32,6 +32,7 @@
             this.doctorpanel = new System.Windows.Forms.Panel();
             this.addDoctorB = new System.Windows.Forms.Button();
             this.viewDoctorB = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,11 +79,25 @@
             this.viewDoctorB.Click += new System.EventHandler(this.viewDoctorB_Click);
             this.viewDoctorB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mouseClicked);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(298, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 42);
+            this.button1.TabIndex = 108;
+            this.button1.Text = "Doctors Operation";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // DoctorMainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
             this.ClientSize = new System.Drawing.Size(1080, 719);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.doctorpanel);
             this.Controls.Add(this.addDoctorB);
@@ -99,5 +114,6 @@
         private System.Windows.Forms.Panel doctorpanel;
         private System.Windows.Forms.Button addDoctorB;
         private System.Windows.Forms.Button viewDoctorB;
+        private System.Windows.Forms.Button button1;
     }
 }

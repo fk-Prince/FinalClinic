@@ -297,6 +297,7 @@
             // BirthDate
             // 
             this.BirthDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BirthDate.Enabled = false;
             this.BirthDate.Location = new System.Drawing.Point(122, 6);
             this.BirthDate.Name = "BirthDate";
             this.BirthDate.Size = new System.Drawing.Size(333, 27);
@@ -413,7 +414,6 @@
             this.Age.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Age.Location = new System.Drawing.Point(48, 5);
             this.Age.Name = "Age";
-            this.Age.ReadOnly = true;
             this.Age.Size = new System.Drawing.Size(52, 27);
             this.Age.TabIndex = 5;
             this.Age.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

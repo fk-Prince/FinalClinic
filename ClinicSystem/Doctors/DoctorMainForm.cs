@@ -57,5 +57,11 @@ namespace ClinicSystem.Doctors
             ViewDoctor view = new ViewDoctor(staff);
             LoadForm(view);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DoctorOperation docop = new DoctorOperation(staff);
+            LoadForm(docop);
+        }
     }
 }

@@ -107,5 +107,10 @@ namespace ClinicSystem.Doctors
             }
             displayDoctors(filteredDoctor);
         }
+
+        private void flowPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

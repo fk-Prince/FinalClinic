@@ -83,6 +83,7 @@
             this.flowPanel.Name = "flowPanel";
             this.flowPanel.Size = new System.Drawing.Size(1056, 562);
             this.flowPanel.TabIndex = 4;
+            this.flowPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.flowPanel_Paint);
             // 
             // ViewDoctor
             // 
