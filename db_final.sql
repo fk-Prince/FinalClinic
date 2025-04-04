@@ -18,7 +18,7 @@
 --
 -- Table structure for table `clinichistory_tbl`
 --
-CREATE DATABASE IF NOT EXISTS db_clinic;
+CREATE DATABASE db_clinic;
 USE db_clinic;
 
 DROP TABLE IF EXISTS `clinichistory_tbl`;
@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `clinichistory_tbl`;
 CREATE TABLE `clinichistory_tbl` (
   `PatientID` bigint NOT NULL,
   `VisitDate` date NOT NULL,
-  `TotalBill` decimal(10,2) DEFAULT NULL,
+  `RecentlyVisitDate` date DEFAULT NULL,
   KEY `fkpatient_idx` (`PatientID`),
   CONSTRAINT `fkpatient` FOREIGN KEY (`PatientID`) REFERENCES `patient_tbl` (`patientId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -39,6 +39,7 @@ CREATE TABLE `clinichistory_tbl` (
 
 LOCK TABLES `clinichistory_tbl` WRITE;
 /*!40000 ALTER TABLE `clinichistory_tbl` DISABLE KEYS */;
+INSERT INTO `clinichistory_tbl` VALUES (3,'2025-04-04','2025-04-04');
 /*!40000 ALTER TABLE `clinichistory_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +68,7 @@ CREATE TABLE `doctor_operation_mm_tbl` (
 
 LOCK TABLES `doctor_operation_mm_tbl` WRITE;
 /*!40000 ALTER TABLE `doctor_operation_mm_tbl` DISABLE KEYS */;
-INSERT INTO `doctor_operation_mm_tbl` VALUES (6,'BE5',101),(9,'GE4',101),(7,'BE5',102),(8,'EC5',102);
+INSERT INTO `doctor_operation_mm_tbl` VALUES (6,'DE44',101),(9,'GE4',101),(7,'BE5',102),(8,'EC5',102);
 /*!40000 ALTER TABLE `doctor_operation_mm_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,12 +112,15 @@ DROP TABLE IF EXISTS `operation_tbl`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `operation_tbl` (
   `operationCode` varchar(10) NOT NULL,
-  `operationName` varchar(45) DEFAULT NULL,
-  `DateAdded` date DEFAULT NULL,
-  `Description` varchar(45) DEFAULT NULL,
-  `Price` decimal(10,2) DEFAULT NULL,
-  `Duration` time DEFAULT NULL,
-  PRIMARY KEY (`operationCode`)
+  `operationName` varchar(45) NOT NULL,
+  `DateAdded` date NOT NULL,
+  `Description` varchar(45) NOT NULL,
+  `Price` decimal(10,2) NOT NULL,
+  `Duration` time NOT NULL,
+  `roomtype` varchar(45) NOT NULL,
+  PRIMARY KEY (`operationCode`),
+  KEY `roomtype_idx` (`roomtype`),
+  CONSTRAINT `roomtyp` FOREIGN KEY (`roomtype`) REFERENCES `roomtype_tbl` (`Roomtype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -126,7 +130,7 @@ CREATE TABLE `operation_tbl` (
 
 LOCK TABLES `operation_tbl` WRITE;
 /*!40000 ALTER TABLE `operation_tbl` DISABLE KEYS */;
-INSERT INTO `operation_tbl` VALUES ('BE5','Surgery','2022-05-05','badb',5000.00,'10:10:10'),('EC5','Eye Checkup','2025-03-14','bsdf',6000.00,'10:00:00'),('GE4','BloodTest','2024-12-11','avsdas',2000.00,'02:20:00');
+INSERT INTO `operation_tbl` VALUES ('BE5','Surgery','2022-05-05','badb',5000.00,'10:10:10','Examination Room'),('DE44','Dental','2025-04-04','vasdasdba',5000.00,'10:00:00','Examination Room'),('EC5','Eye Checkup','2025-03-14','bsdf',6000.00,'10:00:00','Examination Room'),('GE4','BloodTest','2024-12-11','avsdas',2000.00,'02:20:00','Examination Room');
 /*!40000 ALTER TABLE `operation_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,6 +157,7 @@ CREATE TABLE `patient_staff_tbl` (
 
 LOCK TABLES `patient_staff_tbl` WRITE;
 /*!40000 ALTER TABLE `patient_staff_tbl` DISABLE KEYS */;
+INSERT INTO `patient_staff_tbl` VALUES (3,1);
 /*!40000 ALTER TABLE `patient_staff_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,8 +178,11 @@ CREATE TABLE `patient_tbl` (
   `gender` varchar(45) NOT NULL,
   `birthdate` date NOT NULL,
   `contactnumber` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`patientId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`patientId`),
+  UNIQUE KEY `patientfirstname_UNIQUE` (`patientfirstname`),
+  UNIQUE KEY `patientmiddlename_UNIQUE` (`patientmiddlename`),
+  UNIQUE KEY `patientlastname_UNIQUE` (`patientlastname`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,6 +191,7 @@ CREATE TABLE `patient_tbl` (
 
 LOCK TABLES `patient_tbl` WRITE;
 /*!40000 ALTER TABLE `patient_tbl` DISABLE KEYS */;
+INSERT INTO `patient_tbl` VALUES (2,'Asd','Asd','Asd','645645',3,'Male','2022-04-04',NULL),(3,'Bababa','Baba','Ababa','ababa',3,'Male','2022-04-04',NULL);
 /*!40000 ALTER TABLE `patient_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +219,7 @@ CREATE TABLE `patientappointment_tbl` (
   CONSTRAINT `asd` FOREIGN KEY (`RoomNo`) REFERENCES `rooms_tbl` (`RoomNo`),
   CONSTRAINT `fk_PatientAppointment_tbl_doctor_operation_mm_tbl1` FOREIGN KEY (`doctorOperationID`) REFERENCES `doctor_operation_mm_tbl` (`doctorOperationID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `patientid` FOREIGN KEY (`PatientID`) REFERENCES `patient_tbl` (`patientId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,6 +228,7 @@ CREATE TABLE `patientappointment_tbl` (
 
 LOCK TABLES `patientappointment_tbl` WRITE;
 /*!40000 ALTER TABLE `patientappointment_tbl` DISABLE KEYS */;
+INSERT INTO `patientappointment_tbl` VALUES (2,6,3,'2027-04-04','07:00:00','17:00:00','.,vj ,a;lskdkj,b;lasj,db;lajs,bldkas.,b;lda.sb;ldas.as;ldk.bas;ldkb.sa;lkd.caksj vlk;q,epqlweipcoq;we;\'xq/.w;\'elv,sa;ld,bupoasd,bk;xc.f;bld.iy[orbt.y;l.km[\'fghj[pmglhjgm;hjl[bgh;lbj[t/lu/t;\'yunkty;u.m',5000.00,505),(3,7,3,'2025-04-04','17:00:00','03:10:10',NULL,5000.00,506);
 /*!40000 ALTER TABLE `patientappointment_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,6 +254,7 @@ CREATE TABLE `rooms_tbl` (
 
 LOCK TABLES `rooms_tbl` WRITE;
 /*!40000 ALTER TABLE `rooms_tbl` DISABLE KEYS */;
+INSERT INTO `rooms_tbl` VALUES (505,'Examination Room'),(506,'Examination Room');
 /*!40000 ALTER TABLE `rooms_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-02 21:43:34
+-- Dump completed on 2025-04-04 12:59:49
