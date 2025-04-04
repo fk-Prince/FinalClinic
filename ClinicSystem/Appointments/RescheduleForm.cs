@@ -171,6 +171,14 @@ namespace ClinicSystem.Appointments
                 origEndTime,
                 selectedAppointment.AppointmentDetailNo);
 
+
+            bool patientavailable = db.isPatientAvailable(app);
+            if (!patientavailable)
+            {
+                MessagePromp.MainShowMessageBig(this, "Patient is not available during this time.", MessageBoxIcon.Error);
+                return;
+            }
+
             bool available = db.isReAppointmentAvailable(app);
             if (available)
             {

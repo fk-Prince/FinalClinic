@@ -16,19 +16,30 @@ namespace ClinicSystem.Appointments
     public class AppointmentDatabase
     {
         private string driver = "server=localhost;username=root;pwd=root;database=db_clinic";
+        
+        
         public bool isRoomAvailable(int roomno, DateTime selectedDate, TimeSpan startTime, TimeSpan endTime, int appointmentDetailNo)
         {
             try
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                string query = "SELECT patientappointment_tbl.* " +
-                             "FROM patientappointment_tbl " +
-                             "JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId " +
-                             "WHERE Roomno = @Roomno " +
-                             "AND patientappointment_tbl.DateSchedule = @DateSchedule " +
-                             "AND (patientappointment_tbl.StartTime < @EndTime OR patientappointment_tbl.EndTime > @StartTime) " +
-                             "AND AppointmentDetailNo != @AppointmentDetailNo";
+                string query = $@"SELECT patientappointment_tbl.* 
+                             FROM patientappointment_tbl  
+                             JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId 
+                             WHERE Roomno = @Roomno 
+                              AND 
+                            (                             
+                                (patientappointment_tbl.DateSchedule = @DateSchedule 
+                                 AND patientappointment_tbl.StartTime < @EndTime 
+                                 AND patientappointment_tbl.EndTime > @StartTime)
+                                OR 
+                                (patientappointment_tbl.DateSchedule < @DateSchedule 
+                                 AND patientappointment_tbl.EndTime > @StartTime)
+                                OR 
+                                (patientappointment_tbl.DateSchedule > @DateSchedule 
+                                 AND patientappointment_tbl.StartTime < @EndTime)
+                            )";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@Roomno", roomno);
                 command.Parameters.AddWithValue("@DateSchedule", selectedDate.ToString("yyyy-MM-dd"));
@@ -244,13 +255,23 @@ namespace ClinicSystem.Appointments
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                string query = "SELECT patientappointment_tbl.* " +
-                            "FROM patientappointment_tbl " +
-                            "JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId " +
-                            "WHERE doctor_operation_mm_tbl.DoctorID = @DoctorID " +
-                            "AND patientappointment_tbl.DateSchedule = @DateSchedule " +
-                            "AND (patientappointment_tbl.StartTime < @EndTime OR patientappointment_tbl.EndTime > @StartTime) " +
-                            "AND AppointmentDetailNo != @AppointmentDetailNo";
+                string query = $@"SELECT patientappointment_tbl.* 
+                            FROM patientappointment_tbl 
+                            JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId 
+                            WHERE doctor_operation_mm_tbl.DoctorID = @DoctorID 
+                             AND 
+                            (                             
+                                (patientappointment_tbl.DateSchedule = @DateSchedule 
+                                 AND patientappointment_tbl.StartTime < @EndTime 
+                                 AND patientappointment_tbl.EndTime > @StartTime)
+                                OR 
+                                (patientappointment_tbl.DateSchedule < @DateSchedule 
+                                 AND patientappointment_tbl.EndTime > @StartTime)
+                                OR 
+                                (patientappointment_tbl.DateSchedule > @DateSchedule 
+                                 AND patientappointment_tbl.StartTime < @EndTime)
+                            )
+                            AND AppointmentDetailNo != @AppointmentDetailNo";
                 MySqlCommand command = new MySqlCommand(query, conn);             
                 command.Parameters.AddWithValue("@DoctorID", app.Doctor.DoctorID);
                 command.Parameters.AddWithValue("@DateSchedule", app.DateSchedule.ToString("yyyy-MM-dd"));
@@ -411,12 +432,21 @@ namespace ClinicSystem.Appointments
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                string query = "SELECT patientappointment_tbl.* " +
-                             "FROM patientappointment_tbl " +
-                             "JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId " +
-                             "WHERE doctor_operation_mm_tbl.DoctorID = @DoctorID " +
-                             "AND patientappointment_tbl.DateSchedule = @DateSchedule " +
-                             "AND (patientappointment_tbl.StartTime < @EndTime OR patientappointment_tbl.EndTime > @StartTime)";
+                string query = @"SELECT patientappointment_tbl.* 
+                                FROM patientappointment_tbl 
+                                JOIN doctor_operation_mm_tbl ON patientappointment_tbl.doctorOperationID = doctor_operation_mm_tbl.DoctorOperationId 
+                                WHERE doctor_operation_mm_tbl.DoctorID = @DoctorID 
+                                AND (
+                                    (patientappointment_tbl.DateSchedule = @DateSchedule 
+                                     AND patientappointment_tbl.StartTime < @EndTime 
+                                     AND patientappointment_tbl.EndTime > @StartTime)
+                                    OR
+                                    (patientappointment_tbl.DateSchedule < @DateSchedule 
+                                     AND patientappointment_tbl.EndTime > @StartTime)
+                                    OR
+                                    (patientappointment_tbl.DateSchedule > @DateSchedule 
+                                     AND patientappointment_tbl.StartTime < @EndTime)
+                                )";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@DoctorID", schedule.Doctor.DoctorID);
                 command.Parameters.AddWithValue("@DateSchedule", schedule.DateSchedule.ToString("yyyy-MM-dd"));
@@ -430,7 +460,7 @@ namespace ClinicSystem.Appointments
             {
                 MessageBox.Show("Error from isScheduleAvailable DB" + ex.Message);
             }
-            return true;
+            return false;
         }
         public List<Patient> getPatients()
         {
@@ -554,6 +584,41 @@ namespace ClinicSystem.Appointments
             return operations;
         }
 
-       
+        internal bool isPatientAvailable(Appointment app)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(driver);
+                conn.Open();
+                string query = $@"SELECT patientappointment_tbl.* 
+                             FROM patientappointment_tbl 
+                             WHERE patientappointment_tbl.PatientId = @PatientId 
+                             AND 
+                            (                             
+                                (patientappointment_tbl.DateSchedule = @DateSchedule 
+                                 AND patientappointment_tbl.StartTime < @EndTime 
+                                 AND patientappointment_tbl.EndTime > @StartTime)
+                                OR 
+                                (patientappointment_tbl.DateSchedule < @DateSchedule 
+                                 AND patientappointment_tbl.EndTime > @StartTime)
+                                OR 
+                                (patientappointment_tbl.DateSchedule > @DateSchedule 
+                                 AND patientappointment_tbl.StartTime < @EndTime)
+                            )";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@PatientId", app.Patient.Patientid);
+                command.Parameters.AddWithValue("@DateSchedule", app.DateSchedule);
+                command.Parameters.AddWithValue("@StartTime", app.StartTime);
+                command.Parameters.AddWithValue("@EndTime", app.EndTime);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                return !reader.HasRows;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("error on isPatientAvailable() db" + ex.Message);
+            }
+            return false;
+        }
     }
 }

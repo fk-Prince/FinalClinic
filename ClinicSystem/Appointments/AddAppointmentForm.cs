@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ClinicSystem.PatientForm;
 using ClinicSystem.Rooms;
 using ClinicSystem.UserLoginForm;
+using Google.Protobuf.WellKnownTypes;
 
 namespace ClinicSystem.Appointments
 {
@@ -206,22 +207,6 @@ namespace ClinicSystem.Appointments
             if (endTime.TotalHours >= 24)
             {
                 endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
-
-            }
-            int roomno = int.Parse(comboRoom.SelectedItem.ToString().Split(' ')[0].Trim());
-            bool isRoomAvailable = db.isRoomAvailable(roomno, selectedDate,startTime,endTime);
-            if (!isRoomAvailable)
-            {
-                MessagePromp.MainShowMessageBig(this, "Room is not available during this time.", MessageBoxIcon.Error);
-                return;
-            }
-
-            Appointment schedule = new Appointment(selectedDoctor, selectedDate, startTime, endTime,roomno);
-            bool isScheduleAvailable = db.isScheduleAvailable(schedule);
-            if (!isScheduleAvailable)
-            {
-                MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.", MessageBoxIcon.Error);
-                return;
             }
 
             foreach (Appointment sc in patientSchedules)
@@ -229,11 +214,56 @@ namespace ClinicSystem.Appointments
                 if (sc.Patient.Patientid == selectedPatient.Patientid && sc.DateSchedule.Date == selectedDate.Date &&
                     (startTime < sc.EndTime && endTime > sc.StartTime))
                 {
-                    MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the your schedule.", MessageBoxIcon.Error);
+                    MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.", MessageBoxIcon.Error);
                     return;
                 }
+            }  
+            int roomno = int.Parse(comboRoom.SelectedItem.ToString().Split(' ')[0].Trim());
+            Appointment pschedule = new Appointment(selectedPatient, selectedDoctor, selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price, roomno);
+
+            bool patientavailable = db.isPatientAvailable(pschedule);
+            if (!patientavailable)
+            {
+                MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.", MessageBoxIcon.Error);
+                return;
             }
-            Appointment pschedule = new Appointment(selectedPatient, selectedDoctor,selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price, roomno);
+
+            bool isRoomAvailable = db.isRoomAvailable(roomno, selectedDate,startTime,endTime);
+            if (!isRoomAvailable)
+            {
+                MessagePromp.MainShowMessageBig(this, "Room is not available during this time.", MessageBoxIcon.Error);
+                return;
+            }
+
+
+            Appointment schedule = new Appointment(selectedDoctor, selectedDate, startTime, endTime,roomno);
+
+
+            bool isScheduleAvailable = db.isScheduleAvailable(schedule);
+            if (!isScheduleAvailable)
+            {
+                MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.", MessageBoxIcon.Error);
+                return;
+            }
+
+            //foreach (Appointment sc in patientSchedules)
+            //{
+            //    if (sc.Patient.Patientid == selectedPatient.Patientid && sc.DateSchedule.Date == selectedDate.Date &&
+            //        (startTime < sc.EndTime && endTime > sc.StartTime))
+            //    {
+            //        MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.", MessageBoxIcon.Error);
+            //        return;
+            //    }
+            //}
+            //Appointment pschedule = new Appointment(selectedPatient, selectedDoctor, selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price, roomno);
+
+            //bool patientavailable = db.isPatientAvailable(pschedule);
+            //if (!patientavailable)
+            //{
+            //    MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.", MessageBoxIcon.Error);
+            //    return;
+            //}
+
             patientSchedules.Add(pschedule);
 
 
