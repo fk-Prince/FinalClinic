@@ -123,7 +123,16 @@ namespace ClinicSystem
             }
 
 
+
+
             Patient patient = new Patient(int.Parse(lastPatientID.Text),Capitalize(fname), Capitalize(mname), Capitalize(lname), address, ageInt, gender, bday, contact);
+
+            int existingPatientId = db.isPatientExist(patient);
+            if (existingPatientId != -1)
+            {
+                MessagePromp.MainShowMessageBig(this, $"Patient is already registered as PatientID: {existingPatientId}", MessageBoxIcon.Error);
+                return;
+            }
 
             bool success = db.insertPatient(staff.StaffId, patient);
 

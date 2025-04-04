@@ -19,11 +19,17 @@ namespace ClinicSystem
         {
             this.staff = staff;
             InitializeComponent();
-       
+            operationlist = db.getOperations();
+            List<string> roomtype = db.getAvailableRoomType();
+            foreach (string item in roomtype)
+            {
+                comboRoomType.Items.Add(item);
+            }
+            displayOperations(operationlist);
             button1.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
             button2.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 10, 10));
             button3.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 10, 10));
-            addOperationPanel.Region= Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, addOperationPanel.Width, addOperationPanel.Height, 50, 50));
+            addOperationPanel.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, addOperationPanel.Width, addOperationPanel.Height, 50, 50));
         }
 
 
@@ -36,8 +42,8 @@ namespace ClinicSystem
             foreach (Operation operation in operationlist)
             {
                 Panel panel = new Panel();
-                panel.Size = new Size(300, 250);
-                panel.Location = new Point(50, 100);    
+                panel.Size = new Size(300, 270);
+                panel.Location = new Point(50, 100);
                 panel.Margin = new Padding(30, 10, 10, 10);
                 panel.BackColor = Color.FromArgb(60, 141, 188);
                 panel.Region = Region.FromHrgn(dll.CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 50, 50));
@@ -63,17 +69,21 @@ namespace ClinicSystem
                 label = createLabel("Duration", operation.Duration.ToString(), 10, 85);
                 panel.Controls.Add(label);
 
+                label = createLabel("Room Type Needed", operation.OperationRoomType, 10, 105);
+                panel.Controls.Add(label);
+
                 label = new Label();
                 label.Text = "Description";
                 label.MaximumSize = new Size(200, 0);
                 label.AutoSize = true;
-                label.Location = new Point(15, 105);
+                label.Location = new Point(15, 125);
                 panel.Controls.Add(label);
+
 
                 TextBox tb = new TextBox();
                 tb.Multiline = true;
                 tb.Text = operation.Description;
-                tb.Location = new Point(15, 125);
+                tb.Location = new Point(15, 150);
                 tb.Size = new Size(270, 60);
                 tb.ReadOnly = true;
                 panel.Controls.Add(tb);
@@ -81,14 +91,14 @@ namespace ClinicSystem
                 Panel panelLine = new Panel();
                 panelLine.Size = new Size(300, 1);
                 panelLine.BackColor = Color.Gray;
-                panelLine.Location = new Point(0, 195);
+                panelLine.Location = new Point(0, 215);
                 panel.Controls.Add(panelLine);
 
                 label = new Label();
                 label.Text = "Doctor Assigned";
                 label.MaximumSize = new Size(200, 0);
                 label.AutoSize = true;
-                label.Location = new Point(15, 215);
+                label.Location = new Point(15, 235);
                 panel.Controls.Add(label);
 
                 ComboBox combo = new ComboBox();
@@ -101,7 +111,7 @@ namespace ClinicSystem
                 {
                     combo.Items.Add("No Doctor Assigned");
                 }
-                combo.Location = new Point(138, 212);
+                combo.Location = new Point(138, 235);
                 combo.DropDownStyle = ComboBoxStyle.DropDownList;
                 combo.Size = new Size(150, 40);
                 panel.Controls.Add(combo);
@@ -138,7 +148,7 @@ namespace ClinicSystem
                ).ToList();
 
             }
-            displayOperations(filteredOperationList);   
+            displayOperations(filteredOperationList);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -153,8 +163,6 @@ namespace ClinicSystem
             flowLayout.Visible = false;
             SearchBar.Enabled = false;
             SearchBar.Text = "";
-            DateTime dateTime = DateTime.Now;
-            opDate.Text = dateTime.ToString("yyyy-MM-dd");
         }
 
         private void opCode_TextChanged(object sender, EventArgs e)
@@ -195,7 +203,7 @@ namespace ClinicSystem
                 {
                     op = duration != TimeSpan.Zero;
                 }
-                pictureDuration.Image = op ? Properties.Resources.check : Properties.Resources.error ;
+                pictureDuration.Image = op ? Properties.Resources.check : Properties.Resources.error;
             }
             else
             {
@@ -237,13 +245,13 @@ namespace ClinicSystem
 
         private void opPrice_TextChanged(object sender, EventArgs e)
         {
-         
+
             if (!string.IsNullOrWhiteSpace(opPrice.Text))
             {
                 bool op = double.TryParse(opPrice.Text, out double price);
                 if (op)
                 {
-                   op = double.Parse(opPrice.Text) <= 1000000000;
+                    op = double.Parse(opPrice.Text) <= 1000000000;
                 }
                 picturePrice.Image = op ? Properties.Resources.check : Properties.Resources.error;
             }
@@ -255,12 +263,12 @@ namespace ClinicSystem
 
         private void TextOnly(object sender, KeyPressEventArgs e)
         {
-            
+         
         }
 
         private void NumberOnly(object sender, KeyPressEventArgs e)
         {
-           
+          
         }
 
         private int x = -457;
@@ -274,7 +282,7 @@ namespace ClinicSystem
             }
         }
 
-       
+
         private void timerout_Tick(object sender, EventArgs e)
         {
             x -= 50;

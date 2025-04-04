@@ -47,7 +47,9 @@ namespace DoctorClinic
                           reader.GetDateTime("dateAdded"),
                           reader.GetString("description"),
                           reader.GetDouble("price"),
-                          reader.GetTimeSpan("duration")
+                          reader.GetTimeSpan("duration"),
+                          reader.GetString("roomtype")
+
                     );
 
                     DateTime date = reader.GetDateTime("DateSchedule");

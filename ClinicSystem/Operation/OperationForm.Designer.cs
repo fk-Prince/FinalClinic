@@ -37,6 +37,9 @@
             this.SearchBar = new System.Windows.Forms.TextBox();
             this.flowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.addOperationPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.comboRoomType = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.picturePrice = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.pictureDuration = new System.Windows.Forms.PictureBox();
@@ -50,9 +53,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.opDuration = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.opDate = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.opPrice = new System.Windows.Forms.TextBox();
@@ -67,13 +67,13 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.addOperationPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCode)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -147,7 +147,7 @@
             // 
             this.flowLayout.AutoScroll = true;
             this.flowLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
-            this.flowLayout.Location = new System.Drawing.Point(1, 114);
+            this.flowLayout.Location = new System.Drawing.Point(0, 114);
             this.flowLayout.Name = "flowLayout";
             this.flowLayout.Size = new System.Drawing.Size(1080, 601);
             this.flowLayout.TabIndex = 3;
@@ -155,6 +155,7 @@
             // addOperationPanel
             // 
             this.addOperationPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
+            this.addOperationPanel.Controls.Add(this.panel2);
             this.addOperationPanel.Controls.Add(this.picturePrice);
             this.addOperationPanel.Controls.Add(this.button3);
             this.addOperationPanel.Controls.Add(this.pictureDuration);
@@ -164,19 +165,48 @@
             this.addOperationPanel.Controls.Add(this.label8);
             this.addOperationPanel.Controls.Add(this.panel8);
             this.addOperationPanel.Controls.Add(this.panel7);
-            this.addOperationPanel.Controls.Add(this.panel6);
             this.addOperationPanel.Controls.Add(this.panel5);
             this.addOperationPanel.Controls.Add(this.panel4);
             this.addOperationPanel.Controls.Add(this.panel3);
-            this.addOperationPanel.Location = new System.Drawing.Point(-457, 117);
+            this.addOperationPanel.Location = new System.Drawing.Point(-463, 114);
             this.addOperationPanel.Name = "addOperationPanel";
             this.addOperationPanel.Size = new System.Drawing.Size(457, 575);
             this.addOperationPanel.TabIndex = 4;
             this.addOperationPanel.Visible = false;
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.comboRoomType);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.ForeColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(35, 290);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(396, 35);
+            this.panel2.TabIndex = 5;
+            // 
+            // comboRoomType
+            // 
+            this.comboRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboRoomType.FormattingEnabled = true;
+            this.comboRoomType.Location = new System.Drawing.Point(185, 9);
+            this.comboRoomType.Name = "comboRoomType";
+            this.comboRoomType.Size = new System.Drawing.Size(204, 21);
+            this.comboRoomType.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(108, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Available Room Type";
+            // 
             // picturePrice
             // 
-            this.picturePrice.Location = new System.Drawing.Point(430, 248);
+            this.picturePrice.Location = new System.Drawing.Point(430, 246);
             this.picturePrice.Name = "picturePrice";
             this.picturePrice.Size = new System.Drawing.Size(16, 16);
             this.picturePrice.TabIndex = 12;
@@ -199,7 +229,7 @@
             // 
             // pictureDuration
             // 
-            this.pictureDuration.Location = new System.Drawing.Point(430, 197);
+            this.pictureDuration.Location = new System.Drawing.Point(430, 196);
             this.pictureDuration.Name = "pictureDuration";
             this.pictureDuration.Size = new System.Drawing.Size(16, 16);
             this.pictureDuration.TabIndex = 11;
@@ -207,7 +237,7 @@
             // 
             // pictureName
             // 
-            this.pictureName.Location = new System.Drawing.Point(431, 145);
+            this.pictureName.Location = new System.Drawing.Point(431, 144);
             this.pictureName.Name = "pictureName";
             this.pictureName.Size = new System.Drawing.Size(16, 16);
             this.pictureName.TabIndex = 10;
@@ -215,7 +245,7 @@
             // 
             // pictureCode
             // 
-            this.pictureCode.Location = new System.Drawing.Point(431, 94);
+            this.pictureCode.Location = new System.Drawing.Point(431, 93);
             this.pictureCode.Name = "pictureCode";
             this.pictureCode.Size = new System.Drawing.Size(16, 16);
             this.pictureCode.TabIndex = 9;
@@ -228,7 +258,7 @@
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(139)))), ((int)(((byte)(189)))));
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(143, 481);
+            this.button2.Location = new System.Drawing.Point(143, 494);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(190, 37);
             this.button2.TabIndex = 8;
@@ -252,9 +282,9 @@
             this.panel8.Controls.Add(this.Description);
             this.panel8.Controls.Add(this.opDescription);
             this.panel8.ForeColor = System.Drawing.Color.White;
-            this.panel8.Location = new System.Drawing.Point(35, 349);
+            this.panel8.Location = new System.Drawing.Point(35, 353);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(396, 106);
+            this.panel8.Size = new System.Drawing.Size(396, 96);
             this.panel8.TabIndex = 6;
             // 
             // Description
@@ -274,7 +304,7 @@
             this.opDescription.Location = new System.Drawing.Point(185, 5);
             this.opDescription.Multiline = true;
             this.opDescription.Name = "opDescription";
-            this.opDescription.Size = new System.Drawing.Size(204, 98);
+            this.opDescription.Size = new System.Drawing.Size(204, 88);
             this.opDescription.TabIndex = 0;
             // 
             // panel7
@@ -292,9 +322,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 13);
+            this.label6.Size = new System.Drawing.Size(131, 13);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Duration (HH:MM:SS)";
+            this.label6.Text = "Est. Duration (HH:MM:SS)";
             // 
             // opDuration
             // 
@@ -307,44 +337,12 @@
             this.opDuration.TabIndex = 0;
             this.opDuration.TextChanged += new System.EventHandler(this.opDuration_TextChanged);
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.label5);
-            this.panel6.Controls.Add(this.opDate);
-            this.panel6.ForeColor = System.Drawing.Color.White;
-            this.panel6.Location = new System.Drawing.Point(35, 292);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(396, 128);
-            this.panel6.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Date-Added";
-            // 
-            // opDate
-            // 
-            this.opDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.opDate.BackColor = System.Drawing.Color.White;
-            this.opDate.Location = new System.Drawing.Point(185, 5);
-            this.opDate.Name = "opDate";
-            this.opDate.ReadOnly = true;
-            this.opDate.Size = new System.Drawing.Size(204, 20);
-            this.opDate.TabIndex = 0;
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.opPrice);
             this.panel5.ForeColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(35, 240);
+            this.panel5.Location = new System.Drawing.Point(35, 239);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(396, 32);
             this.panel5.TabIndex = 3;
@@ -458,6 +456,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.addOperationPanel.ResumeLayout(false);
             this.addOperationPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureName)).EndInit();
@@ -466,8 +466,6 @@
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -495,9 +493,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox opDuration;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox opDate;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox opPrice;
@@ -515,5 +510,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Timer timerin;
         private System.Windows.Forms.Timer timerout;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboRoomType;
     }
 }

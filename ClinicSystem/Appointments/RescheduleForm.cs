@@ -19,7 +19,7 @@ namespace ClinicSystem.Appointments
     public partial class RescheduleForm : Form
     {
         private List<Appointment> appointments = new List<Appointment>();
-        private ScheduleDatabase db = new ScheduleDatabase();
+        private AppointmentDatabase db = new AppointmentDatabase();
         private Appointment selectedAppointment;
         private List<Room> rooms = new List<Room>();
         public RescheduleForm(Staff staff)
@@ -171,7 +171,7 @@ namespace ClinicSystem.Appointments
                 origEndTime,
                 selectedAppointment.AppointmentDetailNo);
 
-            bool available = db.isAvailable(app);
+            bool available = db.isReAppointmentAvailable(app);
             if (available)
             {
                 bool isRoomAvailable = db.isRoomAvailable(roomno, selectedDate, origStartTime, origEndTime, int.Parse(comboAppointment.SelectedItem.ToString()));

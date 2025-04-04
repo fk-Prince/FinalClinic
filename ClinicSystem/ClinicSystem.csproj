@@ -123,7 +123,7 @@
     <Compile Include="Appointments\RescheduleForm.Designer.cs">
       <DependentUpon>RescheduleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Appointments\ScheduleDatabase.cs" />
+    <Compile Include="Appointments\AppointmentDatabase.cs" />
     <Compile Include="ClinicHistory\ClinicForm.cs">
       <SubType>Form</SubType>
     </Compile>

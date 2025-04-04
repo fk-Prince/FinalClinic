@@ -284,7 +284,7 @@ namespace ClinicSystem
             if (success)
             {
                 patientAppointments = db.getPatients(dr.DoctorID);
-                MessagePromp.MainShowMessage(this, "Appointment Updated", MessageBoxIcon.Information);
+                MessagePromp.MainShowMessage(this, "Diagnosis Recorded.", MessageBoxIcon.Information);
             }
 
         }

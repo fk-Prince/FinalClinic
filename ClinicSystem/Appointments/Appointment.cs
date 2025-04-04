@@ -19,6 +19,7 @@ namespace ClinicSystem
         private double bill;
         private int roomno;
         private DateTime dateAdmitted;
+        private DateTime recentlyVisit;
         private int appointmentDetailNo;
 
         private string diagnosis;
@@ -81,13 +82,28 @@ namespace ClinicSystem
             this.dateAdmitted = dateAdmitted;
         }
 
-      
+        public Appointment(Patient patient, Doctor doctor, Operation operation, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int appointmentDetailId, int roomno, DateTime dateAdmitted, DateTime recentlyVisit)
+        {
+            this.patient = patient;
+            this.dateSchedule = dateSchedule.Date;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.doctor = doctor;
+            this.operation = operation;
+            this.appointmentDetailNo = appointmentDetailId;
+            this.roomno = roomno;
+            this.dateAdmitted = dateAdmitted;
+            this.recentlyVisit = recentlyVisit;
+        }
+
+
 
         public Doctor Doctor { get => doctor; }
         public Operation Operation { get => operation; }
         public Patient Patient { get => patient; }
         public DateTime DateSchedule { get => dateSchedule; }
         public DateTime DateVisited { get => dateAdmitted; }
+        public DateTime DateRecentlyVisit { get => recentlyVisit; }
         public TimeSpan StartTime { get => startTime;  }
         public TimeSpan EndTime { get => endTime;  }
 

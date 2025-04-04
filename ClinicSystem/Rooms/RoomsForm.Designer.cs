@@ -35,8 +35,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.addRoomPanel = new System.Windows.Forms.Panel();
@@ -61,7 +59,7 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(11, 28);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 28);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1056, 584);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -104,28 +102,6 @@
             this.textBox1.Size = new System.Drawing.Size(175, 24);
             this.textBox1.TabIndex = 0;
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(31, 72);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(71, 17);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Occupied";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(120, 72);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(91, 17);
-            this.radioButton2.TabIndex = 8;
-            this.radioButton2.Text = "Not Occupied";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
             // button1
             // 
             this.button1.BackgroundImage = global::ClinicSystem.Properties.Resources.add;
@@ -157,7 +133,7 @@
             this.addRoomPanel.Controls.Add(this.panel5);
             this.addRoomPanel.Controls.Add(this.panel3);
             this.addRoomPanel.Controls.Add(this.label2);
-            this.addRoomPanel.Location = new System.Drawing.Point(-372, 50);
+            this.addRoomPanel.Location = new System.Drawing.Point(-371, 50);
             this.addRoomPanel.Name = "addRoomPanel";
             this.addRoomPanel.Size = new System.Drawing.Size(371, 517);
             this.addRoomPanel.TabIndex = 0;
@@ -185,7 +161,7 @@
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(163)))), ((int)(((byte)(216)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(89, 390);
+            this.button2.Location = new System.Drawing.Point(91, 367);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(208, 44);
             this.button2.TabIndex = 4;
@@ -208,7 +184,6 @@
             // 
             this.comboType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboType.FormattingEnabled = true;
             this.comboType.Location = new System.Drawing.Point(95, 9);
             this.comboType.Name = "comboType";
@@ -219,7 +194,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(3, 14);
+            this.label5.Location = new System.Drawing.Point(3, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 15);
             this.label5.TabIndex = 0;
@@ -258,7 +233,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(111, 32);
+            this.label2.Location = new System.Drawing.Point(113, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(165, 37);
             this.label2.TabIndex = 0;
@@ -280,8 +255,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(1080, 719);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RoomsForm";
@@ -298,7 +271,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -309,8 +281,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel addRoomPanel;

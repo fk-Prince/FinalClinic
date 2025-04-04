@@ -29,7 +29,8 @@ namespace ClinicSystem
                         reader.GetDateTime("dateadded"),
                         reader.GetString("description"),
                         reader.GetDouble("price"),
-                        reader.GetTimeSpan("duration")
+                        reader.GetTimeSpan("duration"),
+                        reader.GetString("roomtype")
                     );
                     getDoctor(operation);
                     operations.Add(operation);
@@ -84,8 +85,8 @@ namespace ClinicSystem
             {
                 MySqlConnection conn = new MySqlConnection(driver);
                 conn.Open();
-                string query = "INSERT INTO operation_tbl(operationcode, OperationName, dateadded, description, price, duration) " +
-                    "VALUES(@OperationCode, @OperationName, @DateAdded, @Description, @Price, @Duration)";
+                string query = "INSERT INTO operation_tbl(operationcode, OperationName, dateadded, description, price, duration, roomtype) " +
+                    "VALUES(@OperationCode, @OperationName, @DateAdded, @Description, @Price, @Duration, @roomtype)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@OperationCode", operation.OperationCode);
                 cmd.Parameters.AddWithValue("@OperationName", operation.OperationName);
@@ -93,6 +94,7 @@ namespace ClinicSystem
                 cmd.Parameters.AddWithValue("@Description", operation.Description);
                 cmd.Parameters.AddWithValue("@Price", operation.Price);
                 cmd.Parameters.AddWithValue("@Duration", operation.Duration);
+                cmd.Parameters.AddWithValue("@roomtype", operation.OperationRoomType);
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
@@ -129,7 +131,8 @@ namespace ClinicSystem
                        reader.GetDateTime("dateadded"),
                        reader.GetString("description"),
                        reader.GetDouble("price"),
-                       reader.GetTimeSpan("duration")
+                       reader.GetTimeSpan("duration"),
+                       reader.GetString("roomtype")
                    );
                     operations.Add(operation);
                 }
@@ -141,6 +144,28 @@ namespace ClinicSystem
             }
 
             return operations;
+        }
+
+        internal List<string> getAvailableRoomType()
+        {
+            List<string> roomTypes = new List<string>();
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(driver);
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("SELECT * FROM roomtype_tbl", conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    roomTypes.Add(reader.GetString("roomtype"));
+                }
+                conn.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("ERROR FROM getAvailableRoomType() DB " + ex.Message);
+            }
+            return roomTypes;
         }
     }
 }

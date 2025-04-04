@@ -12,7 +12,7 @@ namespace ClinicSystem.Main2
     public partial class DoctorAppointmentForm : Form
     {
         private List<Appointment> patientAppointments;
-        private ScheduleDatabase db = new ScheduleDatabase();
+        private AppointmentDatabase db = new AppointmentDatabase();
         private Doctor dr;
         public DoctorAppointmentForm(Doctor dr)
         {

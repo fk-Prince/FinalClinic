@@ -11,7 +11,7 @@ namespace ClinicSystem.Appointments
 {
     public partial class AddAppointmentForm : Form
     {
-        private PatientDatabase db = new PatientDatabase();
+        private AppointmentDatabase db = new AppointmentDatabase();
         private Staff staff;
         private List<Operation> operationList;
         private List<string> operationNameAddedList = new List<string>();
@@ -75,7 +75,7 @@ namespace ClinicSystem.Appointments
                     List<Room> filter = new List<Room>();
                     foreach (Room room in rooms)
                     {
-                        if (operation.OperationName.Contains(room.Roomtype))
+                        if (operation.OperationRoomType.Equals(room.Roomtype))
                         {
                             filter.Add(room);
                             comboRoom.Items.Add(room.RoomNo + " | " + room.Roomtype);
@@ -424,9 +424,10 @@ namespace ClinicSystem.Appointments
                 MessagePromp.MainShowMessage(this, "Please Select a Patient.", MessageBoxIcon.Error);          
                 return;
             }
+
             if (patientSchedules.Count <= 0)
             {
-                MessagePromp.MainShowMessage(this, "Please Select Operation.", MessageBoxIcon.Error);
+                MessagePromp.MainShowMessage(this, "Please Add an Operation.", MessageBoxIcon.Error);
                 return;
             }
 

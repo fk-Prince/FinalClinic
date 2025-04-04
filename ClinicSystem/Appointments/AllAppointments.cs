@@ -15,7 +15,7 @@ namespace ClinicSystem.Appointments
     {
 
         private List<Appointment> patientAppointments;
-        private ScheduleDatabase db = new ScheduleDatabase();
+        private AppointmentDatabase db = new AppointmentDatabase();
         public AllAppointments()
         {
             InitializeComponent();
@@ -25,11 +25,11 @@ namespace ClinicSystem.Appointments
             List<Appointment> filtered = new List<Appointment>();
             foreach (Appointment pa in patientAppointments)
             {
-               
-                //if (pa.Schedule.DateSchedule.Date.ToString("yyyy-MM-dd").Equals(today.ToString("yyyy-MM-dd")))
-                //{
-                //    filtered.Add(pa);
-                //}
+
+                if (pa.DateSchedule.Date.ToString("yyyy-MM-dd").Equals(today.ToString("yyyy-MM-dd")))
+                {
+                    filtered.Add(pa);
+                }
             }
             displaySchedules(filtered,"TODAY");
            
@@ -43,7 +43,7 @@ namespace ClinicSystem.Appointments
                 foreach (Appointment pa in patientAppointments)
                 {
                     Panel panel = new Panel();
-                    panel.Size = new Size(300, 310);
+                    panel.Size = new Size(300, 330);
                     panel.BackColor = Color.FromArgb(111, 163, 216);
                     panel.Margin = new Padding(15, 10, 10, 10);
                     panel.Padding = new Padding(10, 10, 10, 10);
@@ -95,6 +95,9 @@ namespace ClinicSystem.Appointments
                     panel.Controls.Add(label);
 
                     label = createLabel("Date Visited", pa.DateVisited.ToString("yyyy-MM-dd"), 10, 275);
+                    panel.Controls.Add(label);
+
+                    label = createLabel("Recently Visited", pa.DateRecentlyVisit.ToString("yyyy-MM-dd"), 10, 295);
                     panel.Controls.Add(label);
 
 
