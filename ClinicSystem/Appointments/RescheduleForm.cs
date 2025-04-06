@@ -11,6 +11,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicSystem.PatientForm;
 using ClinicSystem.Rooms;
 using ClinicSystem.UserLoginForm;
 
@@ -48,7 +49,6 @@ namespace ClinicSystem.Appointments
         }
 
 
-
         private void comboAppointment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboAppointment.SelectedIndex == -1) return;
@@ -62,7 +62,6 @@ namespace ClinicSystem.Appointments
             }
             if (selectedAppointment != null)
             {
-             
 
                 string fullname = $"{selectedAppointment.Patient.Firstname}  " +
                                   $"{selectedAppointment.Patient.Middlename}  " +
@@ -72,8 +71,8 @@ namespace ClinicSystem.Appointments
                 dateSchedulePicker.Value = selectedAppointment.DateSchedule;
 
                 string dfullname = $"{selectedAppointment.Doctor.DoctorFirstName} " +
-                                   $"{selectedAppointment.Doctor.DoctorFirstName}  " +
-                                   $"{selectedAppointment.Doctor.DoctorFirstName}";
+                                   $"{selectedAppointment.Doctor.DoctorMiddleName}  " +
+                                   $"{selectedAppointment.Doctor.DoctorLastName}";
                 doctorL.Text = dfullname;
 
                 int index = 0;
@@ -162,13 +161,17 @@ namespace ClinicSystem.Appointments
                 return;
             }
             int roomno = int.Parse(comboRoom.SelectedItem.ToString().Split(' ')[0].Trim());
-            
 
-            Appointment app = new Appointment(selectedAppointment.Operation,
+
+            Appointment app = new Appointment(
+                selectedAppointment.Patient,
                 selectedAppointment.Doctor,
+                selectedAppointment.Operation,
                 dateSchedulePicker.Value,
                 origStartTime,
                 origEndTime,
+                selectedAppointment.Bill,
+                roomno,
                 selectedAppointment.AppointmentDetailNo);
 
 
@@ -182,7 +185,7 @@ namespace ClinicSystem.Appointments
             bool available = db.isReAppointmentAvailable(app);
             if (available)
             {
-                bool isRoomAvailable = db.isRoomAvailable(roomno, selectedDate, origStartTime, origEndTime, int.Parse(comboAppointment.SelectedItem.ToString()));
+                bool isRoomAvailable = db.isRoomAvailable(app);
                 if (!isRoomAvailable)
                 {
                     MessagePromp.MainShowMessageBig(this, "Room is not available during this time.", MessageBoxIcon.Error);
@@ -191,6 +194,11 @@ namespace ClinicSystem.Appointments
                 bool updated = db.UpdateSchedule(app);
                 if (updated)
                 {
+            
+                    List<Appointment> temp = new List<Appointment>();
+                    temp.Add(app);
+                    PrintAppointmentReceipt prrr = new PrintAppointmentReceipt(app.Patient, temp,"Reappointment");
+                    prrr.print();
                     MessagePromp.MainShowMessage(this, "Appointment is updated.", MessageBoxIcon.Information);
                 }
             }

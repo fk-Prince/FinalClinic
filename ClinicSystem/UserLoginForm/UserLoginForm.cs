@@ -44,6 +44,7 @@ namespace ClinicSystem
         {
             string username = Username.Text.Trim();
             string password = Password.Text.Trim();
+          
             //Staff staff2 = new Staff(1,"a","a");
             //ClinicSystem clinicSystem1 = new ClinicSystem(staff2);
             //clinicSystem1.Show();

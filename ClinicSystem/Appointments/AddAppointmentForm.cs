@@ -140,7 +140,7 @@ namespace ClinicSystem.Appointments
                 EndTime.Text = formattedEndTime.Split(' ')[0];
                 string ampmEnd = endTime.Hours >= 12 ? "PM" : "AM";
                 comboEnd.SelectedItem = ampmEnd;
-            } 
+            }
         }
 
         private TimeSpan origStartTime;
@@ -209,26 +209,39 @@ namespace ClinicSystem.Appointments
                 endTime = TimeSpan.FromHours(endTime.TotalHours % 24);
             }
 
+            DateTime newStart = selectedDate + startTime;
+            DateTime newEnd = selectedDate + endTime;
+            if (newEnd < newStart)
+            {
+                newEnd = newEnd.AddDays(1);  
+            }
             foreach (Appointment sc in patientSchedules)
             {
-                if (sc.Patient.Patientid == selectedPatient.Patientid && sc.DateSchedule.Date == selectedDate.Date &&
-                    (startTime < sc.EndTime && endTime > sc.StartTime))
+
+                DateTime existStart = sc.DateSchedule + sc.StartTime;
+                DateTime existEnd = sc.DateSchedule + sc.EndTime;
+                if (existEnd < existStart)
+                {
+                    existEnd = existEnd.AddDays(1);
+                }
+                if (newStart < existEnd && newEnd > existStart)
                 {
                     MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.", MessageBoxIcon.Error);
                     return;
                 }
-            }  
+            }
+            
             int roomno = int.Parse(comboRoom.SelectedItem.ToString().Split(' ')[0].Trim());
-            Appointment pschedule = new Appointment(selectedPatient, selectedDoctor, selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price, roomno);
+            Appointment pschedule = new Appointment(selectedPatient, selectedDoctor, selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price, roomno, int.Parse(PatientAppointmentNo.Text));
 
             bool patientavailable = db.isPatientAvailable(pschedule);
             if (!patientavailable)
             {
-                MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.", MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.5454", MessageBoxIcon.Error);
                 return;
             }
 
-            bool isRoomAvailable = db.isRoomAvailable(roomno, selectedDate,startTime,endTime);
+            bool isRoomAvailable = db.isRoomAvailable(pschedule);
             if (!isRoomAvailable)
             {
                 MessagePromp.MainShowMessageBig(this, "Room is not available during this time.", MessageBoxIcon.Error);
@@ -236,46 +249,53 @@ namespace ClinicSystem.Appointments
             }
 
 
-            Appointment schedule = new Appointment(selectedDoctor, selectedDate, startTime, endTime,roomno);
-
-
+            Appointment schedule = new Appointment(selectedDoctor, selectedDate, startTime, endTime, roomno);
             bool isScheduleAvailable = db.isScheduleAvailable(schedule);
             if (!isScheduleAvailable)
             {
-                MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.", MessageBoxIcon.Error);
+                MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.123", MessageBoxIcon.Error);
                 return;
             }
-
-            //foreach (Appointment sc in patientSchedules)
-            //{
-            //    if (sc.Patient.Patientid == selectedPatient.Patientid && sc.DateSchedule.Date == selectedDate.Date &&
-            //        (startTime < sc.EndTime && endTime > sc.StartTime))
-            //    {
-            //        MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.", MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //}
-            //Appointment pschedule = new Appointment(selectedPatient, selectedDoctor, selectedOperation, selectedDate, startTime, endTime, selectedOperation.Price, roomno);
-
-            //bool patientavailable = db.isPatientAvailable(pschedule);
-            //if (!patientavailable)
-            //{
-            //    MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the patient schedule.", MessageBoxIcon.Error);
-            //    return;
-            //}
 
             patientSchedules.Add(pschedule);
 
 
-            foreach (Appointment sc in temporaryStorage)
-            {
-                if (sc.Doctor.DoctorID == selectedDoctor.DoctorID && sc.DateSchedule.Date == selectedDate.Date &&
-                    (startTime < sc.EndTime || endTime > sc.StartTime))
-                {
-                    MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.", MessageBoxIcon.Error);
-                    return;
-                }
-            }
+            //foreach (Appointment sc in temporaryStorage)
+            //{
+
+            //    DateTime existStart = sc.DateSchedule + sc.StartTime;
+            //    DateTime existEnd = sc.DateSchedule + sc.EndTime;
+            //    if (existEnd < existStart)
+            //    {
+            //        existEnd = existEnd.AddDays(1);
+            //    }
+
+            //    if ((sc.Doctor.DoctorID == selectedDoctor.DoctorID && sc.DateSchedule.Date == selectedDate.Date &&
+            //        newStart < existEnd && newEnd > existStart))
+            //    {
+            //        MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.", MessageBoxIcon.Error);
+            //        return;
+            //    }
+
+            //    //if ( sc.Doctor.DoctorID == selectedDoctor.DoctorID && (sc.DateSchedule.Date == selectedDate.Date && startTime < sc.EndTime || endTime > sc.StartTime) || 
+            //    //    (sc.DateSchedule.Date < selectedDate.Date && sc.EndTime > startTime) || 
+            //    //    (sc.DateSchedule.Date > selectedDate.Date && sc.StartTime < endTime) )
+            //    //{
+            //    //    MessagePromp.MainShowMessageBig(this, "Schedule conflicts with the doctor schedule.555", MessageBoxIcon.Error);
+            //    //    return;
+            //    //}
+            //    // (
+            //    //    (patientappointment_tbl.DateSchedule = @DateSchedule
+            //    //     AND patientappointment_tbl.StartTime<@EndTime
+            //    //     AND patientappointment_tbl.EndTime> @StartTime)
+            //    //    OR
+            //    //    (patientappointment_tbl.DateSchedule < @DateSchedule
+            //    //     AND patientappointment_tbl.EndTime > @StartTime)
+            //    //    OR
+            //    //    (patientappointment_tbl.DateSchedule > @DateSchedule
+            //    //     AND patientappointment_tbl.StartTime < @EndTime)
+            //    //)
+            //}
             temporaryStorage.Add(schedule);
             operationNameAddedList.Add(selectedOperation.OperationName);
 
@@ -317,7 +337,7 @@ namespace ClinicSystem.Appointments
         private void displayOperationAdded(Appointment schedule)
         {
             string fullname = schedule.Doctor.DoctorLastName + ", " + schedule.Doctor.DoctorFirstName + " " + schedule.Doctor.DoctorMiddleName;
-            string displayText = $"Operation Name:  {selectedOperation.OperationName}  {Environment.NewLine}"  +
+            string displayText = $"Operation Name:  {selectedOperation.OperationName}  {Environment.NewLine}" +
                                  $"Operation Bill:  {selectedOperation.Price.ToString("F2")}  {Environment.NewLine}" +
                                  $"Doctor Assigned: Dr.{fullname}  {Environment.NewLine}" +
                                  $"Date Schedule: {schedule.DateSchedule.ToString("yyyy-MM-dd")} {Environment.NewLine}" +
@@ -386,14 +406,14 @@ namespace ClinicSystem.Appointments
             }
             string opNumber = db.getAppointmentDetail();
             PatientAppointmentNo.Text = opNumber;
-            comboStart.Items.Clear(); 
+            comboStart.Items.Clear();
             comboEnd.Items.Clear();
             comboStart.Items.Add("AM");
             comboStart.Items.Add("PM");
             comboStart.SelectedIndex = 0;
             comboEnd.Items.Add("AM");
             comboEnd.Items.Add("PM");
-            
+
             operationSettings();
         }
 
@@ -451,7 +471,7 @@ namespace ClinicSystem.Appointments
         {
             if (selectedPatient == null)
             {
-                MessagePromp.MainShowMessage(this, "Please Select a Patient.", MessageBoxIcon.Error);          
+                MessagePromp.MainShowMessage(this, "Please Select a Patient.", MessageBoxIcon.Error);
                 return;
             }
 
@@ -462,10 +482,12 @@ namespace ClinicSystem.Appointments
             }
 
             double bill = double.Parse(TotalBill.Text);
-            
+
             bool success = db.AddAppointment(selectedPatient, patientSchedules);
             if (success)
             {
+                PrintAppointmentReceipt prrr = new PrintAppointmentReceipt(selectedPatient, patientSchedules,"Add");
+                prrr.print();
                 MessagePromp.MainShowMessage(this, "Appoinment Added", MessageBoxIcon.Information);
                 comboOperation.SelectedIndex = -1;
                 comboDoctor.SelectedIndex = -1;
@@ -489,6 +511,8 @@ namespace ClinicSystem.Appointments
                 {
                     comboPatientID.Items.Add(patient.Patientid);
                 }
+
+
             }
         }
 

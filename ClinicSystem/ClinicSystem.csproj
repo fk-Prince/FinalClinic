@@ -219,6 +219,12 @@
       <DependentUpon>PatientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Appointments\Appointment.cs" />
+    <Compile Include="PrintAppointmentReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintAppointmentReceipt.Designer.cs">
+      <DependentUpon>PrintAppointmentReceipt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rooms\DatabaseRoom.cs" />
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Rooms\RoomsForm.cs">
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PatientForm\PatientForm.resx">
       <DependentUpon>PatientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintAppointmentReceipt.resx">
+      <DependentUpon>PrintAppointmentReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
