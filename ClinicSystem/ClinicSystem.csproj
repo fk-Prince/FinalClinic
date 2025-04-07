@@ -152,6 +152,12 @@
       <DependentUpon>DoctorAppointmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DoctorClinic\DoctorPatientSchedule.cs" />
+    <Compile Include="DoctorClinic\PrintDoctorReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorClinic\PrintDoctorReceipt.Designer.cs">
+      <DependentUpon>PrintDoctorReceipt.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoctorClinic\DoctorViewPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,10 +225,10 @@
       <DependentUpon>PatientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Appointments\Appointment.cs" />
-    <Compile Include="PrintAppointmentReceipt.cs">
+    <Compile Include="Appointments\PrintAppointmentReceipt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrintAppointmentReceipt.Designer.cs">
+    <Compile Include="Appointments\PrintAppointmentReceipt.Designer.cs">
       <DependentUpon>PrintAppointmentReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="Rooms\DatabaseRoom.cs" />
@@ -284,6 +290,9 @@
     <EmbeddedResource Include="DoctorClinic\DoctorViewPatient.resx">
       <DependentUpon>DoctorViewPatient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DoctorClinic\PrintDoctorReceipt.resx">
+      <DependentUpon>PrintDoctorReceipt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Doctors\AddDoctor.resx">
       <DependentUpon>AddDoctor.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,7 +320,7 @@
     <EmbeddedResource Include="PatientForm\PatientForm.resx">
       <DependentUpon>PatientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrintAppointmentReceipt.resx">
+    <EmbeddedResource Include="Appointments\PrintAppointmentReceipt.resx">
       <DependentUpon>PrintAppointmentReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

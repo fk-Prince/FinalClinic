@@ -13,8 +13,9 @@ namespace ClinicSystem
         private DateTime dateHired;
         private string gender;
         private string address;
+        private string contactnumber;
 
-        public Doctor(int doctorID, string doctorFirstName, string doctorMiddleName, string doctorLastName, int doctorAge, string pin, DateTime dateHired, string gender, string address)
+        public Doctor(int doctorID, string doctorFirstName, string doctorMiddleName, string doctorLastName, int doctorAge, string pin, DateTime dateHired, string gender, string address, string contactnumber)
         {
             this.address = address;
             this.doctorID = doctorID;
@@ -25,8 +26,9 @@ namespace ClinicSystem
             this.pin = pin;
             this.dateHired = dateHired;
             this.gender = gender;
+            this.contactnumber = contactnumber;
         }
-
+        public string DoctorContactNumber { get => contactnumber; }
         public string DoctorAddress { get => address; }
         public int DoctorID { get => doctorID; }
         public string DoctorFirstName { get => doctorFirstName; }

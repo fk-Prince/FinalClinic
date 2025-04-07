@@ -138,6 +138,8 @@ namespace ClinicSystem.Appointments
                             reader.IsDBNull(reader.GetOrdinal("contactnumber")) ? "N/A" : reader.GetString("contactnumber")
                         );
 
+             
+           
                     Doctor doctor = new Doctor(
                             reader.GetInt32("doctorid"),
                             reader.GetString("doctorfirstname"),
@@ -145,13 +147,14 @@ namespace ClinicSystem.Appointments
                             reader.GetString("doctorlastname"),
                             reader.GetInt32("doctorage"),
                             reader.GetString("pin"),
-                            reader.GetDateTime("datehired"),
-                            reader.GetString("gender"),
-                            reader.GetString("address")
+                            reader.GetDateTime("doctordatehired"),
+                            reader.GetString("doctorgender"),
+                            reader.GetString("doctoraddress"),
+                            reader.GetString("doctorcontactnumber")
                         );
 
                     Operation operation = new Operation(
-                             reader.GetString("OperationCode"),
+                             reader.GetString("OperationCode"), 
                             reader.GetString("OperationName"),
                             reader.GetDateTime("dateAdded"),
                             reader.GetString("description"),
@@ -233,9 +236,10 @@ namespace ClinicSystem.Appointments
                             reader.GetString("doctorlastname"),
                             reader.GetInt32("doctorage"),
                             reader.GetString("pin"),
-                            reader.GetDateTime("datehired"),
-                            reader.GetString("gender"),
-                            reader.GetString("address")
+                            reader.GetDateTime("doctordatehired"),
+                            reader.GetString("doctorgender"),
+                            reader.GetString("doctoraddress"),
+                            reader.GetString("doctorcontactnumber")
                         );
 
                     Operation operation = new Operation(
@@ -731,9 +735,10 @@ namespace ClinicSystem.Appointments
                         reader.GetString("doctorLastName"),
                         reader.GetInt32("doctorAge"),
                         reader.GetString("Pin"),
-                        reader.GetDateTime("DateHired"),
-                        reader.GetString("Gender"),
-                        reader.GetString("Address")
+                        reader.GetDateTime("doctorDateHired"),
+                        reader.GetString("doctorGender"),
+                        reader.GetString("doctorAddress"),
+                        reader.GetString("doctorcontactnumber")
                      );
                     doctorList.Add(doctor);
                 }

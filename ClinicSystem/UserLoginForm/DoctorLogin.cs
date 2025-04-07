@@ -113,9 +113,10 @@ namespace ClinicSystem.UserLoginForm
                         reader.GetString("doctorlastname"),
                         reader.GetInt32("doctorage"),
                         reader.GetString("pin"),
-                        reader.GetDateTime("datehired"),
-                        reader.GetString("gender"),
-                        reader.GetString("address")
+                        reader.GetDateTime("doctordatehired"),
+                        reader.GetString("doctorgender"),
+                        reader.GetString("doctoraddress"),
+                            reader.GetString("doctorcontactnumber")
                     );
                     MessagePromp.MainShowMessage(this, "Successfully Login", MessageBoxIcon.Information);
                     LoginUserForm log = LoginUserForm.getInstance();

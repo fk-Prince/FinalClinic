@@ -109,9 +109,10 @@ namespace DoctorClinic
                        reader.GetString("doctorLastName"),
                        reader.GetInt32("doctorAge"),
                        reader.GetString("Pin"),
-                       reader.GetDateTime("DateHired"),
-                       reader.GetString("Gender"),
-                       reader.GetString("Address")
+                       reader.GetDateTime("doctorDateHired"),
+                       reader.GetString("doctorGender"),
+                       reader.GetString("doctorAddress"),
+                       reader.GetString("doctorcontactnumber")
                     );
                     doctorList.Add(doctor);
                 }

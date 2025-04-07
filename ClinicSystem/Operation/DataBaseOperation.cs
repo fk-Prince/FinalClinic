@@ -66,9 +66,10 @@ namespace ClinicSystem
                         reader.GetString("doctorlastname"),
                         reader.GetInt32("doctorage"),
                         reader.GetString("pin"),
-                        reader.GetDateTime("datehired"),
-                        reader.GetString("gender"),
-                        reader.GetString("Address"));
+                        reader.GetDateTime("doctordatehired"),
+                        reader.GetString("doctorgender"),
+                        reader.GetString("doctorAddress"),
+                            reader.GetString("doctorcontactnumber"));
 
                     operation.Doctor.Add(doctor);
                 }

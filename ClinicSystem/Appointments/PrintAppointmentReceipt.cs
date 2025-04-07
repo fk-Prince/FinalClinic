@@ -17,7 +17,7 @@ namespace ClinicSystem
         private Image image = Properties.Resources.Logo;
         private List<Appointment> app;
         private Patient patient;
-        private int age;
+
         private string fullname;
         private string dateAp = DateTime.Now.ToString("yyyy-MM-dd");
         private string timeAp = DateTime.Now.ToString("hh:mm:ss tt");
@@ -32,6 +32,8 @@ namespace ClinicSystem
         private float col6 = 100f;
         private float defaultCol = 150f;
 
+
+        private static int lastRead = 0;
         private string type;
         public PrintAppointmentReceipt(Patient patient, List<Appointment> app, string type)
         {
@@ -55,20 +57,25 @@ namespace ClinicSystem
             //}
         }
 
-        private static bool isLoad = false;
-        private static int lastRead = 0;
+    
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            if (!isLoad)
+            if (page == 1)
             {
                 drawHeader(e);
             }
-            // TABLE HEADER
+           
             Font headerFont = new Font("Arial", 12, FontStyle.Bold);
             Font rowFont = new Font("Arial", 10);
             Brush brush = Brushes.Black;
             string[] headers = { "RoomNo", "Operation Name", "Doctor Name", "Date", "Start-Time", "End-Time", "Ammount" };
+            if (page != 1)
+            {
+                x = 20;
+                y = 100;
+                rowHeight = 30f;
+            }
             for (int i = 0; i < headers.Length; i++)
             {
                 float colWidth;
@@ -87,13 +94,10 @@ namespace ClinicSystem
             y += rowHeight;
 
             int rows = 0;
-            int maxRow = 16;
+            int maxRow = (page == 1) ? 16 : 30;
 
-            if (app.Count > 16)
-            {
-                e.Graphics.DrawString($"Page {page}", new Font("Sans-serif", 9), Brushes.Black, 10, 1070);
-                page++;
-            }
+            if (app.Count > 16)  e.Graphics.DrawString($"Page {page}", new Font("Sans-serif", 9), Brushes.Black, 10, 1070);
+               
 
             for (int i = lastRead; i < app.Count(); i++)
             {
@@ -122,7 +126,7 @@ namespace ClinicSystem
                 {
                     e.HasMorePages = true;
                     lastRead = i + 1;
-                    isLoad = !isLoad;
+                    page++;
                     y = 100;
                     x = 20;
                     return;
@@ -137,12 +141,11 @@ namespace ClinicSystem
 
         private void drawHeader(PrintPageEventArgs e)
         {
-            age = patient.Age;
             fullname = Capitalized(patient.Firstname) + "  " + Capitalized(patient.Middlename) + "  " + Capitalized(patient.Lastname);
-            e.Graphics.DrawImage(image, 20, 20, 100, 100);
-            e.Graphics.DrawString("Quantum Care", new Font("Impact", 36, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline), Brushes.Aqua, 120, 20);
-            e.Graphics.DrawString("506 J.P. Laurel Ave,", new Font("Sans-serif", 12, FontStyle.Regular), Brushes.Black, 125, 80);
-            e.Graphics.DrawString("Poblacion District, Davao City", new Font("Sans-serif", 12, FontStyle.Regular), Brushes.Black, 125, 100);
+            e.Graphics.DrawImage(image, 20, 20, 140, 140);
+            e.Graphics.DrawString("Quantum Care", new Font("Impact", 36, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline), Brushes.Aqua, 140, 25);
+            e.Graphics.DrawString("506 J.P. Laurel Ave,", new Font("Sans-serif", 12, FontStyle.Regular), Brushes.Black, 145, 85);
+            e.Graphics.DrawString("Poblacion District, Davao City", new Font("Sans-serif", 12, FontStyle.Regular), Brushes.Black, 145, 105);
 
             if (type.Equals("Add"))
             {
@@ -161,7 +164,7 @@ namespace ClinicSystem
 
 
             e.Graphics.DrawString($"Patient Name: {fullname}", new Font("Sans-serif", 12, FontStyle.Bold), Brushes.Black, 30, 250);
-            e.Graphics.DrawString($"Age: {age}", new Font("Sans-serif", 12), Brushes.Black, 30, 280);
+            e.Graphics.DrawString($"Age: {patient.Age}", new Font("Sans-serif", 12), Brushes.Black, 30, 280);
       
         }
 
@@ -228,5 +231,12 @@ namespace ClinicSystem
         {
             return text.Substring(0, 1).ToUpper() + text.Substring(1);
         }
+
+        //public void reset()
+        //{
+        //    page = 1;
+        //    isLoad = false;
+        //    lastRead = 0;
+        //}
     }
 }

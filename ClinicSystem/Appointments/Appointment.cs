@@ -57,16 +57,22 @@ namespace ClinicSystem
             this.operation = operation;
             this.bill = bill;
         }
-
-        public Appointment(Operation operation, Doctor doctor, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int appointmentDetailId)
+        public Appointment(Patient patient, Doctor doctor, Operation operation, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, double bill, int roomno, int appointmentDetailId, string diagnosis)
         {
-            this.doctor = doctor;
-            this.operation = operation;
-            this.dateSchedule = dateSchedule;
+            this.patient = patient;
+            this.dateSchedule = dateSchedule.Date;
             this.startTime = startTime;
             this.endTime = endTime;
-            this.appointmentDetailNo = appointmentDetailId;
+            this.doctor = doctor;
+            this.roomno = roomno;
+            this.operation = operation;
+            this.bill = bill;
+            this.diagnosis = diagnosis;
         }
+
+
+
+
 
 
         public Appointment(Patient patient, Doctor doctor, Operation operation, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int appointmentDetailId, int roomno, DateTime dateAdmitted)
@@ -83,7 +89,7 @@ namespace ClinicSystem
         }
 
          public Appointment(Patient patient, Doctor doctor, Operation operation, DateTime dateSchedule, TimeSpan startTime, TimeSpan endTime, int appointmentDetailId, int roomno, DateTime dateAdmitted, DateTime recentlyVisit, double bill)
-        {
+         {
             this.patient = patient;
             this.dateSchedule = dateSchedule.Date;
             this.startTime = startTime;
@@ -95,7 +101,7 @@ namespace ClinicSystem
             this.dateAdmitted = dateAdmitted;
             this.recentlyVisit = recentlyVisit;
             this.bill = bill;
-        }
+         }
 
 
         public Doctor Doctor { get => doctor; }
