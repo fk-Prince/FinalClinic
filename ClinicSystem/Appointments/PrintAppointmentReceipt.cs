@@ -26,9 +26,10 @@ namespace ClinicSystem
         private float x = 20;
         private float y = 430;
         private float rowHeight = 30f;
-        private float col0 = 90f;
+        private float col0 = 80f;
+        private float col1 = 125f;
         private float col2 = 170f;
-        private float col345 = 100f;
+        private float col345 = 112f;
         private float col6 = 100f;
         private float defaultCol = 150f;
 
@@ -69,7 +70,8 @@ namespace ClinicSystem
             Font headerFont = new Font("Arial", 12, FontStyle.Bold);
             Font rowFont = new Font("Arial", 10);
             Brush brush = Brushes.Black;
-            string[] headers = { "RoomNo", "Operation Name", "Doctor Name", "Date", "Start-Time", "End-Time", "Ammount" };
+            string[] headers = { "Room", "Operation", "Doctor", "   Date", "   Start", "   End", "Ammount" };
+            string[] headers1 = { "No.", "Name", "Name", "Scheduled", "   Time", "   Time", "" };
             if (page != 1)
             {
                 x = 20;
@@ -80,21 +82,23 @@ namespace ClinicSystem
             {
                 float colWidth;
                 if (i == 0) colWidth = col0;
+                else if (i == 1) colWidth = col1;
                 else if (i == 2) colWidth = col2;
                 else if (i == 3 || i == 4 || i == 5) colWidth = col345;
                 else if (i == 6) colWidth = col6;
                 else colWidth = defaultCol;
 
-                e.Graphics.FillRectangle(Brushes.Aqua, x, y, colWidth, rowHeight);
+                e.Graphics.FillRectangle(Brushes.Aqua, x, y, colWidth, rowHeight + 30);
                 e.Graphics.DrawLine(Pens.Black, x, y, x + colWidth, y);
-                e.Graphics.DrawLine(Pens.Black, x, y + rowHeight, x + colWidth, y + rowHeight);
+                e.Graphics.DrawLine(Pens.Black, x, y + (rowHeight + 30), x + colWidth, y + (rowHeight + 30));
                 e.Graphics.DrawString(headers[i], headerFont, brush, x + 5, y + 5);
+                e.Graphics.DrawString(headers1[i], headerFont, brush, x + 5, y + 35);
                 x += colWidth;
             }
-            y += rowHeight;
+            y += rowHeight + 30; 
 
             int rows = 0;
-            int maxRow = (page == 1) ? 16 : 30;
+            int maxRow = (page == 1) ? 16 : 28;
 
             if (app.Count > 16)  e.Graphics.DrawString($"Page {page}", new Font("Sans-serif", 9), Brushes.Black, 10, 1070);
                
@@ -200,7 +204,7 @@ namespace ClinicSystem
             switch (col)
             {
                 case 0: return col0;
-                case 1: return defaultCol;
+                case 1: return col1;
                 case 2: return col2;
                 case 3: return col345;
                 case 4: return col345;
